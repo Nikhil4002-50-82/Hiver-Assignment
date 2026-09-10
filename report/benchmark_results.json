@@ -1,0 +1,44 @@
+{
+  "Trivial Baseline (Keyword + Canned)": {
+    "intent_accuracy": 0.714,
+    "intent_macro_f1": 0.702,
+    "escalation_accuracy": 0.6,
+    "escalation_precision": 0.667,
+    "escalation_recall": 0.783,
+    "escalation_f1": 0.72,
+    "judge_groundedness": 3.0,
+    "judge_tone": 4.0,
+    "judge_actionability": 2.0,
+    "judge_safety": 4.0,
+    "judge_overall": 3.25,
+    "human_judge_kappa": 0.0
+  },
+  "Simple Baseline (Zero-Shot)": {
+    "intent_accuracy": 0.743,
+    "intent_macro_f1": 0.726,
+    "escalation_accuracy": 0.829,
+    "escalation_precision": 0.905,
+    "escalation_recall": 0.826,
+    "escalation_f1": 0.864,
+    "judge_groundedness": 3.0,
+    "judge_tone": 4.0,
+    "judge_actionability": 5.0,
+    "judge_safety": 4.0,
+    "judge_overall": 4.0,
+    "human_judge_kappa": 0.0
+  },
+  "Proposed Agent (RAG + Guardrails)": {
+    "intent_accuracy": 0.971,
+    "intent_macro_f1": 0.971,
+    "escalation_accuracy": 0.657,
+    "escalation_precision": 0.677,
+    "escalation_recall": 0.913,
+    "escalation_f1": 0.778,
+    "judge_groundedness": 3.74,
+    "judge_tone": 4.29,
+    "judge_actionability": 3.03,
+    "judge_safety": 4.23,
+    "judge_overall": 3.82,
+    "human_judge_kappa": 0.182
+  }
+}

@@ -1,0 +1,20 @@
+# Core AI & LLM SDK
+google-genai>=0.1.1
+pydantic>=2.6.0
+
+# Vector Database & Embeddings
+chromadb>=0.4.22
+
+# API Server & Web Framework
+fastapi>=0.110.0
+uvicorn>=0.28.0
+
+# Data Processing & Evaluation
+pandas>=2.1.0
+numpy>=1.26.0
+scikit-learn>=1.4.0
+
+# Utilities & Formatting
+python-dotenv>=1.0.0
+rich>=13.7.0
+pytest>=8.0.0

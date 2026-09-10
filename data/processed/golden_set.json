@@ -1,0 +1,2102 @@
+[
+  {
+    "sample_id": "BA-GOLDEN-001-FLIG",
+    "tweet_id": "872",
+    "customer_tweet": "Hi ! My flight from MAN--LHR--BWI for Nov. 3 was canceled. I was excited to try your Club 787 product. Only available flight is now to IAD which is a hassle, but rebooked anyway--my only option! Any availability in first class on BA293 for the troubles please?",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're so sorry to hear your flight was cancelled, Bryce. We're pleased you've been rebooked, however we're sorry for the hassle this has 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-FLIG",
+    "tweet_id": "884",
+    "customer_tweet": "Will you pay me my hotel and good bill for cancelling my flight home",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're sorry to hear your flight was cancelled, Martin. We can certainly look into this for you. DM 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-FLIG",
+    "tweet_id": "969",
+    "customer_tweet": "runway is under maintenance at Delhi from 7 nov. flights have been cancelled. Wanted to know status of BA0257, lhr-del 7nov",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Sreejit, we have no info about this as yet. Please keep an eye online as this will be updated as soon as we know. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-FLIG",
+    "tweet_id": "1882",
+    "customer_tweet": "cancels #BA228 D. C. - LHR on 3 Nov, but refuses to give a free upgrade for inconvenience caused. Sad. #LuxuryTravel",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We apologise for the inconvenience we've caused Ragnar. We wish we could offer upgrades for this. However, we're unable to. Please 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-FLIG",
+    "tweet_id": "4004",
+    "customer_tweet": "I have had enough of this terrible customer service, k airw do not reply to my requests for update. I paid b airways, you delayed the flight",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We’re sorry we’re unable to you, Kevin. The agreement between airlines is the last carrier, is the carrier to assist with delayed baggage.",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-FLIG",
+    "tweet_id": "5037",
+    "customer_tweet": "not overly delighted at the long delay from Edinburgh today, nor the lack of information as to why or that I’m not home yet",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're disappointed to hear you're flight was delayed, Amy. We're sorry you didn't receive much communication. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-FLIG",
+    "tweet_id": "5066",
+    "customer_tweet": "BA0229 cancelled Friday. Rebooked on BA293. Told to call customer relations for complimentary upgrade but they are closed?",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Daniel, we wouldn't offer a complimentary upgrade for a cancelled flight. Who advised you to contact us? ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-FLIG",
+    "tweet_id": "7024",
+    "customer_tweet": "Hey are you helping passengers stranded by Turkey's visa ban on Americans? Kid off at university is heartbroken.",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're concerned to read your message, Ethan. Can you DM us a bit more information about your query? 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-FLIG",
+    "tweet_id": "8711",
+    "customer_tweet": "Hi, can you please provide me with an email address that I can contact about my flight booking and cancelation?",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Sorry for the late reply, Sirius. We're unable to provide you with an email address to amend your booking. We'll be happy to help you. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-FLIG",
+    "tweet_id": "9403",
+    "customer_tweet": "flight BA0471- 3 hour delay on Tarmac with loads of kids onboard no food/drink provided #jokeairline #notimpressed",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're so sorry for the delay, Sheena. I know the was then an aircraft change, I hope the crew updated you. Did you purchase any food? ^Dani",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-FLIG",
+    "tweet_id": "18271",
+    "customer_tweet": "terrible service today. And awful cancellation policy on domestic flights 2 months away - just tax back. Customer lost. https://t.co/AxwLdxbFpJ",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Gellan, the cancellation policy is determined by the fare rules on the ticket that you purchase. We're sorry for any disappointment. ^H",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-FLIG",
+    "tweet_id": "21161",
+    "customer_tweet": "Trip ruined Leaving for Rome Friday and flight cancelled. They wont rebook trip from Dulles same day. #britishairways",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Did our staff explain why you were unable to be rebooked for the same day, Mark? ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-FLIG",
+    "tweet_id": "21164",
+    "customer_tweet": "Yes but they will not cover anything if the delay is a result of airline cancellation so it either needs to be covered by you",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Mark, when disruption happens the options we're able to offer are consistent whether you originally booked with Avios or cash. 1/3",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-FLIG",
+    "tweet_id": "22648",
+    "customer_tweet": "When cancels flight the last minute, to the rescue! Thank you",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're happy to hear you were rescued. Let us know if you need help to get a refund where it's due on your BA ticket. ^Julie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-FLIG",
+    "tweet_id": "27974",
+    "customer_tweet": "delayed flight from LAS to LHR... think it’s time to service the old bird. Thankfully cabin crew is great. But still 2hrs",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're sure our crew will be pleased to hear your kind comments, Josh! Apologies for the delay to your flight. ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-FLIG",
+    "tweet_id": "28548",
+    "customer_tweet": "anything you can do to help? Been delayed nearly 9hrs now from Abu Dhabi. Complimentary meal not really cutting it?☹️ https://t.co/DyYn4RGgIt",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We’re sorry you’ve been delayed, Spider. If you need buy more provisions, please keep your receipts and we can look 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-FLIG",
+    "tweet_id": "30121",
+    "customer_tweet": "Oh my BA, stuck with u 19yrs, last time today, worst delay, treatment, appalling! #tiredstarvingdisgustedinAUH....",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're really concerned to hear this, Lisa. Could you give us some more information? ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-FLIG",
+    "tweet_id": "34788",
+    "customer_tweet": "Gee thanks you cancelled my flight and now I'll spend 4 hrs at LHR before my next flight. Oh joy!",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're sorry for any inconvenience caused to your journey. We hope you're on your way soon, Lacey! ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-FLIG",
+    "tweet_id": "35411",
+    "customer_tweet": "Shame on you my 14 year old son on a school trip but has to come back a day early due to the flight being cancelled #joke",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're very sorry to hear this, Neil. Have the school been in touch with us to discuss alternative rebooking options? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-FLIG",
+    "tweet_id": "39838",
+    "customer_tweet": "Hi! I want to cancel my trip but only one way... How do I go about that?",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Asa, please can you DM us your booking reference, email address and contact number? We can then look into this for you. Thanks. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-FLIG",
+    "tweet_id": "43574",
+    "customer_tweet": "absolutely furious! Sons flight cancelled 9 hours ago in Abu Dhabi NO HOTEL AND ONLY A CROISSANT to eat. Appalling!!!",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're so sorry to hear this, Lorraine. Unfortunately this was because of a technical fault with the aircraft. Has your son been rebooked?",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-FLIG",
+    "tweet_id": "48383",
+    "customer_tweet": "I’m sorry, but for the costs of the calls and the time I have lost alone it is insufficient, never mind the lies and attempts to charge 4x advertised price, poor service for business for the additional costs. Imade no compliant in missing a flight in Barbados due to delays",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "I'm sorry Kat, we're unable to cover the cost of calls and time. Prices are subject to availability. ^Raj",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-FLIG",
+    "tweet_id": "50217",
+    "customer_tweet": "Have out done themselves again already an hour delay sat on the tarmac and no sign of moving . Never again !",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're sorry to hear you were delayed, Tim. We hope you weren't waiting too much longer. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-FLIG",
+    "tweet_id": "53183",
+    "customer_tweet": "ageing fleet of 747s letting them down yet again! #2hourdelayminimum",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Hi Duncan, we know how important our fleet is and we'll make sure your comment are passed on. ^HP",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-FLIG",
+    "tweet_id": "55406",
+    "customer_tweet": "Thanks Lisa he did, I still think we need a complimentary flight to wash away this bad experience 🤗✨ #BritishAirways #flightdelays",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're pleased that he waited, Deborah. As your delay was due to the weather, we wouldn't offer you a complimentary flight. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-FLIG",
+    "tweet_id": "57622",
+    "customer_tweet": "I’m at LIN waiting hours after a cancellation. Stop putting profits over cust. service and let us use the empty BA lounge.",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "Sorry for the disruption to your journey, Georgia. I'm afraid lounge access would only be permitted if travelling on an eligible ticket. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-FLIG",
+    "tweet_id": "60449",
+    "customer_tweet": "Rach, I ended up having to rebook the seats BA cancelled (without warning) at a significant cost, just to get home. Stunned at your reply!",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We're sorry about this, Sam. We appreciate this must have been a stressful experience for you. Why was your flight cancelled? ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-FLIG",
+    "tweet_id": "65256",
+    "customer_tweet": "Oh yes ! Spoke to someone after we got the text to tell us that our flights had been cancelled! Bit of a worry getting alternative flights , especially when hotel al booked ! Not sure BA will be our first choice in the future !",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "We’re disappointed to hear that, Shelley. We’re sorry that your flights were cancelled. We completely understand how upsetting this can be. We’ll always work hard to offer a suitable alternative where we can. Please let us know if you need any further help.^Corry",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-FLIG",
+    "tweet_id": "65258",
+    "customer_tweet": "Shame you cancelled the Kos route ..... after we had booked ! :(",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "This is concerning to hear, Shelley. Have you spoken to an British Airways representative about your booking? ^Cody",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-FLIG",
+    "tweet_id": "65273",
+    "customer_tweet": "how can you cancel a flight and book us on a next available flight on another day? Are you going to pay for accommodation!",
+    "true_intent": "FLIGHT_DISRUPTION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking.",
+    "historical_reference_reply": "It may be the only flight available to book you on, George. Were you given any other rebooking options? If you incur any expenses due to the cancellation, please keep your receipts. You can submit a claim using this link https://t.co/bTXr0uBdw6. ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-BAGG",
+    "tweet_id": "4001",
+    "customer_tweet": "Help, Can someone actually help, have tried inputting info onto missing baggage on ie, chrome and apple. 8 days waiting for bag. A mess",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We can try and help Kevin. Please DM a contact telephone number and time we can contact you. ^Oliver",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-BAGG",
+    "tweet_id": "4008",
+    "customer_tweet": "Can you send me prooft that the bag was transferred to kuwait airways at hesthrow?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "I’m sorry Kevin, but you need to contact Kuwait Airways. We don’t have access to their tracer 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-BAGG",
+    "tweet_id": "4017",
+    "customer_tweet": "Your rep at hrow assured me it would be on Kuwait airlines, it was not. Went to their baggage reclaim, they are waiting for you to send it",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi, Kevin. That may be the case, but as Kuwait Airlines are the last airline on your ticket it's up to them to issue a baggage file 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-BAGG",
+    "tweet_id": "4024",
+    "customer_tweet": "where is my missing bag ? On br airways flight to bfast hrow kuwait, delayed flightput on K airlines mon anoon veryupset",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi Kevin, you should have a WorldTracer reference number to allow you to view updates. Do you have this at all? ^Teresa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-BAGG",
+    "tweet_id": "5072",
+    "customer_tweet": "lost opt luggage for over a week, then broke out cases, now refuses to pay for the damages they caused..disgraceful",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We don't like to hear this, Chris. Did you report the damage within 7 days of receiving your bags? ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-BAGG",
+    "tweet_id": "5074",
+    "customer_tweet": "Only our missing baggage claim number",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We can have a look at this, Chris. However, if the damage hasn't been reported within 7 days of receiving the bag, we don't have any 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-BAGG",
+    "tweet_id": "8101",
+    "customer_tweet": "your agents made people check bags because the flight is full, yet many people have taken up overhead bins with coats.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi Leigh, we do this if there's a chance there won't be enough space for everyone. It's much harder to fix when you're all on-board! 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-BAGG",
+    "tweet_id": "8158",
+    "customer_tweet": "Been to many airports but this is the worst.45m pre-security,20m bag drop.30min security w/business class #BenGurionAirport",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Sorry to hear that, Louisa. Are you on your way now? Let us know if we can help. ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-BAGG",
+    "tweet_id": "8168",
+    "customer_tweet": "I'm now told my bag is in Naples. Public holiday in Italy so your 'help' line not open. No info when bag to be delivered. What do I do??",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi Steve, we're sorry you're still waiting for your bag to be delivered. Once it's been passed to a courier they should contact you 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-BAGG",
+    "tweet_id": "8173",
+    "customer_tweet": "Lost luggage at Rome airport BA 2540 . Not very happy at lack of information on when bag will arrive.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "information using the following link https://t.co/YKl4na7MJj. ^Kit 2/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-BAGG",
+    "tweet_id": "9885",
+    "customer_tweet": "What is the bag size restrictions LxWxH for im-cabin?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "You should find the information you need here: https://t.co/D7SBviVNUr. ^DaniH",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-BAGG",
+    "tweet_id": "11180",
+    "customer_tweet": "arrived on time. Great! Spoiled by waiting for bags and choice of meal not bring available in Club Europe. BA 827.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Apologies for the delay to your bag and the choice of meals available. We'll pass your comments on. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-BAGG",
+    "tweet_id": "14971",
+    "customer_tweet": "Impossible to get hold of staff. Was left 4 days on business trip without my bag, poor customer service.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Please accept my apologies for your delayed bag and the service you received, Freddy. Have you now been reunited with your bag? ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-BAGG",
+    "tweet_id": "15946",
+    "customer_tweet": "not happy Flown for years with you, never again. Arrived back at Edinburgh Orlando then Gatwick 42 bags still in London.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We're sorry about this, Janette. Our team are working hard to reunite our passengers with their bags as quickly as possible. ^DaniH",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-BAGG",
+    "tweet_id": "17532",
+    "customer_tweet": "still no news regarding my lost luggage 24hrs later. Does your system work?!",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "It does Craig. We apologise for any inconvenience caused. We're working hard on reuniting you. ^Lolly",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-BAGG",
+    "tweet_id": "17997",
+    "customer_tweet": "It went horrible because I don’t have my checked baggage. -.-",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Oh no, Mel, we're really sorry your bag has been delayed, especially after such a good start. Have you reported this at the airport? ^HP",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-BAGG",
+    "tweet_id": "21175",
+    "customer_tweet": "passport expire in 4 months with valid UK visa, trip next week to UK for 4days.Can this person travel with you &amp; entre UK?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "They would need to speak to their local embassy, Rami. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-BAGG",
+    "tweet_id": "22462",
+    "customer_tweet": "Yes and still nothing. This is the second time my luggage has been damaged and nothing",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "What happened after you reported it, Christy? Did you get a reference? ^SR",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-BAGG",
+    "tweet_id": "22464",
+    "customer_tweet": "why is it that in addition to racism at the lounge in Shanghai on my way back from Singapore my suitcases get damaged?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We're sorry to hear your baggage got damagaged, Christy. Did you report this at the airport? ^AC",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-BAGG",
+    "tweet_id": "22631",
+    "customer_tweet": "Thanks a lot for losing my luggage on a business trip. 48hrs, no updates, does anyone care? Disgraceful",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We're very sorry for the upset caused, Andy. You can find any updates here: https://t.co/wgnDp22XDr. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-BAGG",
+    "tweet_id": "23287",
+    "customer_tweet": "1/2 Late AA flight from Austin to DFW meant missed connection to MEX. paid $25 for 1 hold baggage to start, $70 taxi for hotel DFW.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We're very sorry for the inconvenience this delay caused, Nick. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-BAGG",
+    "tweet_id": "24013",
+    "customer_tweet": "Absolutely disgusted how I’ve been treated by complaints team, https://t.co/kpj8PhdCOZ lost my luggage for 3 day’s with no medication. 2.NO compensation given 3.NO coms about the re-stocking of plane journey back😡🤬😡🤬😡🤬😡🤬",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi Manpal, we're sorry to hear you're disappointed with the outcome of your complaint. Whilst we understand it must have been very frustrating for you to be with out your bag, we don't offer compensation for delayed baggage. Please accept our apologies for any upset caused. ^Nat",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-BAGG",
+    "tweet_id": "24019",
+    "customer_tweet": "Luggage with detachable shoulder bag tries to call it 2 bags and charge $100?! #NeverAgain #BritishAirways #cheap",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Sorry for any disappointment, John. I'm afraid the bags need to be within the measurements allowed for baggage, or the bag would be classed as an additional piece. Many thanks. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-BAGG",
+    "tweet_id": "24018",
+    "customer_tweet": "Lisa - the bag has flown several times on BA and others with no issues for the last 15 years. This caused loss of personal items.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi John, this is disappointing to hear. We've passed on your comments to our Customer Experience team and will do all we can to avoid this happening again. ^Lacey",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-BAGG",
+    "tweet_id": "25060",
+    "customer_tweet": "can you carry Christmas baubles in hand luggage? Some made of thin fragile glass?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Hi Jacqueline, yes these are fine to take in your hand luggage. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-BAGG",
+    "tweet_id": "27522",
+    "customer_tweet": "In middle of doing a booking and my points expired. Anyway they can be reinstated?",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Unfortunately once they've expired we're unable to reinstate these. We're sorry to disappoint you. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-BAGG",
+    "tweet_id": "27525",
+    "customer_tweet": "One hour in a queue to drop off a luggage in JFK Wow service #chaos https://t.co/FLgWbWeUAa",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "Oh the staff explain why there was a queue, Luis? ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-BAGG",
+    "tweet_id": "30954",
+    "customer_tweet": "Reported damaged luggage via online form but no response/ ref number. No answer to calls. No email provided, please help.",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "We're sorry to hear your luggage has been damaged and you've had problems reporting this. 1/2 ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-BAGG",
+    "tweet_id": "30953",
+    "customer_tweet": "Thank you for the response. Its 9n the British Airways website...it is the baggage claim form https://t.co/gfxIXVKMDn",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "us with all the details that you completed on the form and a full description of the damage with any photos you have showing the 2/3",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-BAGG",
+    "tweet_id": "30960",
+    "customer_tweet": "just landed at DXB, very disappointed you broke my luggage, wheel missing, now deemed useless",
+    "true_intent": "BAGGAGE_SERVICES",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking.",
+    "historical_reference_reply": "It would be helpful if you could DM this to us. Please also include your full name, email address and booking reference. Thanks. ^Jane 2/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-BOOK",
+    "tweet_id": "868",
+    "customer_tweet": "Sure, how much would an upgrade cost, out of curiosity?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Please can you DM us your booking reference, email address and contact number? We can then look into this for you. Thanks. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-BOOK",
+    "tweet_id": "881",
+    "customer_tweet": "Booking ref MP79V2 and QMAS91 second one is my son's, have sent all info in being told I'm not entitled to anything?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Martin. We'd need to set up a case for you if it hasn't already been made. We're following you. Please send DM with your full name, 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-BOOK",
+    "tweet_id": "966",
+    "customer_tweet": "can I just confirm the email that would send passport details to change a name on a ticket is __email__?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Sam, that is the correct email. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-BOOK",
+    "tweet_id": "974",
+    "customer_tweet": "I made two bookings, but only received a confirmation email for one of the flights. Little help?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi David, confirmation emails can take up to 24 hrs. Have you been waiting longer than this? ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-BOOK",
+    "tweet_id": "4022",
+    "customer_tweet": "No, when i was in hrow, they took the old tickets off me which had the ref. No Was told it would be on kuwait airlines monday anoon flight",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Which airline operated your last flight, Kevin? ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-BOOK",
+    "tweet_id": "8098",
+    "customer_tweet": "Booking a flight to Dubai via and finding out afterwards Dubai won't give visas to the nationality we booked for. Helpful.",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We're sorry for the late reply. Customers are responsible for their own travel documents. The regulations change so often from 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-BOOK",
+    "tweet_id": "9389",
+    "customer_tweet": "I'm trying to correct a name on my BA booking, can this be done over phone? Frederick on passport but Freddy on booking",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Freddy, yes we'll need to correct your name via the phone. This can't be done online. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-BOOK",
+    "tweet_id": "9391",
+    "customer_tweet": "Need to change my seat on LHR-CPH for tomorrow but have an AA ticket. How can I do that?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Julie, if you have an AA ticket they will need to make any changes for you. Please contact them. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-BOOK",
+    "tweet_id": "10736",
+    "customer_tweet": "Hi any idea when issues with booking references will be fixed still getting error no flights in the booking !!!",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Phil, a patch will be done on 1 November. This should resolve the issues you are having. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-BOOK",
+    "tweet_id": "17994",
+    "customer_tweet": "Complaint reference 17050171 lodged on 30th September has still not been responded to! Thanks for nothing BA!",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Rahul. Please DM us your full name, email and postal address. We'll be happy to then chase this up for you. ^Lolly",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-BOOK",
+    "tweet_id": "17998",
+    "customer_tweet": "This is my first time being on a double decker airplane and there’s so many British accents 😱 has comfy seats and TVs yas!",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "It's good to have you on board, Mel. We hope you enjoy yourself on the very British airline. Let us know how it goes. ^SR",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-BOOK",
+    "tweet_id": "19266",
+    "customer_tweet": "What’s the seating configuration for Premium Economy LHR to Miami ?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Mick, it's our A380 which operates our Miami route. Our World Traveller Plus cabin is a 2-3-2 seat configuration. 1/2 ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-BOOK",
+    "tweet_id": "20108",
+    "customer_tweet": "Wife phoned to try to book seats with legroom via Exec club number for 12 hr flight ‘Tough luck!’ Was the verbatim answer https://t.co/I82GHcuZzo",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Did our Executive Club explain why you were unable to book these seats, Mark? ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-BOOK",
+    "tweet_id": "20106",
+    "customer_tweet": "We paid more money on holiday (sooner to enable booking of extra leg room) - told extra leg room visible on system - then ‘though luck’",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Seats are subject to availability and can change at any time, Mark. We’d be happy to check for you if you DM your booking 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-BOOK",
+    "tweet_id": "20114",
+    "customer_tweet": "Initially booked via kenwood travel - then told we could book better seats - BA then said not possible till we had paid more",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We appreciate how frustrating this is for you, Mark. Please DM us the requested details and we can look into this for you. Thanks. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-BOOK",
+    "tweet_id": "20604",
+    "customer_tweet": "i need to have wheelchair assistance. Told go to manage bookings. And i cannot do it as bookings are not open yet",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We can look at adding this for you, Gary. Please DM us your booking ref, full name, email address and contact number. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-BOOK",
+    "tweet_id": "20827",
+    "customer_tweet": "You're ripping off customers with your seating policy &amp; giving appalling customer service. Get it sorted BA , NOW",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Sally, we're sorry you remain disappointed. We hope it doesn't spoil your flight. ^Lindy",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-BOOK",
+    "tweet_id": "22021",
+    "customer_tweet": "Thanks Kelly, but I remain confused about what kind of 777; seat reservation on BA shows a -300 seat layout in WT+, but flightradar shows BA5 using old -200s with old WT+ sears and poor IFE, so I’m a bit anxious!",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We appreciate your concern, but we would be unable to guarantee which aircraft will operate this flight. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-BOOK",
+    "tweet_id": "22020",
+    "customer_tweet": "So are you saying that the seat reservations I’ve paid £80 each way for might be inaccurate? 🤔",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We do advise when your pre book your seats that they are subject to change. If we do have to change the aircraft, 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-BOOK",
+    "tweet_id": "22027",
+    "customer_tweet": "Hi there, confused re aircraft for BA5 on 18th Nov; our booking shows our seat reservation for a 777-300 but flightradar shows the use of old 777-200s (vice 787-900 at time of booking!) Can you clarify please, as that’s a massive downgrade.",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi there, BA005 on 18 November is currently due to operate with a 777 aircraft. We do need to change our aircraft from time to time for 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-BOOK",
+    "tweet_id": "24031",
+    "customer_tweet": "I've been locked out of manage my bookings just for going onto the app, and going into the booking . I have a flight tomorrow evening and now can't select my seats?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi, Ryan. Could you DM us your seat preference please? We'll then certainly help if we can. We'll also need your booking ref, full name and contact number. Many thanks. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-BOOK",
+    "tweet_id": "24614",
+    "customer_tweet": "Now only one flight has been posted, three to go from the same booking please.....",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We'll pass this on to the Executive Club to look into. Thanks. 2/2 ^David",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-BOOK",
+    "tweet_id": "24618",
+    "customer_tweet": "Hiya aren't you looking nice with your upgrade, totally different from 2 years ago 2 hours until I'm off",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Thanks for your kind comments, William. We hope you have an amazing flight! ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-BOOK",
+    "tweet_id": "25055",
+    "customer_tweet": "No, unfortunately not - we each have separate booking codes. In future, I will request we book in the same batch if that will help ...?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Hi Bryan, we'd definitely recommend this in the future. I'm sorry we couldn't help you out for this one! ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-BOOK",
+    "tweet_id": "26021",
+    "customer_tweet": "Shortly afterward I was able to purchase the upgrade for £152 directly via the BA web site, rather than within the app or over the phone.",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Oh that's great to hear, David. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-BOOK",
+    "tweet_id": "26034",
+    "customer_tweet": "Is the flight pack included for economy seats? This would finish off my 21st birthday trip to a tee👌🏼😍✨🗽🇺🇸",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Unfortunately it isn't, Karen. We do hope you have an amazing flight and happy birthday from all of us! ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-BOOK",
+    "tweet_id": "26038",
+    "customer_tweet": "Hi. We made a mistake with the dates when ordering tickets, and I'm having problem changing my booking now. Can you help?",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Please DM us your booking ref, full name, email address and contact number and we'll do what we can to assist you. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-BOOK",
+    "tweet_id": "27031",
+    "customer_tweet": "been seated apart on flight home tomorrow In premium economy, both in middle row - Explain that? Not happy",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We're very sorry to hear this, Julie. Unfortunately we're unable to guarantee seats together, as seats can be allocated from the time 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-BOOK",
+    "tweet_id": "27030",
+    "customer_tweet": "Is there a number we can contact to see about changing seats.",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "Sorry about this, Julie. I'm sure our staff at the airport will be able to help. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-BOOK",
+    "tweet_id": "27528",
+    "customer_tweet": "I’m sorry but this happens too often &amp; I don’t believe BA have any loyalty. You’re just a number to fill seats and status means nothing.",
+    "true_intent": "BOOKING_TICKETING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access.",
+    "historical_reference_reply": "We're very sorry for the inconvenience this has caused you, Linda. Please can you DM us your booking reference, email address and 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-CHEC",
+    "tweet_id": "2982",
+    "customer_tweet": "Am trying to check in online for a flight to USA however it is saying in need an esta which I have and is valid till 2019",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Barry, if you've ensured you've entered the correct passport number and have the correct documentation to travel, we would 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-CHEC",
+    "tweet_id": "3975",
+    "customer_tweet": "The staff in the counter issued the boarding pass for me and my wife but they didnt board us on the plane",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Omar. Please can you DM more information? Please include your booking reference, your full name, email address and 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-CHEC",
+    "tweet_id": "5060",
+    "customer_tweet": "Done online check-in but don't have the credit card can I still fly?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi there, you can still travel as long as you declared you won't have the card with you upon booking your trip.^Jo",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-CHEC",
+    "tweet_id": "7042",
+    "customer_tweet": "when you go to check in and the one week you need to be at the front for a sharp exit and you’ve been put out your seat! 😡😡",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Clare, please accept our apologies for any inconvenience the changing of your seat reservation has caused. ^L",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-CHEC",
+    "tweet_id": "8161",
+    "customer_tweet": "Hi I'm trying to check in online but it won't let me continue without a visa number. Im travelling to USA so I have an ESTA",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi David, there should still be an option to bypass adding a Visa. If you delete your cookies and refresh, it might give you the 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-CHEC",
+    "tweet_id": "12670",
+    "customer_tweet": "tried to check in online flying to Heathrow from Manchester onto JFK But unable Informed to get boarding pass with carrier",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Teresa. If you continue to experience issues, we can only recommend that you check in at the...1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-CHEC",
+    "tweet_id": "19259",
+    "customer_tweet": "Hi BA - I did not receive my booking confirmation email and need to check in - can you help?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "If you DM us your full name, flight details, address and contact number, we'll find your booking reference, Maria. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-CHEC",
+    "tweet_id": "20100",
+    "customer_tweet": "BA547 late and gate change. Disabled passenger left without assistance NOT happy with service.",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "We're very sorry to hear this, Peter. We'll certainly pass this on to the team in Fiumicino. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-CHEC",
+    "tweet_id": "25069",
+    "customer_tweet": "hi. I can’t check in on the app or website, it keeps looping back to advance passenger information. Is it just me?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Alyson, we are having intermittent issues on Manage My Booking. Please keep trying but you may need to check in at the airport. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-CHEC",
+    "tweet_id": "26300",
+    "customer_tweet": "are you seeing other reports of online checkin being down? Trying to check in for flight tomorrow but getting errors.",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Technical check-in or boarding pass failure; passenger needs manual check-in release.",
+    "historical_reference_reply": "Hi Caspar, it would appear there were problems around the time you reported it. Are you still having problems? ^jm",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-CHEC",
+    "tweet_id": "26309",
+    "customer_tweet": "So far not so good, can't even check in! https://t.co/GoC8bryCv6",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Rikke, we are sorry for the delay in responding. Has the system started working now? ^jm",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-CHEC",
+    "tweet_id": "26308",
+    "customer_tweet": "Got part checked in and just checked my boarding pass is available now. Couldn’t change my seat though, stuck in the middle 😕",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Rikke. We're happy to hear you're now checked in. Sorry you couldn't change your seat, but speak to our staff at the airport (1/2)",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-CHEC",
+    "tweet_id": "27016",
+    "customer_tweet": "so I can’t check in online and now you tell me my flight is full. Are you going to pick my child up from school today then",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "We're so sorry to hear this, Stephen. Have you been rebooked? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-CHEC",
+    "tweet_id": "30126",
+    "customer_tweet": "How come check-in at DUS is not possible two hours before departure of flight BA 937?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi San, were you provided with an explanation? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-CHEC",
+    "tweet_id": "30929",
+    "customer_tweet": "Good morning, is there an issue with the BA app? can’t retrieve boarding pass.",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Charles, sorry you're having trouble retrieving your boarding pass. Are you getting a specific error message? 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-CHEC",
+    "tweet_id": "33465",
+    "customer_tweet": "is there a problem w gate 365 site - tried 2different computers it just goes in circles not allowing on merchants website",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "We haven't heard about any issues, Liz. Have you tried deleting your browsing history? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-CHEC",
+    "tweet_id": "48353",
+    "customer_tweet": "Hi, have checked in for my flight tomorrow check in status confirmed but will not issue boarding pass. Please help?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Don’t worry, Lorna. If your check in has been confirmed you’ll be able to pick up your boarding card at the airport. Please 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-CHEC",
+    "tweet_id": "48361",
+    "customer_tweet": "Thank you. I have had this so I guess that means my check in is confirmed &amp; I can pick up my boarding pass at airport? https://t.co/GpA3Ze8tea",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "That's right, Lorna. Please allow sufficient time in case there are queues. We look forward to welcoming you on board! ^Steph",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-CHEC",
+    "tweet_id": "48689",
+    "customer_tweet": ". just so you know customer service DOES matter, due to poor gate experience LHR-ORD we’ll be using someone else at Xmas!",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "We don't like to hear this, Bob. Feel free to DM us more info about this. Please include your booking ref, email and contact number. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-CHEC",
+    "tweet_id": "50221",
+    "customer_tweet": "I didn’t proceed with my check in so I had option to upgrade my class of travel. I can’t find the option now, can you help?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Craig, when are you due to travel? Please DM us your booking ref full name and email and we'll take a look. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-CHEC",
+    "tweet_id": "54592",
+    "customer_tweet": "why tell us to get to Lisbon airport early and not have check in open. Staff not helpful",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "This doesn't sound good, Lance, we're sorry. We'll ensure this is fed back. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-CHEC",
+    "tweet_id": "55310",
+    "customer_tweet": "here's the queue of 36 waiting for check in to open at Lisbon doing what you told us. This must happen every day https://t.co/thzORXBBGh",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Lance. The queue doesn't look good. We hope you weren't kept waiting too long. ^N",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-CHEC",
+    "tweet_id": "61428",
+    "customer_tweet": "your mobile check in isn’t working, can you help please? Don’t want to be last checked in with worst seat! Thanks",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Sorry you've been unable to check in, Pauline. Sometimes the airport takes control of check in, when this happens you need to check in 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-CHEC",
+    "tweet_id": "65341",
+    "customer_tweet": "I’m about to check in online for our flight to London. And the surname of my bf is spelled without a space even though I put it in https://t.co/Bzugz6jc8d can I change that?correct= Arthur van Andel. Is this a problem?booking reference:OIXETH, fn:BA2760 https://t.co/ucAnOOoDLg",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Fluer, it’s nothing to worry about. Sometimes spaces are removed to allow for the number of characters. As long as the spelling is correct, you won’t have any problems. ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-CHEC",
+    "tweet_id": "65345",
+    "customer_tweet": "Hi, I’m about to check in online for our flight tomorrow to London. And for some reason the surname of my boyfriend is spelled without a space even though I put it in right. How can I change that? It must be: Arthur van Andel. Is this a problem? https://t.co/yYf4CeDmHP",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi Fleur, please can you send your Tweet again, the end of the message hasn't came through. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-CHEC",
+    "tweet_id": "69214",
+    "customer_tweet": "what a shambles at MCO. Massively short of seats for flights and wife and baby have been sat at check in for for hours",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "This is concerning to hear, Jon. We hope you were able to get everything resolved with a member of staff at the airport. ^Cody",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-CHEC",
+    "tweet_id": "73131",
+    "customer_tweet": "It has and it will-as I speak still waiting to check in...economy check in much quicker!!!",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "This is very disappointing to hear, and this will be fed back to the airport. ^Cecilia",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-CHEC",
+    "tweet_id": "73145",
+    "customer_tweet": "If online check-in doesn’t work. What to do? Take off in less than 24 hours. #technology #Firstattempt https://t.co/qQQZ4m7zPj",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Sorry you've been unable to check in online, Van. Please proceed to the airport as planned, our staff there will be happy to assist. Apologies for any inconvenience. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-CHEC",
+    "tweet_id": "77057",
+    "customer_tweet": "hi BA. on the latest app update it now asks for the booking number and surname to be input as part of the process. It all seems a bit circular given the app already has this detail when you check-in? what has changed?",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "Hi. I'm sorry for any disappointment this has caused. It just keeps your booking more secure by requesting the information. ^Kev",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-CHEC",
+    "tweet_id": "77056",
+    "customer_tweet": "It means i need to exit check-in, note down my booking ref and then start the process again. The older version was much better and quicker. (also selling me upgrades now which i don't want either).",
+    "true_intent": "CHECKIN_BOARDING",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle.",
+    "historical_reference_reply": "There should be an option to stay signed into your booking which might help, Colin. We do pass on your feedback so we can look at ways of making the app more user friendly.^Corry",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-REFU",
+    "tweet_id": "877",
+    "customer_tweet": "will you ever address my complaint/claim? Or, do you just ignore it until the 2 yrs are up?",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We apologise for not responding sooner. We're now following you. Please follow us back and send your full name, booking reference, 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-REFU",
+    "tweet_id": "3993",
+    "customer_tweet": "Thank you for your personal call &amp; help today. I now have my receipt &amp; confirmed tickets.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "You're more than welcome, Cindy. If you need any further help please don't hesitate to come back to us.^Jo",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-REFU",
+    "tweet_id": "8128",
+    "customer_tweet": "I’m campaigning for the refund on the money you stole from me over 2 months ago 🔫",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi, Dan. Are you referring to the refund request we're dealing with?",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-REFU",
+    "tweet_id": "9874",
+    "customer_tweet": "Hi how is it that #bapricepromise team says they dont see the price in this picture and refuse to pay the claim, any idea? https://t.co/5gNVZBJ12v",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Sorry for the late reply, Jarek. We're afraid our Social Media team aren't trained to assist with these type of queries. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-REFU",
+    "tweet_id": "9901",
+    "customer_tweet": "30+ attempts over last 6 weeks to call you about compensation MasterCard that doesn't work. Department not taking calls!",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Monday-Friday 13:00-17:00. You can find info about your compensation Mastercard here:https://t.co/2dTt08yuGp. 2/2 ^Linda",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-REFU",
+    "tweet_id": "12117",
+    "customer_tweet": "still no refund, your assistance comes every 12hrs &amp; no money since 17/10. Are you waiting for the problem to fix itself?",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi Viviana, we have escalated this with our Refunds team today for you. They'll be in touch asap. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-REFU",
+    "tweet_id": "12119",
+    "customer_tweet": "This is what I was told and since then, no one contacted me asking about my email in order to provide further details. #refund https://t.co/7RoF4wNv9v",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We're sorry you remain unhappy, Lara, but, as previously advised, we're not able to respond further to this matter. ^HP",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-REFU",
+    "tweet_id": "3024",
+    "customer_tweet": "DISGUSTING COMPANY! YOU SHOULD BE ASHAMED OF HOW YOU TREAT CUSTOMERS. YOU REFUSE COMPENSATION WHEN DUE",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "You certainly don't sound very happy, Sharon. Could you DM us your Customer Relations reference number, your full name, email and...1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-REFU",
+    "tweet_id": "16674",
+    "customer_tweet": "My LHR flight was cancelled so you rebooked me on a LGW flight. Was told on phone my National express coach ticket would be reimbursed with all expenses. Now you are refusing to pay??! #AvoidBritishAirways",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi Samantha, we can certainly look into this for you to see if you have been advised correctly. We're following you now so you can DM us. Please confirm your full name, booking reference, email address, postal",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-REFU",
+    "tweet_id": "20829",
+    "customer_tweet": "I'm more than disappointed!! Paying for leg room seats then taking them away and no refund is not fair trading",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We're so sorry for the inconvenience this has caused you, Sally. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-REFU",
+    "tweet_id": "20831",
+    "customer_tweet": "this is more than inconvenient. Would you prefer I pursue through small claims court or can you refund now instead ?",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi Sally, I'm sorry for the delay in responding to you. Are you available for a call? ^Kit",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-REFU",
+    "tweet_id": "21160",
+    "customer_tweet": "Nope I did not get an explanation. I suspect because I booked with miles I have hotel reservations tours that were non refundable.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We're so sorry to hear this, Mark. Do you have travel insurance to cover your hotel and tours? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-REFU",
+    "tweet_id": "22640",
+    "customer_tweet": "Please advise how can I DM you? There is no option. I still haven't heard back on my refund. This is ridiculous. More than a month.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "You would need to send us a private message with the requested information. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-REFU",
+    "tweet_id": "22646",
+    "customer_tweet": "I still haven't had my refund back for the flight that was cancelled on the 5th Oct! I was told it would take 10-12 days for the refund!",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We’re sorry to hear this, our team is working hard to be in touch with you as soon as possible. we appreciate your continued patience. ^KT",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-REFU",
+    "tweet_id": "26326",
+    "customer_tweet": "Contacted to let them know they'd overpaid compensation so I could transfer it back. They threaten me with legal action...",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Apologies you have had troubles when you are trying to get this back to BA. Is someone looking into this for you? ^Pip",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-REFU",
+    "tweet_id": "29052",
+    "customer_tweet": "Now been told Customer Services replying soon re refund ! Not bad after 3 months ?????",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We appreciate it's frustrating to wait so long, Gerry. Unfortunately due to high volumes off the back of the disruption we've faced this 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-REFU",
+    "tweet_id": "30903",
+    "customer_tweet": "Why is the list a secret. BA claim I can access 650 lounges. How do you know? Presumably someone counted them. Please justify your claim.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "access to some 650 lounges across the globe. If you type in the airport name, the lounge access eligibility will be displayed 2/3",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-REFU",
+    "tweet_id": "33462",
+    "customer_tweet": "Hi , my partner has been trying to contact you re: compensation for the last month but emails are being ignored...",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi James, would your partner be able to contact us via Twitter with their details? We could have a look into it. ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-REFU",
+    "tweet_id": "38067",
+    "customer_tweet": "Really disappointed in BA, my wife is seriously ill in hospital and BA wouldn’t give me a a refund or let me change names on iur tickets or give the £4400 to charity , won’t use them again and I’m staunch British.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We don't like to hear this, Haydn. We do have an illness policy, but this doesn't allow name changes or refunds. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-REFU",
+    "tweet_id": "39824",
+    "customer_tweet": "5 weeks since I submitted a claim re a terrible flying experience. Any idea of when il be contacted about this?",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We're very sorry to hear you're still waiting for a response, Maryanne. Please can you DM us your Customer Relations reference, email 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-REFU",
+    "tweet_id": "45859",
+    "customer_tweet": "I had to make the twitter account to talk to you. I haven't heard from customer relation for over 14days about compensation",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "team deal with complaints and responses in date order, to try and remain as fair and consistent as possible. While we appreciate it 2/3",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-REFU",
+    "tweet_id": "48392",
+    "customer_tweet": "The gesture does not meet with the expenses, time utilised or phone calls, distress or frank misinformation and lies and service! Point is transparency as a reputable company and #britishairways is not meeting that. Trying to rip customers off too!",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi Kat, I'm sorry for the stress and inconvenience this has caused you. This will certainly be fed back 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-REFU",
+    "tweet_id": "48398",
+    "customer_tweet": "Again you haven’t been fair unless you try to price fix and rip off all customers, waste their time, show no standards for business class and treat people like they are inept. Add the attempts to mismanage flight compensation, flight delays over and over. It’s not good enough",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "We're sorry you remain unhappy. Thanks for taking the time to discuss things with us. If you'd like to accept the gesture let us know.^LW",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-REFU",
+    "tweet_id": "49869",
+    "customer_tweet": "Can I have a direct phone number to the BA claims department? (not the customer service#) CS is a 20 min wait then they drop my calls.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "They'll be in touch as soon as they can, Peter. However, if you wish to call them, you can do so on 0344 493 0787 option 3, followed by 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-REFU",
+    "tweet_id": "49879",
+    "customer_tweet": "I was caught up in the May 27th chaos. All attempts to secure compensation have been met with evasiveness/incompetence HELP",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi Peter, sorry to hear this. Do you have a Customer Relations reference? If so, please",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-REFU",
+    "tweet_id": "56133",
+    "customer_tweet": "Please explain how you or anyone else knows there are 650 lounges. If you advertise a claim you are obliged to offer proof when asked.",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "based on how many oneworld carriers use an individual airport. (2/2) ^N",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-REFU",
+    "tweet_id": "59766",
+    "customer_tweet": "no credit note/refund from on cancelled flight; &amp; rude advisor said \"do a no show\"-- meaning empty seat &amp; waste of carbon",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Could you give us a bit more info please, John? We can then look into your query for you. We'll also need your booking ref, email and 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-REFU",
+    "tweet_id": "62491",
+    "customer_tweet": "I've been waiting for a refund for a cancelled flight for 3 weeks, was told it would take 5 days max. Booking Ref RXCNP4",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi there, would you be free for a call now? I'm sorry it's so late. ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-REFU",
+    "tweet_id": "63352",
+    "customer_tweet": "BA stated that my claim was not 'essential'. What is BA's definition of 'essential'? Thus far it seems like a way to avoid taking...",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Please DM your case reference, your full name, email address and contact telephone number. We'll review your claim. Thanks. ^Liz",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-REFU",
+    "tweet_id": "65272",
+    "customer_tweet": "Does that mean hotel expenses for having to stay an extra night? We were not given any options just moved to the following day?",
+    "true_intent": "REFUNDS_COMPENSATION",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing.",
+    "historical_reference_reply": "Hi George. You will have been booked onto the next available flight, so there mustn’t have been any other options. If you need to stay an extra night, keep your receipt and submit a claim using the link provided. Once received, we’ll asses your claim. ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-LOYA",
+    "tweet_id": "3036",
+    "customer_tweet": "I am a silver avios member flying from AMS to HYD in Premium Eco- is there a lounge in Schiphol Airport that I can use?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Prashanth, we have a lounge in Amsterdam called Lounge 40. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-LOYA",
+    "tweet_id": "5055",
+    "customer_tweet": "my Executive Club account has been hacked. Please pm me.",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Executive Club account access or missing Avios credit; requires member verification.",
+    "historical_reference_reply": "We need to investigate Kelly. Please send DM with your full name, Executive Account number, full postal address, email address and 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-LOYA",
+    "tweet_id": "5054",
+    "customer_tweet": "Thanks for your reply Oliver. My Twitter wasn’t working very well last night so I telephoned the Executive Club.",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "We're pleased to hear you've been able to contact our Executive Club team, Kelly. Please let us know if we can help you with anything 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-LOYA",
+    "tweet_id": "8105",
+    "customer_tweet": "are you kidding me? a 33-minute call to the executive club cost me over £17? that's a joke. i want my money back.",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi, Stephanie. You'd need to take this issue up with your phone provider. ^Julie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-LOYA",
+    "tweet_id": "9393",
+    "customer_tweet": "Hello I’ve booked an American Airlines flight (operated by Alaska); will I still earn BA tier points on this flight?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Chaz, there's a Flight Calculator online that will tell you how many Avios and Tier Points you will receive. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-LOYA",
+    "tweet_id": "9395",
+    "customer_tweet": "Do I have to fly a certain amount of flights on BA planes to obtain a status in Executive Club or could it also be on AA?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Toby, attaining Tier Points will move you through the tiers of the Club. You do collect Tier Points on AA. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-LOYA",
+    "tweet_id": "9878",
+    "customer_tweet": "Appalling commercial/customer awareness this evening. My patience and like for Avios points are almost at an end.",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "We don't like to hear this, Terry. Can you tell us more? ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-LOYA",
+    "tweet_id": "22638",
+    "customer_tweet": "Hey! Joined the Executive club, but the page is switching between old and new layout and I can't login. Got no Avios either",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Executive Club account access or missing Avios credit; requires member verification.",
+    "historical_reference_reply": "Have you confirmed your account using your email, Liz? You will need to add bookings to your account to earn Avios. ^Alex",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-LOYA",
+    "tweet_id": "23291",
+    "customer_tweet": "@AmericanAir Hey BA - American really letting an Executive Club member down. Help please!",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Nick, can you tell us a little more? We'll do all we can to help. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-LOYA",
+    "tweet_id": "24611",
+    "customer_tweet": "Normally tier points are added in two days time, now it takes longer? Maybe because I reach gold status that BA is slowing things down???",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "This doesn't sound right, when did you travel? ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-LOYA",
+    "tweet_id": "26026",
+    "customer_tweet": "can Anyone tell me, if I purchase my BA ticket on a third party , or other partner airline, can I use my avios to upgrade?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "This will depend on the fare you purchase. You will need to ensure this is eligible to upgrade using Avios. There will also need to be 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-LOYA",
+    "tweet_id": "36191",
+    "customer_tweet": "Hey I have questions on my exec club profile and combining avios, what email can I use to contact you as it’s not clear?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Mark, you can DM us your query if you'd like? If we can't help you directly we can pass your info over to our Executive Club team 1/3",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-LOYA",
+    "tweet_id": "45851",
+    "customer_tweet": "Hi I have flights showing under Avios but no points? Help? https://t.co/Br4k9Y8t2k",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Colin, were they eligible flights? ^HP",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-LOYA",
+    "tweet_id": "69201",
+    "customer_tweet": "I have 170 lifetime tier points and 65 tier points making a total of 235. How can I upgrade to Bronze?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "You’d need to earn 300 Tier points in your membership year to reach Bronze Tier status, Sarismo. You can find more information using this link https://t.co/seZQFvmi49.^Corry",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-LOYA",
+    "tweet_id": "69200",
+    "customer_tweet": "So is it 300 tier points including lifetime points as well? Thanks Corry",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi. Only your Tier Points go toward reaching the next level of the Executive Club. Hope this helps. ^Kev",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-LOYA",
+    "tweet_id": "69234",
+    "customer_tweet": "I want to book a money + avios upgrade flight, but I get an error \"Error unmarshalling Fare Rules\" after selecting the flights I want. How can i fix this?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi, Stefan. Sorry you've been unable to make a booking online. Please call our sales team, who'll be happy to assist you. The number you need is 0844 493 0787 option 2. Calls cost 7p per minute plus your phone company's access charge. Lines are open daily 07:30-21:45. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-LOYA",
+    "tweet_id": "74304",
+    "customer_tweet": "do you have to ask when checking in for avios points to be allocated?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Colin, Avios will be allocated to your account automatically once you've flown. ^Tom",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-LOYA",
+    "tweet_id": "77035",
+    "customer_tweet": "would like to know why standby passengers are being put in business class when gold card customers are in coach?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Victoria. Could you let us know what flight you’re on so we can feedback your comments? ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-LOYA",
+    "tweet_id": "84665",
+    "customer_tweet": "Any reason the BA website isn't showing the reduced Avios prices for the promotion that was launched today? I'm still seeing 32,500 Avios needed for a roundtrip WT avios redemption to LAX instead of half that https://t.co/nfRY8oVQ4g",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi. Thanks for your Tweet. Could you give us some more information about the offer? Have you received an email from the Executive Club? ^Kev",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-LOYA",
+    "tweet_id": "87327",
+    "customer_tweet": "Hey, is there any way I can check what status a Club member/avios number is at?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Louise. Is the Executive Club membership yours? If so, please DM us your account number, email, date of birth and home address and we’ll certainly check the status for you. If it’s not yours, we’ll need the account holder to contact us directly.^Corry",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-LOYA",
+    "tweet_id": "87350",
+    "customer_tweet": "Do Vueling flights w BA flight numbers count for tier points?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Catalina, you’ll earn Avios Points but not Tier Points. ^Davina",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-LOYA",
+    "tweet_id": "87349",
+    "customer_tweet": "Even on BA flight numbers purchased on BA website? Meaning all operated Vueling regardless of flight code would be exempt from tier points?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Unfortunately so, Catalina. There's a list here which shows the airlines in the oneworld alliance, offering Tier Points: https://t.co/5Nqj5Ctf2Y ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-LOYA",
+    "tweet_id": "90926",
+    "customer_tweet": "Hi. Please can you give me a number to call to inform you that an Avios member has recently deceased?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi. Please accept our condolences. I've provided a link for contact details too. https://t.co/UoTrDZNpm6 ^Kev",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-LOYA",
+    "tweet_id": "103765",
+    "customer_tweet": "Absolutely disgusted by the mis-information and poor customer service that show #BAsilver and #BAAmex customers. Cost me £500 in damages through BA staff incompetency and are now ignoring to act! No loyalty to #executiveclub #avios",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Hi Aatish. Is there anything we can help you with? ^Kev",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-LOYA",
+    "tweet_id": "109176",
+    "customer_tweet": "I am never flying long haul ever again. After my return flight. They can keep my bronze status and all my Avios points. I'm done with them. Absolute bullshit",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "What is it that you're not enjoying about our long haul services? ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-LOYA",
+    "tweet_id": "109261",
+    "customer_tweet": "You guys are trash and have no goodwill whatsoever. Never flying you again and I’ll make sure all my friends and family don’t too. After making it difficult to put on my miles, also refused a long time executive club member a guest right in front of me. Trash!",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "We're not sure exactly what's happened to make you feel this way, Amadihola. We're sorry for any upset that has been caused. However, not all Executive Club members would be entitled to a lounge in the guest. ^AlexL",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-LOYA",
+    "tweet_id": "109260",
+    "customer_tweet": "Hence the word ‘goodwill’. Executive club for nothing less than 10 years doesn’t get you goodwill with your airline then that’s just sad. No class whatsoever was displayed today.",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "I'm sorry you're disappointed, Amadihoha. I'm afraid we have to remain fair and consistent with Executive Club perks. ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-LOYA",
+    "tweet_id": "118280",
+    "customer_tweet": "So buzzing that this time next week I'll be a British Airways Silver cardholder Hellooooooo lounge access",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Congratulations, Lauren. You'll get other benefits along with your lounge access. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-LOYA",
+    "tweet_id": "120773",
+    "customer_tweet": "Wow, service really does knock into a cocked hat. 6500 avios the difference btwn cramped and buy-on-board vs flat bed, Rioja, and medium steak! https://t.co/RzbgQyfauL",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle.",
+    "historical_reference_reply": "Our Business seats also offer complimentary food and a free bar, with additional space. However, I'm very happy you've had a good flight with our partner airline today. ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-LOYA",
+    "tweet_id": "120776",
+    "customer_tweet": "Am I am able to transfer my collected Avios/Tier points to my AA account?",
+    "true_intent": "LOYALTY_AVIOS",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Executive Club account access or missing Avios credit; requires member verification.",
+    "historical_reference_reply": "Their program doesn't use Avios, so I'm afraid not Oliver! You'll still get all of the same perks though, because of the oneworld agreement. You can still collect Avios and tier points for American Airlines flights too. ^Kimbers",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-001-GENE",
+    "tweet_id": "968",
+    "customer_tweet": "https://t.co/NM3ZczuH2W here's the news article in case you guys need it. If you have any updates in the future, do share. Thanks.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "Thanks Sreejit, we would recommend checking on Manage My Booking for any updates. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-002-GENE",
+    "tweet_id": "973",
+    "customer_tweet": "Not yet, but I thought it was strange that I received a confirmation email for one of the flights, but not the other. Thanks.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "Hi David, could you let us know the flights you've booked and dates of travel, along with your full name and contact number. Thanks. ^Sophie",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-003-GENE",
+    "tweet_id": "976",
+    "customer_tweet": "Amsterdam to London on 28/11/17 London to Athens on 30/11/17 - have received confirmation for this Contact: +49 1708733216",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Requires customer verification via direct message for passenger privacy.",
+    "historical_reference_reply": "We'll check this for you, David. Can you provide us with the booking reference for the confirmation you have? Please send this via DM. ^R",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-004-GENE",
+    "tweet_id": "1885",
+    "customer_tweet": "Find this terrifying. Hard to use self check out kiosks, grateful &amp; let me go human recently. https://t.co/q4QBp7fvk2",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We know that it can be difficult Andrew. We here to support you and make check in feel as human as possible. Please don't hesitate to 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-005-GENE",
+    "tweet_id": "1889",
+    "customer_tweet": "She's been trying to do that, that's the point! You should be contacting her as she can't get through to you via phone or email",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Requires customer verification via direct message for passenger privacy.",
+    "historical_reference_reply": "Hi Stephen, follow and DM us more info along with your mum's contact details. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-006-GENE",
+    "tweet_id": "1891",
+    "customer_tweet": "Can you please contact __email__ and can give you further details please",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Hi Stephen. For security please remove the email address from the public feed. We’re unable to contact passengers by email. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-007-GENE",
+    "tweet_id": "1894",
+    "customer_tweet": "call centre has the worst customer serivce ever. keep you on hold for endless hours without an apology. Mum is not happy!",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're disappointed to hear this Stephen. Is there something you would like our assistance with? ^Kit",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-008-GENE",
+    "tweet_id": "2975",
+    "customer_tweet": "you have charged me 32.19 for a phone call to book my flights which cost £3,700",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Hi Maggie, we do advise our call charges online for when you need to contact us. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-009-GENE",
+    "tweet_id": "2974",
+    "customer_tweet": "Actually I asked and the customer advisor and he said that it was local rate and I may not incur any cost. I need to make people aware",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're sorry you feel this way, Maggie. All charges are available to view on our website, prior to calling us. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-010-GENE",
+    "tweet_id": "3027",
+    "customer_tweet": "do u run the direct BA flights lgw - Lima / Lima - LGW all year round? Was looking for Dec 2017, couldn't see any. Thanks",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "Hi Diz, the Lima route is currently suspended for Winter 2017 from 29 Oct 2017 until 24 March 2018. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-011-GENE",
+    "tweet_id": "3026",
+    "customer_tweet": "Thanks. Do you know if you will be running it winter 2018? Specifically Dec 2018 - Jan 2019. Planning a hol and was hoping to use this route",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "We can't confirm next winters plans at the moment, Diz. We always reviewing our schedules and we’ll update our 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-012-GENE",
+    "tweet_id": "3030",
+    "customer_tweet": "Ok thanks for your reply.I will keep an eye on the website.My husband and I are planning for next year, hopefully you run the route. Thank u",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "We'll keep everything crossed for you! Happy holidays! ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-013-GENE",
+    "tweet_id": "3033",
+    "customer_tweet": "I want to know your office locations in Lagos &amp; Abuja-Nigeria, and respective contact numbers for travel purpose.Thanks.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment.",
+    "historical_reference_reply": "Hi, please contact our Lagos office on (+234) 70 94250 556 Monday to Friday Open 09:00-17:00 Saturday Open 10:00-14:00. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-014-GENE",
+    "tweet_id": "3038",
+    "customer_tweet": "Disgraceful , flew Club Europe got crushed knees. Flew Tui - loads of room. Not wasting money with again",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We don't like to hear this, Julian. Our seat pitch is comparable to other airlines. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-015-GENE",
+    "tweet_id": "3976",
+    "customer_tweet": "i hope you can help me, becuse the way i am treated it's totally unacceptable.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're concerned to hear this, Omar. Is there anything we can help you with? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-016-GENE",
+    "tweet_id": "3981",
+    "customer_tweet": "booked us into when it’s closed wish I’d used #disappointed #noholiday",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're so sorry to hear this, Tracey. Have you managed to speak to our BA Holidays team? ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-017-GENE",
+    "tweet_id": "3980",
+    "customer_tweet": "We have but not satisfactorily. Can you DM me please",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Unfortunately we're unable to help you with BA Holidays bookings, Tracey. We're sorry to disappoint you. ^Jane",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-018-GENE",
+    "tweet_id": "3983",
+    "customer_tweet": "Can you tell me who can.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "You would need to speak with our Holidays team, Tracey. Sorry for any inconvenience. ^Lisa",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-019-GENE",
+    "tweet_id": "3985",
+    "customer_tweet": "I’ve spoken to 5 so far.All telling me different things.Nobody seems 2 be able 2 sort this.A holiday isn’t meant 2 cause this much stress.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're sorry we can't help, but their telephone number is 0344 493 0787 option 1 (calls are charged at local rate). They're open 07:30-20:00^",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-020-GENE",
+    "tweet_id": "3988",
+    "customer_tweet": "can you please provide me with your complaints procedure?",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Requires customer verification via direct message for passenger privacy.",
+    "historical_reference_reply": "Hi Ellen, we're available on Twitter if you would like to DM us? Alternatively, you can contact our Customer Relations team using the 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-021-GENE",
+    "tweet_id": "3997",
+    "customer_tweet": "British Air keeps losing the CIV # to charge my flights. Been going on since early October. Poor customer service.",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're disappointed to hear this has taken this long Cindy. Unfortunately, the CVV drops out of the booking as a security feature if 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-022-GENE",
+    "tweet_id": "4014",
+    "customer_tweet": "Have filed report with kuwait airlines, their file ref kwiku14346 hope this helps",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Requires customer verification via direct message for passenger privacy.",
+    "historical_reference_reply": "Thanks for confirming your World Baggae tracer reference Kevin. We're now following you. Please send DM with your full name, 1/2",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-023-GENE",
+    "tweet_id": "4020",
+    "customer_tweet": "Kuwait airlines leaving heathrow on monday afternoon",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Hi Kevin. If Kuwait Airlines was the airline who you last traveled with, you would need to contact them regarding your delayed bag. ^Lolly",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-024-GENE",
+    "tweet_id": "4027",
+    "customer_tweet": "Hi I flew BA198 from Mumbai to London today and my cabin crew called Victor &amp; Sarah were the best cabin crew ever. #payrise",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "That's great to hear, Stephen. We'll pass your lovely comments on. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-025-GENE",
+    "tweet_id": "4031",
+    "customer_tweet": "Can't believe don't provide free food on flights costs £300+ but are happy to do so at £45. Rip off Britain! 😂",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Hi Jake, our short-haul Euro traveller cabin operates a buy on board menu, all other flights have complimentary meals. ^Helen",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-026-GENE",
+    "tweet_id": "4030",
+    "customer_tweet": "That's fine, but when a budget airline such as KLM can provide complimentary food for a fraction of the price, it is laughable!",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We'll make sure your comments are passed on about the catering options we offer, Jake. ^HP",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-027-GENE",
+    "tweet_id": "5036",
+    "customer_tweet": "It was the 10:35am from Edinburgh to Heathrow. We finally left around 2pm, not impressed BA...",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "Please accept our apologies, Amy. BA1441 was delayed due to a late incoming aircraft. 1/2",
+    "human_quality_score": 4.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-028-GENE",
+    "tweet_id": "5040",
+    "customer_tweet": "That’s funny, when we finally got on the plane the pilot told us it was an engine fault...",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "That's strange, Amy. Sorry for the confusion caused. ^Rach",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-029-GENE",
+    "tweet_id": "5045",
+    "customer_tweet": "Managed a quick cuddle with our four legged passenger before his 56 flight from JNB to LHR. He was very comfortable 🐶☺️ https://t.co/CAqgi1eJgN",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": false,
+    "true_escalation_reason": "General inquiry safe for automated policy response.",
+    "historical_reference_reply": "We're so jealous. We wish we could have got a cuddle too. Thanks for your post. ^DaniH",
+    "human_quality_score": 5.0
+  },
+  {
+    "sample_id": "BA-GOLDEN-030-GENE",
+    "tweet_id": "5049",
+    "customer_tweet": "Help. Just booked a flight seconds ago and now see I have added an extra letter to end of a PAX name. Is there a way to fix or one letter extra OK?",
+    "true_intent": "GENERAL_INQUIRY",
+    "true_should_escalate": true,
+    "true_escalation_reason": "Requires customer verification via direct message for passenger privacy.",
+    "historical_reference_reply": "We can have a look at your booking. Was it made directly with us? If so, please follow us back and send DM with your full name, 1/2",
+    "human_quality_score": 5.0
+  }
+]
