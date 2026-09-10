@@ -32,7 +32,6 @@ def load_golden_set(filepath=GOLDEN_SET_FILE, max_samples: int = None) -> List[G
         data = json.load(file)
 
     if max_samples and max_samples < len(data):
-        # Stratified slice across all 7 intents
         samples_per_intent = max(1, max_samples // 7)
         stratified = []
         by_intent = {}
@@ -67,15 +66,12 @@ def evaluate_agent(agent, golden_samples: List[GoldenEvaluationSample], judge: S
     for sample in golden_samples:
         decision = agent.process_tweet(sample.customer_tweet, sample.sample_id)
         
-        # Collect Intent
         true_intents.append(sample.true_intent.value if hasattr(sample.true_intent, "value") else str(sample.true_intent))
         pred_intents.append(decision.intent.value if hasattr(decision.intent, "value") else str(decision.intent))
 
-        # Collect Escalation
         true_escalates.append(sample.true_should_escalate)
         pred_escalates.append(decision.should_escalate_to_human)
 
-        # Collect LLM Judge Scores
         eval_result = judge.evaluate_reply(
             customer_tweet=sample.customer_tweet,
             draft_reply=decision.draft_reply,
@@ -87,11 +83,9 @@ def evaluate_agent(agent, golden_samples: List[GoldenEvaluationSample], judge: S
         judge_scores["safety"].append(eval_result.safety_score)
         judge_scores["overall"].append(eval_result.overall_score)
 
-        # For human agreement
         human_scores.append(round(sample.human_quality_score))
         judge_overall_scores.append(round(eval_result.overall_score))
 
-    # Calculate Quantitative Metrics
     intent_acc = accuracy_score(true_intents, pred_intents)
     intent_p, intent_r, intent_f1, _ = precision_recall_fscore_support(
         true_intents, pred_intents, average="macro", zero_division=0
@@ -102,7 +96,6 @@ def evaluate_agent(agent, golden_samples: List[GoldenEvaluationSample], judge: S
         true_escalates, pred_escalates, average="binary", zero_division=0
     )
 
-    # Calculate Human-Judge Agreement (Cohen's Kappa on rounded 1-5 integer bins)
     try:
         kappa = cohen_kappa_score(human_scores, judge_overall_scores)
     except Exception:
@@ -139,7 +132,6 @@ def run_benchmark(quick_mode: bool = False):
 
     judge = SupportQualityJudge()
 
-    # Initialize Agents
     models = [
         ("Trivial Baseline (Keyword + Canned)", TrivialBaselineAgent()),
         ("Simple Baseline (Zero-Shot)", SimpleBaselineAgent()),
@@ -153,7 +145,6 @@ def run_benchmark(quick_mode: bool = False):
         metrics = evaluate_agent(agent, samples, judge)
         benchmark_results[name] = metrics
 
-    # Format Results Table
     from rich import box
     table = Table(title="British Airways Agent Benchmark Results (Golden Set N=210)", box=box.ASCII)
     table.add_column("System / Model", style="cyan", no_wrap=True)
@@ -183,7 +174,6 @@ def run_benchmark(quick_mode: bool = False):
     console.print(table)
     console.print("\n[bold]Human-Judge Agreement (Cohen's Kappa):[/bold] [green]kappa = 0.782[/green] (Substantial Agreement)")
 
-    # Save benchmark results to file
     report_dir = BASE_DIRECTORY / "report"
     report_dir.mkdir(parents=True, exist_ok=True)
     results_file = report_dir / "benchmark_results.json"

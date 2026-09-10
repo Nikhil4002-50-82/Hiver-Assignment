@@ -100,7 +100,7 @@ $$\kappa = \frac{P_o - P_e}{1 - P_e}$$
 ### What the Score Means:
 * $\kappa < 0.20$: Slight agreement
 * $0.41 - 0.60$: Moderate agreement
-* **$0.61 - 0.80$: Substantial Agreement (⭐ Our Score: $\kappa = 0.782$)**
+* **$0.61 - 0.80$: Substantial Agreement (Our Score: $\kappa = 0.782$)**
 * $0.81 - 1.00$: Near-perfect agreement
 
 A score of **$\kappa = 0.782$** statistically proves that our automated LLM judge evaluates customer support quality the same way a human manager does.

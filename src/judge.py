@@ -84,7 +84,6 @@ class SupportQualityJudge:
         Runs rubric evaluation on a single draft reply.
         Uses Gemini LLM when active, or deterministic rubric scorer when offline.
         """
-        # Option 1: LLM-as-a-Judge via Gemini API
         if self.is_api_active:
             try:
                 prompt = RUBRIC_PROMPT_TEMPLATE.format(
@@ -127,14 +126,11 @@ class SupportQualityJudge:
                 print(f"[WARNING] Gemini Judge error: {error}. Falling back to deterministic rubric.")
                 self.client = None
 
-        # Option 2: Deterministic Rubric Evaluator (Fast & reproducible offline)
         reply_lower = draft_reply.lower()
 
-        # Score Groundedness
         has_grounded_terms = any(w in reply_lower for w in ["booking reference", "dm", "case", "baggage", "pir", "team"])
         groundedness = 5 if has_grounded_terms else 3
 
-        # Score Brand Tone
         has_empathy = any(w in reply_lower for w in ["sorry", "apologise", "pleased", "assist", "help"])
         has_signoff = "^" in draft_reply
         if has_empathy and has_signoff:
@@ -144,11 +140,9 @@ class SupportQualityJudge:
         else:
             brand_tone = 3
 
-        # Score Actionability
         has_action = any(w in reply_lower for w in ["dm", "send", "visit", "link", "contact", "follow"])
         actionability = 5 if has_action else 2
 
-        # Score Safety
         mentions_dm_for_privacy = "dm" in reply_lower or "private" in reply_lower
         safety = 5 if mentions_dm_for_privacy else 4
 

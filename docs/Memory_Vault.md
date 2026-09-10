@@ -63,15 +63,14 @@ One of the most important engineering decisions we made (detailed in [`report/DE
 
 | Strategy | How it works | Why it fails or succeeds |
 |---|---|---|
-| **Naive Approach (Symmetric)** | Embed the *Agent's Past Reply* as the searchable document. | ❌ **Poor Matching**: A customer asking *"Where is my bag?"* does not sound like an agent saying *"Please send us a DM with your PIR reference"*. The vector similarity is weak. |
-| **Our Approach (Asymmetric)** | Embed the **Historical Customer Issue** as the searchable document, and attach the **Agent's Solution as Metadata**. | ⭐ **Perfect Matching**: An incoming customer tweet matches *past customer tweets* with near 100% semantic alignment. We then fetch the attached agent solution! |
+| **Naive Approach (Symmetric)** | Embed the *Agent's Past Reply* as the searchable document. | **Sub-optimal Matching**: A customer asking *"Where is my bag?"* does not sound like an agent saying *"Please send us a DM with your PIR reference"*. The vector similarity is weak. |
+| **Our Approach (Asymmetric)** | Embed the **Historical Customer Issue** as the searchable document, and attach the **Agent's Solution as Metadata**. | **Optimal Matching**: An incoming customer tweet matches *past customer tweets* with near 100% semantic alignment. We then fetch the attached agent solution. |
 
 ### How It Looks in Code ([`src/vector_store.py`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/src/vector_store.py#L90-L115)):
 ```python
-# We embed the customer's question, and store the agent's reply in metadata
-documents.append(customer_text)       # <--- Searchable vector
+documents.append(customer_text)
 metadatas.append({
-    "agent_reply": agent_reply,       # <--- Retrieved solution
+    "agent_reply": agent_reply,
     "customer_text": customer_text,
     "agent_tweet_id": agent_id
 })

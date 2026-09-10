@@ -67,7 +67,6 @@ def main():
 
         decision = agent.process_tweet(tweet_text)
 
-        # Formatting Output
         status_color = "red" if decision.should_escalate_to_human else "green"
         status_text = "ESCALATE TO HUMAN AGENT" if decision.should_escalate_to_human else "AUTO-HANDLE BY AI"
 

@@ -28,7 +28,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
     text_lower = customer_text.lower()
     reply_lower = agent_reply.lower()
 
-    # 1. Baggage Services
     baggage_keywords = ["bag", "luggage", "suitcase", "carousel", "lost bag", "pir", "damaged bag"]
     if any(keyword in text_lower for keyword in baggage_keywords):
         return {
@@ -37,7 +36,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "Passenger baggage is delayed, missing, or damaged; requires WorldTracer PIR or luggage file tracking."
         }
 
-    # 2. Refunds & EU261 Compensation
     refund_keywords = ["compensation", "eu261", "eu 261", "claim", "refund", "expenses", "hotel bill", "food bill", "receipt"]
     if any(keyword in text_lower for keyword in refund_keywords):
         return {
@@ -46,7 +44,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "Statutory financial claim or cash refund request; requires case verification and human financial processing."
         }
 
-    # 3. Flight Disruptions (Delays, Cancellations, Stranded)
     disruption_keywords = ["cancel", "delay", "divert", "stranded", "missed connection", "stuck at", "missed my flight", "strike"]
     if any(keyword in text_lower for keyword in disruption_keywords):
         return {
@@ -55,10 +52,8 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "Active flight disruption or cancellation; passenger may be in transit or stranded requiring urgent rebooking."
         }
 
-    # 4. Check-in & Boarding
     checkin_keywords = ["check in", "check-in", "boarding pass", "barcode", "terminal", "gate"]
     if any(keyword in text_lower for keyword in checkin_keywords):
-        # Determine if it's general terminal info or an active check-in failure
         if "can't check in" in text_lower or "error" in text_lower or "not working" in text_lower:
             return {
                 "intent": AirlineIntent.CHECKIN_BOARDING.value,
@@ -72,7 +67,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
                 "reason": "Informational inquiry regarding check-in timings or terminal facilities; safe to auto-handle."
             }
 
-    # 5. Loyalty & Avios (Executive Club)
     loyalty_keywords = ["avios", "executive club", "tier points", "gold card", "silver card", "bronze", "baec"]
     if any(keyword in text_lower for keyword in loyalty_keywords):
         if "missing" in text_lower or "login" in text_lower or "password" in text_lower or "account" in text_lower:
@@ -88,7 +82,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
                 "reason": "General question regarding Avios collection rules or tier benefits; safe to auto-handle."
             }
 
-    # 6. Booking & Ticketing
     booking_keywords = ["booking", "ticket", "upgrade", "seat", "name change", "change flight", "pnr", "reference"]
     if any(keyword in text_lower for keyword in booking_keywords):
         return {
@@ -97,8 +90,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "Modification to itinerary, seat assignment, or passenger ticketing requiring 6-character PNR access."
         }
 
-    # 7. General Inquiry & Feedback (Auto-handled FAQs, policies, praise, or complaints)
-    # Check if asking for general policy
     policy_keywords = ["allowance", "hand luggage", "size", "weight", "pet", "dog", "wheelchair", "wifi", "food on board"]
     if any(keyword in text_lower for keyword in policy_keywords):
         return {
@@ -107,7 +98,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "General airline policy inquiry regarding baggage dimensions, onboard services, or regulations."
         }
 
-    # If general feedback/praise without operational demand
     if "thank" in text_lower or "great" in text_lower or "love" in text_lower:
         return {
             "intent": AirlineIntent.GENERAL_INQUIRY.value,
@@ -115,7 +105,6 @@ def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[s
             "reason": "Customer compliment or general positive feedback; safe to auto-handle with polite acknowledgment."
         }
 
-    # Default fallback for general issues
     return {
         "intent": AirlineIntent.GENERAL_INQUIRY.value,
         "should_escalate": "dm" in reply_lower or "booking reference" in reply_lower,
@@ -145,7 +134,6 @@ def build_golden_evaluation_set(
             agent_reply = row["agent_reply"]
             tweet_id = row["customer_tweet_id"]
 
-            # Filter out very short tweets
             if len(customer_text.split()) < 5:
                 continue
 
@@ -153,8 +141,6 @@ def build_golden_evaluation_set(
             intent_name = classification["intent"]
 
             if len(samples_by_intent[intent_name]) < target_count_per_intent:
-                # Calculate an initial human benchmark score for the real BA reply
-                # Real BA replies that are polite, offer next steps, and sign off ^initials get a 4.5 or 5.0
                 score = 5.0 if ("^" in agent_reply or "dm" in agent_reply.lower()) else 4.0
 
                 samples_by_intent[intent_name].append({
@@ -168,14 +154,12 @@ def build_golden_evaluation_set(
                     "human_quality_score": score
                 })
 
-    # Combine all collected samples
     all_golden_samples: List[Dict[str, Any]] = []
     print("\n--> Golden Dataset Intent Breakdown:")
     for intent_name, sample_list in samples_by_intent.items():
         print(f"    - {intent_name}: {len(sample_list)} samples")
         all_golden_samples.extend(sample_list)
 
-    # Save to JSON
     output_json_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_json_path, mode="w", encoding="utf-8") as out_file:
         json.dump(all_golden_samples, out_file, indent=2, ensure_ascii=False)

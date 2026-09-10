@@ -59,11 +59,9 @@ FastAPI is like an ultra-fast, modern airport reception system. It automatically
 ```python
 @app.post("/api/v1/triage", response_model=TriageDecision)
 def triage_customer_tweet(request: CustomerTweetRequest):
-    # 1. Reject empty messages immediately
     if not request.tweet_text.strip():
         raise HTTPException(status_code=400, detail="tweet_text cannot be empty.")
 
-    # 2. Hand over to the AI Agent
     decision = agent.process_tweet(
         tweet_text=request.tweet_text,
         tweet_id=request.tweet_id

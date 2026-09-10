@@ -26,10 +26,8 @@ def clean_tweet_text(text: str) -> str:
     """
     if not text:
         return ""
-    # Remove anonymized numeric handles like @115712 or brand handles like @British_Airways at start
     cleaned = re.sub(r"@\d+", "", text)
     cleaned = re.sub(r"@British_Airways", "", cleaned, flags=re.IGNORECASE)
-    # Remove multiple spaces/newlines
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned
 
@@ -48,8 +46,6 @@ def extract_british_airways_conversations(
 
     print(f"--> Starting extraction from {raw_csv_path}...")
     
-    # Store BA replies: mapping in_response_to_tweet_id -> ba_reply_tweet
-    # Also store customer tweets: mapping tweet_id -> customer_tweet
     ba_replies: Dict[str, Dict[str, str]] = {}
     customer_tweets: Dict[str, Dict[str, str]] = {}
 
@@ -70,7 +66,6 @@ def extract_british_airways_conversations(
             text = row.get("text", "")
             created_at = row.get("created_at", "")
 
-            # 1. Capture British Airways agent replies
             if author.lower() == TARGET_BRAND_NAME.lower() and not inbound:
                 if in_response_to:
                     ba_replies[in_response_to] = {
@@ -79,7 +74,6 @@ def extract_british_airways_conversations(
                         "created_at": created_at
                     }
 
-            # 2. Capture potential customer tweets mentioning British Airways
             elif inbound and ("british_airways" in text.lower() or "british airways" in text.lower()):
                 customer_tweets[tweet_id] = {
                     "customer_tweet_id": tweet_id,
@@ -91,8 +85,6 @@ def extract_british_airways_conversations(
     print(f"    Total BA replies found: {len(ba_replies):,}")
     print(f"    Total Inbound customer tweets found: {len(customer_tweets):,}")
 
-    # If some customer tweets were not captured by text search, do a quick targeted pass
-    # for missing in_response_to IDs that BA replied to
     missing_customer_ids = set(ba_replies.keys()) - set(customer_tweets.keys())
     if missing_customer_ids:
         print(f"--> Targeted pass for {len(missing_customer_ids):,} parent customer tweets...")
@@ -110,7 +102,6 @@ def extract_british_airways_conversations(
                     if not missing_customer_ids:
                         break
 
-    # Pair customer tweets with BA replies
     paired_rows: List[Dict[str, str]] = []
     for parent_tweet_id, reply_data in ba_replies.items():
         if parent_tweet_id in customer_tweets:
@@ -118,7 +109,6 @@ def extract_british_airways_conversations(
             clean_cust_text = clean_tweet_text(cust_data["customer_text"])
             clean_reply_text = clean_tweet_text(reply_data["agent_reply"])
 
-            # Filter out very short or empty messages
             if len(clean_cust_text) >= 15 and len(clean_reply_text) >= 15:
                 paired_rows.append({
                     "customer_tweet_id": cust_data["customer_tweet_id"],
@@ -130,7 +120,6 @@ def extract_british_airways_conversations(
                 if len(paired_rows) >= max_pairs:
                     break
 
-    # Write out the clean paired dataset
     output_csv_path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = ["customer_tweet_id", "agent_tweet_id", "customer_text", "agent_reply", "created_at"]
     

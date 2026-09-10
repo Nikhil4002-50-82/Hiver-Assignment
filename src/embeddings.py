@@ -10,7 +10,6 @@ from typing import List
 import os
 from src.config import GEMINI_API_KEY, DEFAULT_EMBEDDING_MODEL
 
-# Try importing Google GenAI SDK
 try:
     from google import genai
     from google.genai import types
@@ -50,7 +49,6 @@ class EmbeddingService:
         if self.is_gemini_active:
             try:
                 embeddings = []
-                # Process in batches of 20 to respect API rate limits
                 batch_size = 20
                 for i in range(0, len(texts), batch_size):
                     batch = texts[i:i + batch_size]
@@ -66,7 +64,6 @@ class EmbeddingService:
                 self.client = None
                 return []
         
-        # Return empty list to signal ChromaDB to use its built-in local embedder
         return []
 
     def embed_single_text(self, text: str) -> List[float]:

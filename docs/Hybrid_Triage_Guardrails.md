@@ -119,7 +119,7 @@ if pnr_match and any(w in text_lower for w in ["booking", "ref", "pnr", "flight"
 │ 2. System posts to Twitter in 3 sec. │ 2. Ticket sent to Human Dashboard.   │
 │ 3. Zero human effort required.       │ 3. Human clicks "Approve" in 5 sec.  │
 │                                      │ 4. Issue resolved privately in DM.   │
-│ ⭐ Saves 30% of human workload!      │ ⭐ Prevents dangerous AI mistakes!   │
+│ [Benefit] Saves 30% human workload.  │ [Safety] Prevents critical mistakes. │
 └──────────────────────────────────────┴──────────────────────────────────────┘
 ```
 
@@ -144,7 +144,7 @@ In standard machine learning, people often try to optimize for **F1-score** or *
                        │  human escalation       │  human escalation       │
 ┌──────────────────────┼─────────────────────────┼─────────────────────────┤
 │ AI predicted:        │  TRUE NEGATIVE          │  FALSE NEGATIVE         │
-│ AUTO-HANDLE          │  Routine FAQ answered.  │  🚨 CATASTROPHE!        │
+│ AUTO-HANDLE          │  Routine FAQ answered.  │  CRITICAL FAILURE!      │
 │                      │  Cost: $0.00            │  Passenger stranded!    │
 ├──────────────────────┼─────────────────────────┼─────────────────────────┤
 │ AI predicted:        │  FALSE POSITIVE         │  TRUE POSITIVE          │

@@ -23,7 +23,6 @@ class TrivialBaselineAgent:
     def process_tweet(self, tweet_text: str, tweet_id: Optional[str] = None) -> TriageDecision:
         text_lower = tweet_text.lower()
 
-        # Simple keyword matching
         if "bag" in text_lower or "luggage" in text_lower or "suitcase" in text_lower:
             intent = AirlineIntent.BAGGAGE_SERVICES
             escalate = True
@@ -73,11 +72,8 @@ class SimpleBaselineAgent:
         self.model_name = model_name
 
     def process_tweet(self, tweet_text: str, tweet_id: Optional[str] = None) -> TriageDecision:
-        # If API is available, could call LLM directly with bare prompt
-        # For fast local benchmark reproducibility:
         text_lower = tweet_text.lower()
 
-        # Generic classification without domain fine-tuning
         if "bag" in text_lower or "luggage" in text_lower:
             intent = AirlineIntent.BAGGAGE_SERVICES
             escalate = True
@@ -107,7 +103,6 @@ class SimpleBaselineAgent:
             escalate = False
             reason = None
 
-        # Generic AI reply (polite, but ungrounded in real BA Twitter procedures)
         generic_reply = (
             f"Hello, I am an automated assistant. I understand you are experiencing an issue regarding your flight. "
             f"Please visit our website at britishairways.com or contact customer relations for assistance."

@@ -61,7 +61,6 @@ class BritishAirwaysAgent:
         """
         text_lower = tweet_text.lower()
 
-        # Guardrail 1: General informational FAQ safe to auto-handle
         if any(w in text_lower for w in ["allowance", "hand luggage", "cabin bag", "pet in cabin", "what terminal", "baggage size", "bag size"]):
             return {
                 "intent": AirlineIntent.GENERAL_INQUIRY,
@@ -69,7 +68,6 @@ class BritishAirwaysAgent:
                 "reason": None
             }
 
-        # Guardrail 2: Lost or damaged baggage requiring PIR file
         if any(w in text_lower for w in ["lost bag", "damaged luggage", "suitcase was lost", "lost luggage", "missing bag", "carousel", "pir"]):
             return {
                 "intent": AirlineIntent.BAGGAGE_SERVICES,
@@ -77,7 +75,6 @@ class BritishAirwaysAgent:
                 "reason": "Passenger baggage is missing or damaged; requires WorldTracer PIR record creation by baggage agent."
             }
 
-        # Guardrail 3: Statutory EU261 compensation or cash refund
         if any(w in text_lower for w in ["eu261", "eu 261", "compensation", "claim", "hotel bill", "food bill", "refund"]):
             return {
                 "intent": AirlineIntent.REFUNDS_COMPENSATION,
@@ -85,7 +82,6 @@ class BritishAirwaysAgent:
                 "reason": "Customer is claiming cash compensation or statutory EU261 reimbursement; requires human case verification."
             }
 
-        # Guardrail 4: Stranded passenger at airport / flight cancelled today
         if any(w in text_lower for w in ["stranded", "stuck at terminal", "cancelled", "cancel", "delay", "divert", "missed connection"]):
             return {
                 "intent": AirlineIntent.FLIGHT_DISRUPTION,
@@ -93,7 +89,6 @@ class BritishAirwaysAgent:
                 "reason": "Customer experiencing active flight disruption or is stranded in transit; requires priority rebooking."
             }
 
-        # Guardrail 5: Passenger posted a 6-character booking reference publicly
         pnr_match = re.search(r"\b[A-Z0-9]{6}\b", tweet_text.upper())
         if pnr_match and any(w in text_lower for w in ["booking", "ref", "pnr", "flight"]):
             return {
@@ -175,14 +170,11 @@ Output must strictly conform to JSON matching the required schema.
         3. Call Gemini LLM with structured output schema (or heuristic fallback if offline).
         4. Return type-safe TriageDecision.
         """
-        # Step 1: Semantic Retrieval over past BA resolutions
         retrieved_resolutions = self.vector_store.search_similar_resolutions(tweet_text, top_k=3)
         retrieved_ids = [res.tweet_id for res in retrieved_resolutions]
 
-        # Step 2: Check safety guardrails
         guardrail_result = self.check_deterministic_guardrails(tweet_text)
 
-        # Step 3: LLM Generation (if Gemini API client is available)
         if self.is_api_active:
             try:
                 system_prompt = self.build_system_prompt(retrieved_resolutions)
@@ -216,10 +208,8 @@ Output must strictly conform to JSON matching the required schema.
                 if not response:
                     raise RuntimeError("All candidate flash models temporarily unavailable.")
 
-                # Parse JSON output from Gemini
                 data = json.loads(response.text)
                 
-                # Apply deterministic guardrail override if safety requires it
                 if guardrail_result:
                     data["should_escalate_to_human"] = guardrail_result["should_escalate"]
                     if guardrail_result["reason"]:
@@ -233,22 +223,18 @@ Output must strictly conform to JSON matching the required schema.
                 print(f"[WARNING] Gemini generation error: {error}. Using grounded fallback.")
                 self.client = None
 
-        # Step 4: Robust Heuristic & Retrieval Grounded Fallback (when API is offline)
         intent = self.classify_intent_offline(tweet_text)
         
         if guardrail_result:
             should_escalate = guardrail_result["should_escalate"]
             reason = guardrail_result["reason"]
         else:
-            # Operational intents escalate for PNR/booking verification, general FAQs auto-handle
             should_escalate = intent != AirlineIntent.GENERAL_INQUIRY
             reason = "Operational inquiry requiring customer verification." if should_escalate else None
 
-        # Draft reply grounded in top retrieved resolution if available
         if retrieved_resolutions:
             best_res = retrieved_resolutions[0]
             draft = best_res.agent_solution
-            # Ensure proper BA sign-off if missing
             if "^" not in draft:
                 draft += " ^JM"
         else:

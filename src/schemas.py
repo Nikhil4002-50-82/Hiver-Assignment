@@ -5,13 +5,13 @@ from pydantic import BaseModel, Field
 
 class AirlineIntent(str, Enum):
     """The 7 main operational categories of customer requests for British Airways."""
-    FLIGHT_DISRUPTION = "FLIGHT_DISRUPTION"          # Flight delays, cancellations, missed connections, strikes
-    BAGGAGE_SERVICES = "BAGGAGE_SERVICES"            # Lost, delayed, or damaged luggage, WorldTracer PIR info
-    BOOKING_TICKETING = "BOOKING_TICKETING"          # Seat selection, date changes, upgrades, name corrections
-    CHECKIN_BOARDING = "CHECKIN_BOARDING"            # Online check-in issues, boarding pass retrieval, terminal info
-    REFUNDS_COMPENSATION = "REFUNDS_COMPENSATION"    # EU261 statutory delay compensation, cancelled ticket refunds
-    LOYALTY_AVIOS = "LOYALTY_AVIOS"                  # Executive Club account issues, missing Avios or tier points
-    GENERAL_INQUIRY = "GENERAL_INQUIRY"              # Baggage allowance rules, pet travel, lounge access, feedback
+    FLIGHT_DISRUPTION = "FLIGHT_DISRUPTION"
+    BAGGAGE_SERVICES = "BAGGAGE_SERVICES"
+    BOOKING_TICKETING = "BOOKING_TICKETING"
+    CHECKIN_BOARDING = "CHECKIN_BOARDING"
+    REFUNDS_COMPENSATION = "REFUNDS_COMPENSATION"
+    LOYALTY_AVIOS = "LOYALTY_AVIOS"
+    GENERAL_INQUIRY = "GENERAL_INQUIRY"
 
 
 class CustomerTweetRequest(BaseModel):

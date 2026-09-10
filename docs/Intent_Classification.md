@@ -2,9 +2,9 @@
 
 > **High-Level Conceptual Architecture & Mental Model**:  
 > Consider the directional signage and dispatch routing in a major international airport:  
-> * 🧳 **Baggage Inquiries** route to the Baggage Service Office & WorldTracer tracing team.  
-> * ✈️ **Flight Cancellations & Delays** route to Station Operations & Duty Rebooking Managers.  
-> * 🎫 **Ticket Modifications & Seat Allocations** route to Reservations & Ticketing.  
+> * **Baggage Inquiries** route to the Baggage Service Office & WorldTracer tracing team.  
+> * **Flight Cancellations & Delays** route to Station Operations & Duty Rebooking Managers.  
+> * **Ticket Modifications & Seat Allocations** route to Reservations & Ticketing.  
 > 
 > A baggage agent does not process frequent flyer tier upgrades, and a gate agent does not audit EU261 compensation claims. The **Intent Classifier** inspects incoming unstructured customer text and reliably assigns it to the exact operational department equipped to resolve it.
 
@@ -63,9 +63,9 @@ In software engineering, that is a trap. Here is why **7 operational buckets** b
 │ • "flight_disruption_hotel"           │        operational airport desk:      │
 │ • "delay_over_3_hours"                │        FLIGHT_DISRUPTION / REFUNDS    │
 │                                       │                                       │
-│ ❌ High boundary noise & overlapping  │ ⭐ Clean operational separation.      │
-│    classes. Model accuracy drops      │    Achieves > 97% accuracy with zero  │
-│    below 75% on short tweets.         │    boundary confusion.                │
+│ [Flawed] High boundary noise &        │ [Optimal] Clean operational           │
+│ overlapping classes. Model accuracy   │ separation. Achieves > 97% accuracy   │
+│ drops below 75% on short tweets.      │ with zero boundary confusion.         │
 └───────────────────────────────────────┴───────────────────────────────────────┘
 ```
 

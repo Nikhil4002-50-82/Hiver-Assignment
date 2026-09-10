@@ -39,7 +39,6 @@ class ResolutionVectorStore:
 
         if CHROMADB_AVAILABLE:
             try:
-                # Persistent local SQLite-backed vector storage
                 self.client = chromadb.PersistentClient(path=str(self.storage_path))
                 self.collection = self.client.get_or_create_collection(
                     name=self.collection_name,
@@ -96,7 +95,6 @@ class ResolutionVectorStore:
                 agent_reply = row.get("agent_reply", "").strip()
                 agent_id = row.get("agent_tweet_id", f"BA-{index}")
 
-                # Only index non-empty conversations
                 if len(cust_text) >= 15 and len(agent_reply) >= 15:
                     documents.append(cust_text)
                     metadatas.append({
@@ -106,14 +104,12 @@ class ResolutionVectorStore:
                     })
                     ids.append(f"doc_{agent_id}_{index}")
 
-        # Batch insert into ChromaDB
         batch_size = 250
         for i in range(0, len(documents), batch_size):
             batch_docs = documents[i:i + batch_size]
             batch_metas = metadatas[i:i + batch_size]
             batch_ids = ids[i:i + batch_size]
 
-            # Generate custom embeddings if Gemini is configured, otherwise ChromaDB uses default
             gemini_embeddings = self.embedding_service.embed_texts(batch_docs)
 
             if gemini_embeddings and len(gemini_embeddings) == len(batch_docs):

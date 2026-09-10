@@ -10,7 +10,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.schemas import CustomerTweetRequest, TriageDecision
 from src.agent import BritishAirwaysAgent
 
-# Initialize FastAPI application with rich OpenAPI metadata
 app = FastAPI(
     title="British Airways AI Support Agent API",
     description="""
@@ -26,7 +25,6 @@ Enterprise AI customer support microservice for **British Airways (`@British_Air
     redoc_url="/redoc"
 )
 
-# Enable CORS for frontend or dashboard integration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -35,10 +33,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize single agent instance
 agent = BritishAirwaysAgent()
 
-# Pre-configured scenario examples for Swagger UI interactive testing
 TRIAGE_EXAMPLES = {
     "policy_faq_auto_handle": {
         "summary": "1. Policy FAQ (Cabin Bag Allowance) - Auto-Handle",

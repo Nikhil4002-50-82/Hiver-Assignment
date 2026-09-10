@@ -43,28 +43,24 @@ def test_schema_contracts():
 def test_safety_guardrails():
     agent = BritishAirwaysAgent()
 
-    # 1. Lost luggage must escalate
     lost_bag_query = "My suitcase was lost on flight BA145, where is carousel 3?"
     res = agent.check_deterministic_guardrails(lost_bag_query)
     assert res is not None
     assert res["should_escalate"] is True
     assert res["intent"] == AirlineIntent.BAGGAGE_SERVICES
 
-    # 2. Stranded traveler must escalate
     stranded_query = "I am stranded at Heathrow Terminal 5, my flight was cancelled!"
     res2 = agent.check_deterministic_guardrails(stranded_query)
     assert res2 is not None
     assert res2["should_escalate"] is True
     assert res2["intent"] == AirlineIntent.FLIGHT_DISRUPTION
 
-    # 3. EU261 compensation must escalate
     claim_query = "I am claiming statutory EU261 compensation for a 4 hour delay."
     res3 = agent.check_deterministic_guardrails(claim_query)
     assert res3 is not None
     assert res3["should_escalate"] is True
     assert res3["intent"] == AirlineIntent.REFUNDS_COMPENSATION
 
-    # 4. Informational query safe to auto-handle
     faq_query = "What is the cabin bag size allowance for Euro Traveller?"
     res4 = agent.check_deterministic_guardrails(faq_query)
     assert res4 is not None
