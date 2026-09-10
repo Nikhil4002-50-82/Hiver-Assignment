@@ -26,7 +26,7 @@ Ensure you have Python 3.10+ installed. In your terminal, run:
 
 ```bash
 # 1. Clone repository and navigate to directory
-git clone https://github.com/candidate/Hiver-Assignment.git
+git clone https://github.com/Nikhil4002-50-82/Hiver-Assignment.git
 cd Hiver-Assignment
 
 # 2. Create and activate virtual environment
