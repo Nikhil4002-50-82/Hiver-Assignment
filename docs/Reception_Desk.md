@@ -79,11 +79,21 @@ When you run `uvicorn src.api:app --reload`, FastAPI automatically hosts a beaut
 │  British Airways AI Support Agent API  [1.0.0]        [OAS 3.0] /docs  │
 ├────────────────────────────────────────────────────────────────────────┤
 │  POST  /api/v1/triage      Triage Customer Tweet                       │
-│  GET   /health             Health Check                                │
-│  GET   /                   Root Welcome                                │
+│  GET   /health             Live Service Health Check                   │
+│  GET   /                   Root Health & Overview                      │
 └────────────────────────────────────────────────────────────────────────┘
 ```
-Anyone (even non-engineers) can click "Try it out", type a tweet into a web box, and receive a live JSON response in seconds.
+
+The Swagger UI includes a pre-configured **Examples dropdown** containing 7 representative airline scenarios:
+1. `Policy FAQ (Cabin Bag Allowance)` — Safe Auto-Handle
+2. `Lost Baggage on Arrival` — Mandatory Human Escalation (WorldTracer PIR)
+3. `Flight Cancelled / Stranded Passenger` — Emergency Priority Escalation
+4. `Public Booking Reference (PNR Leak)` — Security Escalation to DM
+5. `Statutory EU261 Delay Compensation` — Audit Escalation
+6. `Executive Club Avios & Tier Points` — Account Verification Escalation
+7. `Mobile Check-in Glitch at Terminal Gate` — Airport Ground Escalation
+
+Anyone (evaluators, non-engineers, or developers) can click "Try it out", pick any scenario from the dropdown to automatically populate the payload, and receive a live structured JSON response in seconds.
 
 ---
 

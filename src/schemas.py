@@ -16,8 +16,29 @@ class AirlineIntent(str, Enum):
 
 class CustomerTweetRequest(BaseModel):
     """Incoming tweet from a customer."""
-    tweet_text: str = Field(..., description="The text of the incoming customer tweet")
-    tweet_id: Optional[str] = Field(None, description="Optional ID of the customer tweet")
+    tweet_text: str = Field(
+        ..., 
+        min_length=1,
+        max_length=500,
+        description="The incoming customer message/tweet text to be analyzed and triaged.",
+        examples=["Hi @British_Airways, what is the maximum cabin bag size and weight allowance for Euro Traveller?"]
+    )
+    tweet_id: Optional[str] = Field(
+        None, 
+        description="Optional unique Twitter status ID or customer ticket reference.",
+        examples=["tweet_115712_sample_01"]
+    )
+
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "tweet_text": "Hi @British_Airways, what is the maximum cabin bag size and weight allowance for Euro Traveller?",
+                    "tweet_id": "ba_tweet_001"
+                }
+            ]
+        }
+    }
 
 
 class HistoricalResolution(BaseModel):
@@ -32,30 +53,46 @@ class TriageDecision(BaseModel):
     """The final structured decision and draft produced by the AI Agent."""
     intent: AirlineIntent = Field(
         ..., 
-        description="The classified customer intent"
+        description="The classified operational airline intent (one of 7 mutually exclusive categories)."
     )
     confidence_score: float = Field(
         ..., 
         ge=0.0, 
         le=1.0, 
-        description="Confidence in intent classification (between 0.0 and 1.0)"
+        description="Confidence in intent classification (between 0.0 and 1.0)."
     )
     should_escalate_to_human: bool = Field(
         ..., 
-        description="True if this message requires human staff intervention, False if safe to auto-handle"
+        description="True if this message requires human staff intervention, False if safe to auto-handle."
     )
     escalation_reason: Optional[str] = Field(
         None, 
-        description="The clear reason explaining why human escalation is needed, or None if auto-handled"
+        description="The clear operational reason explaining why human escalation is needed, or None if auto-handled."
     )
     draft_reply: str = Field(
         ..., 
-        description="The drafted customer reply grounded in British Airways past resolutions and tone"
+        description="The drafted customer reply grounded in British Airways past resolutions and brand tone."
     )
     grounded_sources: List[str] = Field(
         default_factory=list, 
-        description="IDs of historical resolutions retrieved from the knowledge base"
+        description="IDs of historical resolutions retrieved from the knowledge base."
     )
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "intent": "GENERAL_INQUIRY",
+                "confidence_score": 0.98,
+                "should_escalate_to_human": False,
+                "escalation_reason": None,
+                "draft_reply": "Hi there. In Euro Traveller, you are allowed one cabin bag (up to 56 x 45 x 25cm) plus one small personal item (up to 40 x 30 x 15cm), each weighing up to 23kg. You can find full details on ba.uk/baggage. Hope this helps! ^JM",
+                "grounded_sources": [
+                    "doc_129481_0",
+                    "doc_109283_1"
+                ]
+            }
+        }
+    }
 
 
 class JudgeEvaluation(BaseModel):
