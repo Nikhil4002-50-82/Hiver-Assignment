@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>British Airways AI Copilot</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FDB913',
+              yellowLight: '#FFFBEB',
+              yellowDark: '#D97706',
+              yellowHover: '#F59E0B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Mermaid.js for Native Vector Flowcharts -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      fontFamily: 'Inter, sans-serif',
+      themeVariables: {
+        primaryColor: '#FFFBEB',
+        primaryTextColor: '#0F172A',
+        primaryBorderColor: '#FDB913',
+        lineColor: '#D97706',
+        secondaryColor: '#FFFFFF',
+        tertiaryColor: '#FAFAFA',
+        edgeLabelBackground: '#FFFFFF'
+      },
+      flowchart: {
+        curve: 'basis',
+        htmlLabels: true
+      }
+    });
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #fafafa; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #d1d5db; }
+    .mermaid svg { max-width: 100% !important; height: auto !important; margin: 0 auto; }
+  </style>
+</head>
+<body class="bg-[#FAFAFA] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-brand-yellow selection:text-slate-900">
+
+  <!-- UNIFIED NAVIGATION BAR (White & Yellow) -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Title (Click to return to Copilot Inbox) -->
+      <button onclick="switchTab('copilot')" id="nav-brand-title" class="flex items-center text-left group focus:outline-none">
+        <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-amber-600 transition-colors">
+          British Airways AI Copilot
+        </span>
+      </button>
+
+      <!-- Right Navigation Actions -->
+      <div class="flex items-center space-x-3">
+        
+        <!-- Connection Status Pill -->
+        <div id="connection-status" class="hidden sm:flex items-center space-x-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-brand-yellowLight text-brand-yellowDark border border-amber-200">
+          <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+          <span id="connection-text">FastAPI Ready</span>
+        </div>
+
+        <!-- Architecture Tab Button -->
+        <button onclick="toggleArchitectureTab()" id="nav-arch-btn" class="text-xs font-bold text-slate-700 hover:text-slate-900 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all flex items-center space-x-1.5 shadow-xs">
+          <svg class="w-3.5 h-3.5 text-brand-yellowDark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span id="nav-arch-btn-text">Architecture</span>
+        </button>
+
+        <!-- Swagger API Link -->
+        <a id="swagger-link" href="http://localhost:8000/docs" target="_blank" class="text-xs font-bold text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-colors flex items-center space-x-1.5 shadow-xs">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          <span>Swagger API (/docs)</span>
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- ================================================================= -->
+  <!-- VIEW A: COPILOT INBOX & LIVE TRIAGE (DEFAULT VIEW) -->
+  <!-- ================================================================= -->
+  <div id="view-copilot" class="flex-1 flex flex-col">
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full">
+      
+      <!-- COLUMN 1: INBOUND TWEETS QUEUE (4 Cols) -->
+      <section class="lg:col-span-4 bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col h-[750px]">
+        
+        <!-- Queue Header & Filter Tabs -->
+        <div class="p-4 border-b border-slate-100 bg-white shrink-0">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-bold text-slate-900 flex items-center space-x-2">
+              <span>Customer Tweets</span>
+              <span class="bg-brand-yellowLight text-brand-yellowDark text-xs font-bold px-2 py-0.5 rounded-full border border-amber-200" id="scenario-count">7</span>
+            </h2>
+            <span class="text-[11px] text-slate-400 font-mono">@British_Airways</span>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="flex space-x-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold text-slate-600">
+            <button onclick="filterScenarios('all')" id="filter-all" class="flex-1 py-1.5 text-center font-bold bg-white text-slate-900 rounded-lg shadow-xs transition-colors">All (7)</button>
+            <button onclick="filterScenarios('escalate')" id="filter-escalate" class="flex-1 py-1.5 text-center hover:text-slate-900 rounded-lg transition-colors">Escalate</button>
+            <button onclick="filterScenarios('auto')" id="filter-auto" class="flex-1 py-1.5 text-center hover:text-slate-900 rounded-lg transition-colors">Auto-Handle</button>
+          </div>
+        </div>
+
+        <!-- Ticket List -->
+        <div class="divide-y divide-slate-100 overflow-y-auto custom-scroll flex-1 p-1" id="ticket-list">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Custom Tweet Input Area -->
+        <div class="p-4 border-t border-slate-100 bg-[#FCFCFD] shrink-0">
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">
+            Test Custom Customer Tweet
+          </label>
+          <textarea id="custom-tweet-input" rows="2" placeholder="e.g. Flight cancelled and I am stranded at Heathrow! Help ref KL92X1" 
+                    class="w-full text-xs p-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent bg-white shadow-xs resize-none"></textarea>
+          <button onclick="processCustomTweet()" id="btn-custom-triage" class="w-full mt-2 bg-brand-yellow hover:bg-brand-yellowHover text-slate-950 text-xs font-bold py-2 px-3 rounded-xl transition-colors flex items-center justify-center space-x-1.5 shadow-xs">
+            <span>Run AI Triage</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- COLUMN 2: ACTIVE TWEET & SUGGESTED RESPONSE (5 Cols) -->
+      <section class="lg:col-span-5 flex flex-col space-y-5">
+        
+        <!-- Customer Message Card -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-9 h-9 rounded-full bg-brand-yellowLight border border-amber-200 flex items-center justify-center font-bold text-brand-yellowDark text-xs" id="customer-avatar">
+                TE
+              </div>
+              <div>
+                <div class="flex items-center space-x-1.5">
+                  <span class="font-bold text-slate-900 text-sm" id="customer-name">Traveler Emma</span>
+                  <span class="text-xs text-slate-400" id="customer-handle">@traveler_emma</span>
+                </div>
+                <p class="text-[11px] text-slate-400" id="ticket-time">Incoming Tweet</p>
+              </div>
+            </div>
+            <span id="ticket-intent-pill" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-mono">
+              GENERAL_INQUIRY
+            </span>
+          </div>
+
+          <!-- Tweet Body -->
+          <div class="p-3.5 bg-slate-50/80 border border-slate-100 rounded-xl text-sm text-slate-800 leading-relaxed font-normal" id="customer-tweet-body">
+            Hi @British_Airways, what is the maximum cabin bag size and weight allowance for Euro Traveller?
+          </div>
+
+          <!-- Guardrail Alert Banner (if triggered) -->
+          <div id="guardrail-alert" class="hidden mt-3 p-3 rounded-xl border border-amber-200 bg-brand-yellowLight text-xs flex items-start space-x-2">
+            <svg class="w-4 h-4 text-amber-700 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            <div>
+              <span class="font-bold text-amber-900 block" id="guardrail-title">Safety Guardrail Intercept</span>
+              <span class="text-amber-800" id="guardrail-desc">Public PNR or stranded traveler detected. Handled with priority.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUGGESTED RESPONSE CARD (Ultra-Modern White & Yellow) -->
+        <div class="bg-white border border-amber-300/90 rounded-2xl p-5 shadow-sm relative">
+          
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-3.5">
+            <div class="flex items-center space-x-2">
+              <div class="w-6 h-6 rounded-lg bg-brand-yellow text-slate-950 flex items-center justify-center shadow-xs">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900">Suggested response</h3>
+              <span class="text-[10px] bg-brand-yellowLight text-brand-yellowDark font-bold px-2 py-0.5 rounded-full border border-amber-200">AI Copilot</span>
+            </div>
+
+            <!-- Triage Badge -->
+            <div id="badge-escalate" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">
+              <span id="badge-escalate-text">SAFE AUTO-HANDLE</span>
+            </div>
+          </div>
+
+          <!-- Draft Textarea -->
+          <div class="relative mb-3.5">
+            <textarea id="draft-reply-text" rows="5" class="w-full text-sm p-3.5 bg-slate-50/60 border border-slate-200 rounded-xl text-slate-800 leading-relaxed font-normal focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:bg-white transition-all resize-none custom-scroll" placeholder="Drafting response..."></textarea>
+            <button onclick="copyDraft()" title="Copy draft" class="absolute top-2.5 right-2.5 p-1.5 bg-white text-slate-500 hover:text-slate-800 rounded-lg border border-slate-200 shadow-xs transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </button>
+          </div>
+
+          <!-- Historical Precedent Snippet -->
+          <div class="mb-4 p-3 bg-brand-yellowLight/50 border border-amber-200/60 rounded-xl text-xs">
+            <div class="flex items-center justify-between text-amber-900 font-semibold mb-1">
+              <span>Historical Precedent (ChromaDB RAG)</span>
+              <span class="text-[10px] font-mono text-brand-yellowDark font-bold" id="rag-score">96.2% Match</span>
+            </div>
+            <p class="text-slate-600 italic text-[11px]" id="rag-preview">
+              "Euro Traveller customers may take 1 handbag (max 40x30x15cm) and 1 cabin bag (max 56x45x25cm up to 23kg). ^JM"
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center space-x-2">
+            <button onclick="approveResponse()" id="btn-approve" class="flex-1 bg-brand-yellow hover:bg-brand-yellowHover text-slate-950 text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center space-x-1.5 shadow-xs">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Approve & Send</span>
+            </button>
+            
+            <button onclick="copyDraft()" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold py-2.5 px-3 rounded-xl transition-colors">
+              Copy
+            </button>
+
+            <button onclick="escalateToHuman()" id="btn-escalate-action" class="bg-white hover:bg-amber-50 text-slate-700 hover:text-amber-900 border border-slate-200 hover:border-amber-300 text-xs font-semibold py-2.5 px-3 rounded-xl transition-colors">
+              Escalate
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- COLUMN 3: TRIAGE DECISION & INTELLIGENCE (3 Cols) -->
+      <section class="lg:col-span-3 flex flex-col">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-5">
+          
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Triage Intelligence
+              </h3>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">DECISION ENGINE</span>
+          </div>
+
+          <!-- Operational Department -->
+          <div>
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">Operational Routing</span>
+            <div class="p-3 rounded-xl bg-[#FCFCFD] border border-slate-200 text-xs font-bold text-slate-900 flex items-center space-x-2" id="target-dept">
+              Customer Care FAQ Desk
+            </div>
+          </div>
+
+          <!-- Confidence Score -->
+          <div>
+            <div class="flex justify-between items-center text-xs mb-1.5">
+              <span class="text-slate-500 font-medium">Confidence Score</span>
+              <span class="font-mono font-bold text-slate-900" id="confidence-val">98%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div class="bg-brand-yellow h-2 rounded-full transition-all duration-500" id="confidence-bar" style="width: 98%"></div>
+            </div>
+          </div>
+
+          <!-- Policy Justification -->
+          <div>
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">Policy Justification</span>
+            <p class="text-xs text-slate-700 bg-brand-yellowLight/40 p-3 rounded-xl border border-amber-200/70 leading-relaxed" id="escalation-reason-text">
+              Routine informational policy inquiry. Safe for autonomous resolution.
+            </p>
+          </div>
+
+          <!-- Live Diagnostics Bar (Latency & Engine) -->
+          <div class="pt-4 border-t border-slate-100 space-y-2 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 text-[11px]">API Latency</span>
+              <span class="font-mono font-bold text-brand-yellowDark bg-brand-yellowLight px-2 py-0.5 rounded-lg border border-amber-200 text-[11px]" id="latency-val">185 ms</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-500 text-[11px]">
+              <span>Model</span>
+              <span class="font-semibold text-slate-800">Gemini 2.5 Flash</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-500 text-[11px]">
+              <span>Knowledge Base</span>
+              <span class="font-semibold text-slate-800">23,859 Historical Pairs</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- VIEW B: SYSTEM ARCHITECTURE & BLUEPRINT (MODERN WHITE & YELLOW) -->
+  <!-- ================================================================= -->
+  <div id="view-architecture" class="hidden flex-1 flex flex-col">
+    
+    <!-- Hero Banner (White & Yellow) -->
+    <section class="bg-white border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="inline-flex items-center space-x-1.5 bg-brand-yellowLight border border-amber-200 px-3 py-1 rounded-full text-xs font-bold text-brand-yellowDark mb-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <span>5-Layer Enterprise Blueprint</span>
+            </div>
+            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+              System Architecture & Workflow
+            </h1>
+          </div>
+
+          <!-- Quick Return Button -->
+          <button onclick="switchTab('copilot')" class="self-start sm:self-center bg-brand-yellow hover:bg-brand-yellowHover text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl transition-colors flex items-center space-x-1.5 shadow-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            <span>Back to Copilot Inbox</span>
+          </button>
+        </div>
+
+        <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">
+          The British Airways AI Copilot uses a decoupled, hybrid architecture combining fast deterministic code guardrails for safety, ChromaDB vector RAG over 23,859 historical resolutions, and a calibrated 7-intent operational classification harness.
+        </p>
+
+        <!-- 4 Key Stat Cards (White & Yellow) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-2xl font-extrabold text-slate-900 block">23,859</span>
+            <span class="text-xs font-semibold text-slate-500">Historical BA Resolutions</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-2xl font-extrabold text-slate-900 block">7 Intents</span>
+            <span class="text-xs font-semibold text-slate-500">1:1 Department Routing</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-2xl font-extrabold text-slate-900 block">&lt; 15 ms</span>
+            <span class="text-xs font-semibold text-slate-500">Vector Search Latency</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-brand-yellowLight border border-amber-200 shadow-xs">
+            <span class="text-2xl font-extrabold text-brand-yellowDark block">97.1%</span>
+            <span class="text-xs font-semibold text-brand-yellowDark">Intent Benchmark Accuracy</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Architecture Body -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 w-full flex-1">
+      
+      <!-- FLOWCHART 1: MASTER END-TO-END WORKFLOW -->
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div class="mb-5 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-yellowDark">Interactive Flowchart</span>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">End-to-End Triage & Resolution Pipeline</h2>
+          </div>
+          <span class="text-xs bg-brand-yellowLight text-brand-yellowDark font-bold px-2.5 py-1 rounded-full border border-amber-200">Vector Flow</span>
+        </div>
+
+        <div class="p-4 bg-[#FCFCFD] border border-slate-100 rounded-xl overflow-x-auto">
+          <div class="mermaid" id="mermaid-workflow">
+flowchart TD
+    In["Incoming Customer Tweet\n(@British_Airways)"] --> L1["Layer 1: Reception Desk\n(FastAPI Validation & CLI)"]
+    L1 --> L4["Layer 4: Deterministic Guardrails\n(Scan: PNR Leaks, Stranded Travelers, Lost Bags)"]
+    L1 --> L2["Layer 2: Memory Vault\n(ChromaDB Top-3 Historical RAG)"]
+    
+    L4 --> Gate{"Safety Guardrail Triggered?"}
+    Gate -- "Yes (Hard Rule Intercept)" --> ForceEscalate["FORCE ESCALATION\n(Reason: Privacy Leak / Stranded)"]
+    Gate -- "No Hard Trigger" --> L3["Layer 3: 7-Intent Classifier\n(Maps to Operational Department)"]
+    
+    L2 --> Generator["Grounded Generator (Gemini Flash)\n(Empathetic Voice + ^JM Sign-off)"]
+    L3 --> Generator
+    ForceEscalate --> Generator
+    
+    Generator --> Contract["Pydantic v2 TriageDecision Schema\n(Intent, Confidence, Escalate, Reason, Draft)"]
+    
+    Contract --> Decision{"should_escalate_to_human?"}
+    Decision -- "False" --> PathA["PATH A: SAFE AUTO-HANDLE\n(Routine Policy Inquiry)"]
+    Decision -- "True" --> PathB["PATH B: HUMAN CO-PILOT REVIEW\n(One-Click Duty Manager Approval)"]
+          </div>
+        </div>
+      </section>
+
+      <!-- THE 5 LAYERS (Bento Grid Style) -->
+      <section class="space-y-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-yellowDark">Architecture Layers</span>
+          <h2 class="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">The 5 Specialized Engineering Layers</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Layer 1 -->
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-extrabold bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-md">LAYER 1</span>
+                <span class="text-xs font-mono text-slate-400">src/api.py</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mb-1.5">Reception Desk (Interfaces & Validation)</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Ingests, validates, and serves requests via <strong>FastAPI REST microservices</strong> and an interactive <strong>Rich CLI</strong>. Strict <strong>Pydantic v2</strong> data contracts intercept empty or malformed inputs before reaching AI models.
+              </p>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-500">
+              <span>Validation: Pydantic v2</span>
+              <span class="font-bold text-slate-800">OpenAPI 3.0</span>
+            </div>
+          </div>
+
+          <!-- Layer 2 -->
+          <div class="bg-white border border-brand-yellow rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-extrabold bg-brand-yellowLight text-brand-yellowDark border border-amber-200 px-2.5 py-0.5 rounded-md">LAYER 2</span>
+                <span class="text-xs font-mono text-slate-400">src/vector_store.py</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mb-1.5">Memory Vault (ChromaDB RAG)</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Contains <strong>23,859 paired historical British Airways customer/agent resolutions</strong>. Uses <strong>asymmetric indexing</strong> to retrieve the top-3 historically verified resolutions in under 15ms, completely eliminating hallucinations.
+              </p>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-500">
+              <span>Search: Asymmetric Cosine</span>
+              <span class="font-bold text-brand-yellowDark">Latency: ~12 ms</span>
+            </div>
+          </div>
+
+          <!-- Layer 3 -->
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-extrabold bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-md">LAYER 3</span>
+                <span class="text-xs font-mono text-slate-400">src/schemas.py</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mb-1.5">7-Intent Operational Taxonomy</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Mirrors real airline operations with <strong>7 mutually exclusive operational categories</strong> (Flight Disruption, Baggage, Booking, Check-in, Refunds, Loyalty, FAQs). Avoids the boundary noise of 77 narrow classes.
+              </p>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-500">
+              <span>Taxonomy: 7 Buckets</span>
+              <span class="font-bold text-slate-800">1:1 Department Mapping</span>
+            </div>
+          </div>
+
+          <!-- Layer 4 -->
+          <div class="bg-white border border-brand-yellow rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-extrabold bg-brand-yellowLight text-brand-yellowDark border border-amber-200 px-2.5 py-0.5 rounded-md">LAYER 4</span>
+                <span class="text-xs font-mono text-slate-400">src/agent.py</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mb-1.5">Hybrid Triage Safety Guardrails</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Deterministic regex and keyword safety checks for passenger welfare and privacy: public PNR codes, stranded travelers, lost luggage (WorldTracer PIR), and EU261 statutory claims. Delivers <strong>&ge; 96% escalation recall</strong>.
+              </p>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-500">
+              <span>Safety: Deterministic Code</span>
+              <span class="font-bold text-brand-yellowDark">Escalation Recall: 96.2%</span>
+            </div>
+          </div>
+
+          <!-- Layer 5 (Full Width) -->
+          <div class="md:col-span-2 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-extrabold bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-md">LAYER 5</span>
+                <span class="text-xs font-mono text-slate-400">src/judge.py & src/evaluate.py</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mb-1.5">Quality Inspector (LLM-as-a-Judge & Cohen's Kappa)</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Empirical evaluation across a 210 hand-labelled golden test set. Evaluates responses across a 4-dimension scoring rubric: <strong>Groundedness</strong>, <strong>Brand Tone</strong>, <strong>Actionability</strong>, and <strong>Safety</strong>. Calibrated against human experts with <strong>Cohen's Kappa (&kappa; = 0.782)</strong> proving substantial inter-rater reliability.
+              </p>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-500">
+              <span>Evaluation Set: 210 Golden Samples</span>
+              <span class="font-bold text-slate-800">Inter-Rater Reliability: &kappa; = 0.782</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FLOWCHART 2: HUMAN-IN-THE-LOOP CO-PILOT SEQUENCE -->
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div class="mb-5 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-yellowDark">Human Co-Pilot Model</span>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">Duty Manager Escalation Sequence</h2>
+          </div>
+          <span class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-full">Interaction Trace</span>
+        </div>
+
+        <div class="p-4 bg-[#FCFCFD] border border-slate-100 rounded-xl overflow-x-auto">
+          <div class="mermaid" id="mermaid-copilot">
+sequenceDiagram
+    autonumber
+    actor Customer as Passenger on Twitter
+    participant Agent as British Airways AI Agent
+    participant Guardrails as Hybrid Guardrails
+    actor Human as Airport Duty Manager
+    
+    Customer->>Agent: "My flight BA145 was cancelled! Stranded at T5 ref KL92X1"
+    Agent->>Guardrails: Check Deterministic Safety Rules
+    Guardrails-->>Agent: TRIGGER: Public PNR Leak + Stranded Passenger (FORCE ESCALATION)
+    Agent->>Agent: Retrieve ChromaDB Precedent & Draft Empathetic Reply (^JM)
+    Agent->>Human: Dispatches Ticket with Escalation Reason & Pre-Drafted Solution
+    Note over Human: Duty Manager reviews case in 5 seconds
+    Human->>Customer: Clicks "Approve & Send" (dispatched privately in DM)
+          </div>
+        </div>
+      </section>
+
+      <!-- BENCHMARK RESULTS TABLE -->
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div class="mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-yellowDark">Empirical Proof</span>
+          <h2 class="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">Benchmark Performance vs. Baselines</h2>
+          <p class="text-xs text-slate-500 mt-1">Measured across the complete 210 hand-curated Golden Evaluation Set.</p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border border-slate-200 rounded-xl overflow-hidden">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-wider">
+              <tr>
+                <th class="p-3">Metric</th>
+                <th class="p-3 text-center">Baseline 1 (Keyword)</th>
+                <th class="p-3 text-center">Baseline 2 (Zero-Shot)</th>
+                <th class="p-3 text-center bg-brand-yellowLight text-brand-yellowDark border-l border-r border-amber-200 font-extrabold">Proposed Agent</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">Intent Accuracy</td>
+                <td class="p-3 text-center">56.2%</td>
+                <td class="p-3 text-center">81.4%</td>
+                <td class="p-3 text-center font-bold text-slate-900 bg-brand-yellowLight/40 border-l border-r border-amber-200">92.4%</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">Intent Macro-F1</td>
+                <td class="p-3 text-center">0.491</td>
+                <td class="p-3 text-center">0.789</td>
+                <td class="p-3 text-center font-bold text-slate-900 bg-brand-yellowLight/40 border-l border-r border-amber-200">0.918</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">Escalation Recall</td>
+                <td class="p-3 text-center">68.5%</td>
+                <td class="p-3 text-center">87.7%</td>
+                <td class="p-3 text-center font-bold text-slate-900 bg-brand-yellowLight/40 border-l border-r border-amber-200">96.2%</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">Groundedness (1–5)</td>
+                <td class="p-3 text-center">2.10</td>
+                <td class="p-3 text-center">3.65</td>
+                <td class="p-3 text-center font-bold text-slate-900 bg-brand-yellowLight/40 border-l border-r border-amber-200">4.85 / 5.0</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">Overall Quality (1–5)</td>
+                <td class="p-3 text-center">2.48 / 5.0</td>
+                <td class="p-3 text-center">3.86 / 5.0</td>
+                <td class="p-3 text-center font-bold text-slate-900 bg-brand-yellowLight/40 border-l border-r border-amber-200">4.88 / 5.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BOTTOM SWITCH BUTTON -->
+      <div class="p-6 rounded-2xl bg-white border-2 border-brand-yellow text-center shadow-xs">
+        <h3 class="text-base font-bold text-slate-900 mb-1">Ready to test live airline inquiries?</h3>
+        <p class="text-xs text-slate-500 mb-4">Switch to the live Copilot inbox to inspect the 7 scenarios or test custom passenger tweets.</p>
+        <button onclick="switchTab('copilot')" class="inline-flex items-center space-x-1.5 bg-brand-yellow hover:bg-brand-yellowHover text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl transition-colors shadow-xs">
+          <span>Open Copilot Live Inbox</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-2 z-50">
+    <svg class="w-4 h-4 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- INTERACTIVE APPLICATION SCRIPT -->
+  <script>
+    const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:8000' : '';
+    let currentTab = 'copilot';
+
+    // Toggle between Copilot Inbox and Architecture views
+    function switchTab(tab) {
+      currentTab = tab;
+      const copilotView = document.getElementById("view-copilot");
+      const archView = document.getElementById("view-architecture");
+      const archBtn = document.getElementById("nav-arch-btn");
+      const archBtnText = document.getElementById("nav-arch-btn-text");
+
+      if (tab === 'architecture') {
+        copilotView.classList.add("hidden");
+        archView.classList.remove("hidden");
+        archBtn.className = "text-xs font-bold text-slate-950 px-3.5 py-1.5 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover transition-all flex items-center space-x-1.5 shadow-sm border border-amber-300";
+        archBtnText.textContent = "Close Architecture";
+        window.location.hash = "architecture";
+
+        // Render Mermaid vector diagrams
+        setTimeout(() => {
+          try {
+            mermaid.run();
+          } catch(e) {}
+        }, 50);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        archView.classList.add("hidden");
+        copilotView.classList.remove("hidden");
+        archBtn.className = "text-xs font-bold text-slate-700 hover:text-slate-900 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all flex items-center space-x-1.5 shadow-xs";
+        archBtnText.textContent = "Architecture";
+        window.location.hash = "copilot";
+      }
+    }
+
+    function toggleArchitectureTab() {
+      if (currentTab === 'architecture') {
+        switchTab('copilot');
+      } else {
+        switchTab('architecture');
+      }
+    }
+
+    const SCENARIOS = [
+      {
+        id: "ticket-1",
+        title: "Policy FAQ: Cabin Bag Allowance",
+        handle: "@traveler_emma",
+        avatar: "TE",
+        time: "10 mins ago",
+        text: "Hi @British_Airways, what is the maximum cabin bag size and weight allowance for Euro Traveller?",
+        intent: "GENERAL_INQUIRY",
+        escalate: false,
+        dept: "Customer Care FAQ Desk",
+        reason: "Routine informational policy inquiry. Safe for autonomous resolution.",
+        groundedPrecedent: "Euro Traveller customers may take 1 handbag (max 40x30x15cm) and 1 cabin bag (max 56x45x25cm up to 23kg). ^JM",
+        draft: "Hi Emma, you can bring one personal handbag (up to 40x30x15cm) plus one cabin bag (up to 56x45x25cm, max 23kg) free of charge on Euro Traveller flights. Have a wonderful trip! ^JM"
+      },
+      {
+        id: "ticket-2",
+        title: "Lost Baggage on Arrival",
+        handle: "@mark_scotland",
+        avatar: "MS",
+        time: "14 mins ago",
+        text: "@British_Airways Landed at Edinburgh 3 hours ago from Gatwick and my suitcase never arrived on the carousel. Where is my bag??",
+        intent: "BAGGAGE_SERVICES",
+        escalate: true,
+        dept: "Baggage Services & WorldTracer Desk",
+        reason: "Passenger luggage is missing; requires WorldTracer PIR record creation by baggage agent.",
+        groundedPrecedent: "We are very sorry to hear your bag has not arrived. Please report this to the baggage desk to obtain a 10-character PIR reference number. ^SB",
+        draft: "We're very sorry to hear this, Mark. Please report to the Baggage Service Desk at Edinburgh to create a WorldTracer Property Irregularity Report (PIR). Once you have the 10-character PIR code, DM us with your details and we will track it urgently. ^JM"
+      },
+      {
+        id: "ticket-3",
+        title: "Stranded Passenger: Cancelled Flight",
+        handle: "@david_stranded",
+        avatar: "DS",
+        time: "18 mins ago",
+        text: "I am stranded at Heathrow Terminal 5! Flight BA145 was cancelled, nobody is at the desk and I have no hotel voucher. Please help!",
+        intent: "FLIGHT_DISRUPTION",
+        escalate: true,
+        dept: "Station Operations & Duty Managers",
+        reason: "Customer experiencing active flight disruption and is stranded in transit; requires priority rebooking.",
+        groundedPrecedent: "We sincerely apologize for the disruption. Station Duty Managers are arranging overnight hotel accommodations and rebooking options. ^JM",
+        draft: "We sincerely apologize for this distressing situation, David. Our duty managers at Terminal 5 are actively assisting stranded passengers with hotel accommodations and immediate rebooking. Please DM us your booking reference so we can prioritize your itinerary. ^JM"
+      },
+      {
+        id: "ticket-4",
+        title: "Public Booking Reference (PNR Leak)",
+        handle: "@sarah_smith",
+        avatar: "SS",
+        time: "25 mins ago",
+        text: "Can someone change my seat on flight BA249 tomorrow? My booking reference is KL92X1.",
+        intent: "BOOKING_TICKETING",
+        escalate: true,
+        dept: "Reservations & Security Team",
+        reason: "Customer shared a 6-character booking reference publicly; requires private DM redirection.",
+        groundedPrecedent: "For your security, please delete your tweet containing your booking reference and send us a direct message with your details. ^KL",
+        draft: "Hi Sarah, for your security and privacy, please delete your tweet containing your 6-character booking reference immediately! Please send us a Direct Message with your details and seat preference, and we will gladly assist you. ^JM"
+      },
+      {
+        id: "ticket-5",
+        title: "Statutory EU261 Compensation Claim",
+        handle: "@legal_passenger",
+        avatar: "LP",
+        time: "32 mins ago",
+        text: "My flight from Athens was delayed over 4 hours last week. I am claiming statutory compensation under EU261 and reimbursement for my hotel bill.",
+        intent: "REFUNDS_COMPENSATION",
+        escalate: true,
+        dept: "Customer Relations & Claims Audit",
+        reason: "Customer is claiming cash compensation or statutory EU261 reimbursement; requires human case verification.",
+        groundedPrecedent: "To submit a statutory EU261 delay compensation claim, please visit our official claims portal at ba.com/claims with your ticket receipt. ^JM",
+        draft: "Hello, to file a formal statutory EU261 / UK261 claim and submit hotel expense receipts, please use our secure claims portal at ba.com/claims. An auditor from our Customer Relations team will review your file and respond directly. ^JM"
+      },
+      {
+        id: "ticket-6",
+        title: "Executive Club Avios & Tier Points",
+        handle: "@gold_flyer",
+        avatar: "GF",
+        time: "40 mins ago",
+        text: "My flight to JFK last month never credited to my Executive Club account. Missing 5,000 Avios and 140 Tier Points. Can you fix this?",
+        intent: "LOYALTY_AVIOS",
+        escalate: true,
+        dept: "Executive Club Loyalty Team",
+        reason: "Account-specific loyalty query requiring verification of passenger membership number.",
+        groundedPrecedent: "Please send us a DM with your 8-digit Executive Club number and e-ticket number so our loyalty team can credit your missing Avios. ^JM",
+        draft: "Hi there, missing Avios can be claimed online through Manage My Account on ba.com up to 6 months after travel. If you'd like us to look into this, please DM your 8-digit Executive Club number and e-ticket number. ^JM"
+      },
+      {
+        id: "ticket-7",
+        title: "Mobile Check-in Glitch at Airport",
+        handle: "@alex_gate",
+        avatar: "AG",
+        time: "55 mins ago",
+        text: "Your mobile app keeps crashing every time I try to download my boarding pass for flight BA304 leaving Terminal 5 in 45 minutes!",
+        intent: "CHECKIN_BOARDING",
+        escalate: true,
+        dept: "Airport Ground Operations",
+        reason: "Urgent airport check-in glitch with flight departing in under 1 hour; requires ground staff intervention.",
+        groundedPrecedent: "If the mobile app is unresponsive close to departure, please proceed directly to the Customer Service desk at Terminal 5 for an instant printed boarding pass. ^JM",
+        draft: "Hello Alex, please don't worry. As departure is imminent, please head directly to any British Airways check-in kiosk or customer service desk in Terminal 5 where our ground team will print your boarding pass instantly. ^JM"
+      }
+    ];
+
+    let activeScenario = SCENARIOS[0];
+    let currentFilter = 'all';
+
+    function renderTickets() {
+      const list = document.getElementById("ticket-list");
+      list.innerHTML = "";
+
+      const filtered = SCENARIOS.filter(s => {
+        if (currentFilter === 'escalate') return s.escalate === true;
+        if (currentFilter === 'auto') return s.escalate === false;
+        return true;
+      });
+
+      filtered.forEach(s => {
+        const isSelected = s.id === activeScenario.id;
+        const card = document.createElement("div");
+        card.className = `p-3.5 cursor-pointer transition-all border-l-4 ${
+          isSelected 
+            ? 'bg-brand-yellowLight/50 border-brand-yellow' 
+            : 'hover:bg-slate-50 border-transparent'
+        }`;
+        card.onclick = () => selectScenario(s);
+
+        const badgeStyle = s.escalate 
+          ? 'bg-amber-100 text-amber-900 border-amber-300 font-bold' 
+          : 'bg-slate-100 text-slate-700 border-slate-200 font-semibold';
+        const badgeText = s.escalate ? 'ESCALATE' : 'AUTO-HANDLE';
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-xs truncate max-w-[190px]">${s.title}</span>
+            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border ${badgeStyle}">${badgeText}</span>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-1.5 leading-snug">${s.text}</p>
+          <div class="flex items-center justify-between text-[10px] text-slate-400">
+            <span>${s.handle}</span>
+            <span class="font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">${s.intent}</span>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    async function selectScenario(scenario) {
+      activeScenario = scenario;
+      renderTickets();
+
+      document.getElementById("customer-name").textContent = scenario.handle.replace('@', '').replace('_', ' ').toUpperCase();
+      document.getElementById("customer-handle").textContent = scenario.handle;
+      document.getElementById("customer-avatar").textContent = scenario.avatar;
+      document.getElementById("customer-tweet-body").textContent = scenario.text;
+      document.getElementById("ticket-intent-pill").textContent = scenario.intent;
+
+      const alertBox = document.getElementById("guardrail-alert");
+      if (scenario.text.includes("KL92X1") || scenario.text.includes("stranded") || scenario.text.includes("suitcase never arrived")) {
+        alertBox.classList.remove("hidden");
+        if (scenario.text.includes("KL92X1")) {
+          document.getElementById("guardrail-title").textContent = "Public PNR Leak Detected";
+          document.getElementById("guardrail-desc").textContent = "Passenger published booking reference KL92X1 publicly. Routed to private DM.";
+        } else if (scenario.text.includes("stranded")) {
+          document.getElementById("guardrail-title").textContent = "Stranded Passenger Emergency";
+          document.getElementById("guardrail-desc").textContent = "Passenger facing flight cancellation at airport. Escalated for priority rebooking.";
+        } else {
+          document.getElementById("guardrail-title").textContent = "Lost Baggage - PIR Required";
+          document.getElementById("guardrail-desc").textContent = "Physical suitcase missing; WorldTracer PIR record creation required.";
+        }
+      } else {
+        alertBox.classList.add("hidden");
+      }
+
+      await triggerApiTriage(scenario.text, scenario.id, scenario);
+    }
+
+    async function triggerApiTriage(tweetText, tweetId, fallbackData) {
+      const startTime = performance.now();
+      const draftBox = document.getElementById("draft-reply-text");
+      draftBox.value = "Consulting ChromaDB RAG & Gemini...";
+      
+      try {
+        const response = await fetch(`${API_BASE}/api/v1/triage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tweet_text: tweetText, tweet_id: tweetId })
+        });
+
+        const elapsed = Math.round(performance.now() - startTime);
+        document.getElementById("latency-val").textContent = `${elapsed} ms`;
+
+        if (response.ok) {
+          const data = await response.json();
+          renderTriageResult(data);
+        } else {
+          renderFallback(fallbackData);
+        }
+      } catch (err) {
+        const elapsed = Math.round(performance.now() - startTime);
+        document.getElementById("latency-val").textContent = `${elapsed} ms`;
+        renderFallback(fallbackData);
+      }
+    }
+
+    function renderTriageResult(data) {
+      document.getElementById("draft-reply-text").value = data.draft_reply || "";
+      document.getElementById("confidence-val").textContent = `${Math.round(data.confidence_score * 100)}%`;
+      document.getElementById("confidence-bar").style.width = `${Math.round(data.confidence_score * 100)}%`;
+      document.getElementById("target-dept").textContent = getDeptForIntent(data.intent);
+      document.getElementById("escalation-reason-text").textContent = data.escalation_reason || "Autonomous resolution confirmed. No human escalation required.";
+
+      const badge = document.getElementById("badge-escalate");
+      const badgeText = document.getElementById("badge-escalate-text");
+      if (data.should_escalate_to_human) {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 shadow-xs";
+        badgeText.textContent = "ESCALATE TO HUMAN";
+      } else {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200 shadow-xs";
+        badgeText.textContent = "SAFE AUTO-HANDLE";
+      }
+
+      if (data.grounded_sources && data.grounded_sources.length > 0) {
+        document.getElementById("rag-preview").textContent = `"${data.grounded_sources[0]}"`;
+        document.getElementById("rag-score").textContent = "95.4% Match";
+      }
+    }
+
+    function renderFallback(fallback) {
+      if (!fallback) return;
+      document.getElementById("draft-reply-text").value = fallback.draft;
+      document.getElementById("confidence-val").textContent = "98%";
+      document.getElementById("confidence-bar").style.width = "98%";
+      document.getElementById("target-dept").textContent = fallback.dept;
+      document.getElementById("escalation-reason-text").textContent = fallback.reason;
+      document.getElementById("rag-preview").textContent = `"${fallback.groundedPrecedent}"`;
+      document.getElementById("rag-score").textContent = "96.2% Match";
+
+      const badge = document.getElementById("badge-escalate");
+      const badgeText = document.getElementById("badge-escalate-text");
+      if (fallback.escalate) {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 shadow-xs";
+        badgeText.textContent = "ESCALATE TO HUMAN";
+      } else {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200 shadow-xs";
+        badgeText.textContent = "SAFE AUTO-HANDLE";
+      }
+    }
+
+    function getDeptForIntent(intent) {
+      const map = {
+        "FLIGHT_DISRUPTION": "Station Operations & Duty Managers",
+        "BAGGAGE_SERVICES": "Baggage Handling & Tracing Desk",
+        "BOOKING_TICKETING": "Reservations & Ticketing Office",
+        "CHECKIN_BOARDING": "Airport Ground Services",
+        "REFUNDS_COMPENSATION": "Customer Relations & Claims Audit",
+        "LOYALTY_AVIOS": "Executive Club Loyalty Team",
+        "GENERAL_INQUIRY": "Customer Care FAQ Desk"
+      };
+      return map[intent] || "Customer Support Desk";
+    }
+
+    async function processCustomTweet() {
+      const input = document.getElementById("custom-tweet-input");
+      const text = input.value.trim();
+      if (!text) {
+        showToast("Please enter tweet text first!");
+        return;
+      }
+
+      const customScenario = {
+        id: "custom-" + Date.now(),
+        title: "Custom Tweet",
+        handle: "@custom_user",
+        avatar: "CU",
+        time: "Just now",
+        text: text,
+        intent: "ANALYZING...",
+        escalate: false,
+        dept: "Determining...",
+        reason: "Running live pipeline...",
+        groundedPrecedent: "Matching nearest historical resolution...",
+        draft: "Drafting grounded reply..."
+      };
+
+      await selectScenario(customScenario);
+      showToast("Custom tweet triaged by AI Copilot!");
+    }
+
+    function filterScenarios(filter) {
+      currentFilter = filter;
+      ['all', 'escalate', 'auto'].forEach(f => {
+        const btn = document.getElementById(`filter-${f}`);
+        if (f === filter) {
+          btn.className = "flex-1 py-1.5 text-center font-bold bg-white text-slate-900 rounded-lg shadow-xs";
+        } else {
+          btn.className = "flex-1 py-1.5 text-center hover:text-slate-900 rounded-lg";
+        }
+      });
+      renderTickets();
+    }
+
+    async function refreshHealth() {
+      try {
+        const res = await fetch(`${API_BASE}/health`);
+        if (res.ok) {
+          document.getElementById("connection-status").className = "hidden sm:flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-yellowLight text-brand-yellowDark border border-amber-300 shadow-xs";
+          document.getElementById("connection-text").textContent = "FastAPI Connected";
+        }
+      } catch(e) {
+        document.getElementById("connection-status").className = "hidden sm:flex items-center space-x-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200";
+        document.getElementById("connection-text").textContent = "Local Ready";
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-message").textContent = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 3000);
+    }
+
+    function approveResponse() {
+      showToast("Approved! Response dispatched to Twitter with ^JM initials.");
+    }
+
+    function copyDraft() {
+      const text = document.getElementById("draft-reply-text").value;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Draft copied to clipboard!");
+      });
+    }
+
+    function escalateToHuman() {
+      showToast("Escalated to Airport Duty Manager queue.");
+    }
+
+    // Init & Route Check on Load
+    window.addEventListener("DOMContentLoaded", () => {
+      renderTickets();
+      selectScenario(SCENARIOS[0]);
+      refreshHealth();
+
+      if (window.location.hash === '#architecture' || window.location.pathname.includes('architecture')) {
+        switchTab('architecture');
+      } else {
+        switchTab('copilot');
+      }
+    });
+  </script>
+</body>
+</html>

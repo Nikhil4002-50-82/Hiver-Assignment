@@ -1,8 +1,10 @@
 
 from fastapi import FastAPI, HTTPException, Body
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.schemas import CustomerTweetRequest, TriageDecision
 from src.agent import BritishAirwaysAgent
+from src.config import BASE_DIRECTORY
 
 app = FastAPI(
     title="British Airways AI Support Agent API",
@@ -88,6 +90,21 @@ TRIAGE_EXAMPLES = {
     }
 }
 
+
+
+@app.get("/dashboard", include_in_schema=False)
+def serve_dashboard():
+    return FileResponse(BASE_DIRECTORY / "dashboard.html")
+
+
+@app.get("/architecture", include_in_schema=False)
+def serve_architecture():
+    return FileResponse(BASE_DIRECTORY / "dashboard.html")
+
+
+@app.get("/", include_in_schema=False)
+def serve_root():
+    return FileResponse(BASE_DIRECTORY / "dashboard.html")
 
 
 @app.get("/health", summary="Live Service Health Check")
