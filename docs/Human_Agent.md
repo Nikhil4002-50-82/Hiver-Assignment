@@ -19,7 +19,7 @@ In enterprise customer support, full autonomous resolution is only appropriate f
 
 For these reasons, our system is built around a **Human-in-the-Loop Escalation Architecture**.
 
-`mermaid
+```mermaid
 flowchart TD
     Tweet["Incoming Customer Tweet"] --> Scan{"Deterministic Guardrails Scan"}
     
@@ -35,7 +35,7 @@ flowchart TD
     CoPilot --> Dispatch["Dispatch to Specialized Department Queue"]
     
     Dispatch --> HumanDesk["Human Agent Dashboard (Review Reason, Approve/Edit Draft, Verify Identity in DM)"]
-`
+```
 
 ---
 
@@ -48,11 +48,10 @@ Safety-critical policies bypass LLM probabilistic generation entirely. They exec
 
 | Escalation Rule | Code Detection Pattern | Operational Reason Logged |
 |---|---|---|
-| **Public PNR Leak** | 
-e.search(r"\b[A-Z0-9]{6}\b", text) | *"Customer shared a booking reference publicly; requires private DM handling to protect passenger privacy."* |
-| **Active Flight Disruption** | ["stranded", "stuck at terminal", "cancelled", "delay"] | *"Customer experiencing active flight disruption or is stranded in transit; requires priority rebooking."* |
-| **Lost / Damaged Luggage** | ["lost bag", "damaged luggage", "missing bag", "carousel", "pir"] | *"Passenger baggage is missing or damaged; requires WorldTracer PIR record creation by baggage agent."* |
-| **Statutory Compensation** | ["eu261", "compensation", "claim", "hotel bill", "refund"] | *"Customer is claiming cash compensation or statutory EU261 reimbursement; requires human case verification."* |
+| **Public PNR Leak** | `re.search(r"\b[A-Z0-9]{6}\b", text)` | *"Customer shared a booking reference publicly; requires private DM handling to protect passenger privacy."* |
+| **Active Flight Disruption** | `["stranded", "stuck at terminal", "cancelled", "delay"]` | *"Customer experiencing active flight disruption or is stranded in transit; requires priority rebooking."* |
+| **Lost / Damaged Luggage** | `["lost bag", "damaged luggage", "missing bag", "carousel", "pir"]` | *"Passenger baggage is missing or damaged; requires WorldTracer PIR record creation by baggage agent."* |
+| **Statutory Compensation** | `["eu261", "compensation", "claim", "hotel bill", "refund"]` | *"Customer is claiming cash compensation or statutory EU261 reimbursement; requires human case verification."* |
 
 ### Tier 2: Generative Semantic Reasoning (Soft Model Rules)
 If no hard deterministic triggers fire, the inquiry is processed by Google Gemini Flash. The model evaluates subtle nuances that keyword filters miss:
@@ -66,7 +65,7 @@ If no hard deterministic triggers fire, the inquiry is processed by Google Gemin
 
 When should_escalate == True, **the AI does not abandon the ticket or output an empty error**. Instead, it generates a complete TriageDecision payload defined in src/schemas.py:
 
-`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor Customer as Passenger on Twitter
@@ -80,7 +79,7 @@ sequenceDiagram
     Queue->>Human: Displays Ticket on Operational Dashboard
     Note over Human: Specialist reviews:<br/>- Customer complaint<br/>- Flagged reason: Missing baggage / WorldTracer needed<br/>- Pre-drafted reply: 'Hi there, sorry to hear this...'<br/>- Top-3 historical RAG references
     Human->>Customer: One-click approval & sends DM link for WorldTracer PIR tracking
-`
+```
 
 ### The Human Agent Dashboard Experience:
 Rather than writing an apology from scratch, the human specialist receives:

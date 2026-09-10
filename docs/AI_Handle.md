@@ -18,7 +18,7 @@ In commercial aviation customer support, automated replies must be governed by s
 3. **Zero Physical or Financial Action Needed**: The customer does not have lost luggage (which requires a physical WorldTracer PIR record) and is not claiming statutory cash compensation (which requires financial audits).
 4. **High Confidence & Low Ambiguity**: The model confidence score is high (>= 75%) and the language is free of sarcasm or distress.
 
-`mermaid
+```mermaid
 flowchart TD
     Tweet["Incoming Customer Tweet"] --> Q1{"Requires Passenger PII / 6-char PNR?"}
     
@@ -33,7 +33,7 @@ flowchart TD
     
     Q4 -- "No" --> Escalate
     Q4 -- "Yes" --> AutoHandle["AUTO-HANDLE BY AI (Deliver Grounded Reply in < 2s)"]
-`
+```
 
 ---
 
@@ -41,7 +41,7 @@ flowchart TD
 
 When a safe tweet is received, it flows through a dedicated 5-stage resolution pipeline:
 
-`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor Customer as Passenger on Twitter
@@ -57,14 +57,13 @@ sequenceDiagram
     RAG->>Generator: Injects Top-3 Historical BA Resolutions
     Generator->>Validator: Synthesizes Grounded BA Reply with ^initials
     Validator->>Customer: Returns Validated TriageDecision (should_escalate = False)
-`
+```
 
-### Stage 1: Ingestion & Text Sanitization (src/schemas.py)
-Incoming requests arrive via the FastAPI REST endpoint (POST /api/v1/triage) or the interactive CLI (
-un_demo.py). The input is stripped of Twitter mention handles (e.g., @British_Airways), whitespace is normalized, and empty strings are rejected with an HTTP 400 error.
+### Stage 1: Ingestion & Text Sanitization (`src/schemas.py`)
+Incoming requests arrive via the FastAPI REST endpoint (`POST /api/v1/triage`) or the interactive CLI (`run_demo.py`). The input is stripped of Twitter mention handles (e.g., `@British_Airways`), whitespace is normalized, and empty strings are rejected with an HTTP 400 error.
 
-### Stage 2: Intent Classification & Guardrail Verification (src/agent.py)
-The system scans deterministic rules in check_deterministic_guardrails(tweet_text). When keywords like llowance, hand luggage, cabin bag, or aggage size are identified without distress signals, the agent tags the intent as AirlineIntent.GENERAL_INQUIRY and flags should_escalate = False.
+### Stage 2: Intent Classification & Guardrail Verification (`src/agent.py`)
+The system scans deterministic rules in `check_deterministic_guardrails(tweet_text)`. When keywords like `allowance`, `hand luggage`, `cabin bag`, or `baggage size` are identified without distress signals, the agent tags the intent as `AirlineIntent.GENERAL_INQUIRY` and flags `should_escalate = False`.
 
 ### Stage 3: Semantic Knowledge Retrieval (src/vector_store.py)
 Before generating any words, the agent queries our local **ChromaDB** vector database:
