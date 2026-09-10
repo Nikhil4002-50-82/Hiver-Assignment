@@ -139,6 +139,8 @@ For comprehensive, highly visual, production-grade architectural deep dives with
 * **[Layer 3: 7-Intent Classification](docs/Intent_Classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
 * **[Layer 4: Hybrid Triage Guardrails](docs/Hybrid_Triage_Guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
 * **[Layer 5: The Quality Inspector](docs/Quality_Inspector.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
+* **[Autonomous Resolution (AI Auto-Handle)](docs/AI_Handle.md)**: Deep dive into autonomous FAQ resolution, RAG grounding, and zero hallucinations.
+* **[Human-in-the-Loop (Human Escalation)](docs/Human_Agent.md)**: Deep dive into the human co-pilot model, reason logging, and priority queues.
 
 ---
 
@@ -164,7 +166,9 @@ Hiver-Assignment/
 │   ├── Memory_Vault.md             # Layer 2: ChromaDB RAG, embeddings, and asymmetric indexing
 │   ├── Intent_Classification.md    # Layer 3: 7-Intent operational taxonomy & routing
 │   ├── Hybrid_Triage_Guardrails.md # Layer 4: Deterministic code guardrails & cost asymmetry
-│   └── Quality_Inspector.md        # Layer 5: LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa
+│   ├── Quality_Inspector.md        # Layer 5: LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa
+│   ├── AI_Handle.md                # Autonomous AI resolution workflow, grounding, and SLAs
+│   └── Human_Agent.md              # Human-in-the-loop co-pilot, escalation reason logging, and queues
 ├── report/                         # Evaluator deliverables & analytical reports
 │   ├── REPORT.md                   # 6-page comprehensive report (framing, baselines, failure analysis)
 │   ├── DECISION_LOG.md             # 12 non-obvious engineering decisions and trade-offs
@@ -200,7 +204,7 @@ Hiver-Assignment/
 | **`src/evaluate.py`** & **`src/judge.py`** | **Deliverable 3 (Evaluation Harness)** | Automated benchmarking harness (Accuracy, Macro-F1, Precision, Recall) + LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa. |
 | **`report/REPORT.md`** | **Deliverable 4 (Analytical Report)** | Comprehensive report: problem framing, baseline comparisons, top 5 failure modes, headline number critique, and roadmap. |
 | **`report/DECISION_LOG.md`** | **Deliverable 5 (Decision Log)** | 12 non-obvious engineering decisions, trade-offs, and design choices. |
-| **`docs/`** | **Architectural Deep Dives** | 6 standalone technical guides covering System Architecture, Interface, RAG, Intent, Guardrails, and Quality. |
+| **`docs/`** | **Architectural Deep Dives** | 8 standalone technical guides covering Master Architecture, Interfaces, RAG, Intents, Guardrails, Evaluation, AI Auto-Handling, and Human Escalation. |
 | **`src/agent.py`** | **Core AI Engine** | British Airways AI agent combining 7-intent classification, ChromaDB RAG, and hybrid deterministic guardrails. |
 | **`src/vector_store.py`** | **Vector Knowledge Base** | ChromaDB semantic index over historical `@British_Airways` resolutions with asymmetric indexing. |
 | **`tests/test_pipeline.py`** | **Automated Test Suite** | Pytest unit tests for schemas, deterministic guardrails, baseline execution, and data distributions. |

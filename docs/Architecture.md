@@ -78,6 +78,10 @@ flowchart TD
     K -- "Operational / PII Required" --> M["ESCALATE TO HUMAN\n(Pre-Drafted Reply + Reason)"]
 ```
 
+> **Detailed Triage Pathway Specifications**:
+> * **Autonomous AI Resolution Pathway**: [AI_Handle.md](AI_Handle.md)
+> * **Human-in-the-Loop Co-Pilot Pathway**: [Human_Agent.md](Human_Agent.md)
+
 ---
 
 ## 3. The 5 Architectural Layers Explained
