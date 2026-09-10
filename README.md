@@ -25,7 +25,11 @@ Evaluated across the **210-sample hand-labelled Golden Set**:
 Ensure you have Python 3.10+ installed. In your terminal (Git Bash or PowerShell), run:
 
 ```bash
+<<<<<<< HEAD
 # 1. Clone repository via Git Bash and navigate to project root
+=======
+# 1. Clone repository and navigate to directory
+>>>>>>> 0b2681c5a0f8670ad996109a8fea0ad68cc240d2
 git clone https://github.com/Nikhil4002-50-82/Hiver-Assignment.git
 cd Hiver-Assignment
 
