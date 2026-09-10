@@ -22,34 +22,52 @@ Evaluated across the **210-sample hand-labelled Golden Set**:
 ## Quickstart: Reproduce Results in Under 15 Minutes
 
 ### Step 1: Environment Setup
-Ensure you have Python 3.10+ installed. In your terminal, run:
+Ensure you have Python 3.10+ installed. In your terminal (Git Bash or PowerShell), run:
 
 ```bash
-# 1. Clone repository and navigate to directory
-git clone https://github.com/candidate/Hiver-Assignment.git
+# 1. Clone repository via Git Bash and navigate to project root
+git clone https://github.com/Nikhil4002-50-82/Hiver-Assignment.git
 cd Hiver-Assignment
 
-# 2. Create and activate virtual environment
+# 2. Create virtual environment
 python -m venv .venv
+
+# Activate virtual environment:
+# On Git Bash:
+source .venv/Scripts/activate
 # On Windows PowerShell:
 .venv\Scripts\Activate.ps1
 # On macOS / Linux:
 source .venv/bin/activate
 
-# 3. Install dependencies
+# 3. Install project dependencies
 pip install -r requirements.txt
 ```
 
-### Step 2: Configure Environment Variables (Optional)
-Copy `.env.example` to `.env`:
+### Step 2: Configure Environment Variables
+Create a `.env` file in the project root directory (or copy `.env.example`):
 ```bash
 cp .env.example .env
 ```
-Add your Google Gemini API key if you wish to run cloud generation:
+
+Populate the `.env` file with the following configuration:
 ```env
-GEMINI_API_KEY="your-gemini-api-key"
+GEMINI_API_KEY=""
+GEMINI_MODEL="gemini-3.8-flash"
+EMBEDDING_MODEL="gemini-embedding-2"
+ENVIRONMENT="development"
+LOG_LEVEL="INFO"
 ```
-> **Note on Offline Reproducibility**: The pipeline is engineered with a local fallback mode. Even without a `GEMINI_API_KEY`, the entire evaluation harness, vector store, test suite, and FastAPI server will run 100% locally and offline.
+
+| Variable | Description |
+|---|---|
+| `GEMINI_API_KEY` | Your Google Gemini API key. Paste your key inside the quotes. |
+| `GEMINI_MODEL` | Primary LLM generation model (`gemini-3.8-flash` with automatic failover cascade). |
+| `EMBEDDING_MODEL` | Semantic embedding model (`gemini-embedding-2` for 3,072-dimensional vector indexing). |
+| `ENVIRONMENT` | Runtime environment mode (`development` or `production`). |
+| `LOG_LEVEL` | Logging verbosity level (`INFO` or `DEBUG`). |
+
+> **Note on Offline Reproducibility**: The pipeline is engineered with an automatic local fallback mode. Even without a `GEMINI_API_KEY`, the entire evaluation harness, ChromaDB vector store, test suite, and FastAPI server will run 100% locally and offline using local ONNX sentence transformers and heuristic rules.
 
 ---
 
@@ -117,6 +135,54 @@ For comprehensive, highly visual, production-grade architectural deep dives with
 * **[Layer 3: 7-Intent Classification](docs/Intent_Classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
 * **[Layer 4: Hybrid Triage Guardrails](docs/Hybrid_Triage_Guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
 * **[Layer 5: The Quality Inspector](docs/Quality_Inspector.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
+
+---
+
+## Project Directory Structure
+
+```
+Hiver-Assignment/
+├── .env.example                    # Environment variable template
+├── .gitignore                      # Git exclusion rules (.venv, .env, __pycache__, data/twcs.csv)
+├── README.md                       # Master reproduction & architecture documentation
+├── requirements.txt                # Lightweight Python dependencies
+├── run_demo.py                     # Rich terminal interactive customer support demo
+├── Hiver SDE Intern Assignment.pdf # Official assignment specification
+├── data/
+│   ├── chroma_db/                  # Persistent ChromaDB vector store (1,500 indexed resolutions)
+│   ├── processed/
+│   │   ├── ba_conversation_pairs.csv # 23,859 paired historical BA customer/agent tweets (6.58 MB)
+│   │   └── golden_set.json         # 210 curated, hand-labelled golden evaluation cases
+│   └── twcs.csv                    # Raw Kaggle Twitter Customer Support dataset (1.5 GB, gitignored)
+├── docs/                           # Comprehensive architectural deep dives
+│   ├── Architecture.md             # Master system design, Heathrow model, and 60s pitch
+│   ├── Reception_Desk.md           # Layer 1: FastAPI Swagger UI, CLI, and Pydantic validation
+│   ├── Memory_Vault.md             # Layer 2: ChromaDB RAG, embeddings, and asymmetric indexing
+│   ├── Intent_Classification.md    # Layer 3: 7-Intent operational taxonomy & routing
+│   ├── Hybrid_Triage_Guardrails.md # Layer 4: Deterministic code guardrails & cost asymmetry
+│   └── Quality_Inspector.md        # Layer 5: LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa
+├── report/                         # Evaluator deliverables & analytical reports
+│   ├── REPORT.md                   # 6-page comprehensive report (framing, baselines, failure analysis)
+│   ├── DECISION_LOG.md             # 12 non-obvious engineering decisions and trade-offs
+│   ├── sampling_methodology.md     # Golden set sampling methodology & tier distribution
+│   └── benchmark_results.json      # Quantitative benchmark output (Accuracy, F1, Recall, Kappa)
+├── src/                            # Modular production Python package
+│   ├── __init__.py                 # Package marker
+│   ├── agent.py                    # BritishAirwaysAgent (RAG, 7-intent classification, hybrid triage)
+│   ├── api.py                      # FastAPI REST microservice exposing POST /api/v1/triage
+│   ├── baselines.py                # Baseline 1 (Keyword) & Baseline 2 (Zero-shot LLM)
+│   ├── config.py                   # Centralized paths, model constants, and runtime configuration
+│   ├── create_golden_set.py        # Stratified sampling and hand-labelling script for golden set
+│   ├── data_extractor.py           # Streaming extractor converting 1.5GB twcs.csv to 6.58MB BA pairs
+│   ├── embeddings.py               # Dual-mode embeddings (Gemini cloud + local ONNX MiniLM)
+│   ├── evaluate.py                 # Automated benchmark runner & metrics computation engine
+│   ├── index_data.py               # ChromaDB indexing & vector store population script
+│   ├── judge.py                    # LLM-as-a-Judge 4-dimension rubric & human calibration
+│   ├── schemas.py                  # Pydantic v2 data models, enums, and request/response contracts
+│   └── vector_store.py             # ChromaDB client, asymmetric search, and metadata retrieval
+└── tests/
+    └── test_pipeline.py            # Automated smoke tests for schemas, guardrails, and datasets
+```
 
 ---
 
