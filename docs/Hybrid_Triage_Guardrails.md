@@ -1,11 +1,11 @@
 # Layer 4: Hybrid Triage & Safety Guardrails
 
-> **Analogy for a 10-Year-Old**:  
-> Imagine an airport where a friendly robot talks to passengers. But right behind the robot stands an **experienced airport police officer**:  
-> * If a passenger drops their passport on the floor, the officer immediately steps in, hands it back quietly, and guides them away from the crowd.  
-> * If a little kid is lost at midnight, the officer doesn't let the robot tell a joke—the officer immediately takes the child to the manager's office!  
+> **High-Level Conceptual Architecture & Mental Model**:  
+> Consider an airport terminal where an automated digital concierge assists travelers, but an **experienced airport operations duty supervisor** oversees every critical action:  
+> * If a passenger accidentally exposes a sensitive booking reference or passport credential in a public queue, the supervisor immediately intercepts the interaction, secures the credential, and transitions the passenger to a secure private channel.  
+> * If a traveler is stranded overnight due to a flight cancellation, the supervisor immediately prioritizes emergency hotel vouchers and manual rebooking rather than automated dialogue.  
 > 
-> *The smart robot can talk politely, but the **Safety Guardrails** make sure no passenger is ever put in danger. We call this a **Hybrid Brain**: code rules enforce strict safety, while AI handles the conversation.*
+> *The generative AI delivers empathetic, natural phrasing, but **Deterministic Safety Guardrails** strictly govern operational authority. This creates a **Hybrid System**: code rules enforce non-negotiable compliance and privacy, while LLMs handle conversational nuances.*
 
 ---
 

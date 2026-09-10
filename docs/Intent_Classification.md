@@ -1,12 +1,12 @@
 # Layer 3: The 7-Intent Classifier (Operational Mapping)
 
-> **Analogy for a 10-Year-Old**:  
-> When you walk into an airport terminal, you see **big overhead signs** pointing in different directions:  
-> * 🧳 **Baggage Claim** is down the hall.  
-> * ✈️ **Flight Departures & Rebooking** is to your left.  
-> * 🎫 **Ticketing & Seat Upgrades** is to your right.  
+> **High-Level Conceptual Architecture & Mental Model**:  
+> Consider the directional signage and dispatch routing in a major international airport:  
+> * 🧳 **Baggage Inquiries** route to the Baggage Service Office & WorldTracer tracing team.  
+> * ✈️ **Flight Cancellations & Delays** route to Station Operations & Duty Rebooking Managers.  
+> * 🎫 **Ticket Modifications & Seat Allocations** route to Reservations & Ticketing.  
 > 
-> *If you walked up to the baggage worker and asked them to change your frequent flyer password, they couldn't help you! The **Intent Classifier** is the smart airport guide who listens to a passenger's sentence and instantly points them to the exact right department.*
+> A baggage agent does not process frequent flyer tier upgrades, and a gate agent does not audit EU261 compensation claims. The **Intent Classifier** inspects incoming unstructured customer text and reliably assigns it to the exact operational department equipped to resolve it.
 
 ---
 

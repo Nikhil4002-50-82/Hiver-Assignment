@@ -83,7 +83,8 @@ flowchart TD
 ## 3. The 5 Architectural Layers Explained
 
 ### Layer 1: The Reception Desk (Interface Layer)
-* **What it does**: Welcomes incoming customer queries.
+* **Detailed Specification**: [Reception_Desk.md](Reception_Desk.md)
+* **What it does**: Welcomes and validates incoming customer queries.
 * **Components**:
   * **Interactive CLI (`run_demo.py`)**: A colorful terminal interface for instant manual testing of custom and preset tweets.
   * **FastAPI Microservice (`src/api.py`)**: A production-grade REST API with interactive Swagger documentation (`/docs`) exposing the `POST /api/v1/triage` endpoint.
@@ -92,7 +93,8 @@ flowchart TD
 ---
 
 ### Layer 2: The Memory Vault (Knowledge Retrieval / RAG Layer)
-* **What it does**: Gives the AI a "photographic memory" of how real British Airways agents have solved problems in the past.
+* **Detailed Specification**: [Memory_Vault.md](Memory_Vault.md)
+* **What it does**: Gives the AI an institutional memory of how real British Airways agents have solved problems in the past.
 * **How it works**:
   1. We took **23,859 historical conversations** between real customers and `@British_Airways` from Twitter.
   2. We converted 1,500 representative customer questions into mathematical coordinates (called **vector embeddings**) using `gemini-embedding-2` and `all-MiniLM-L6-v2`.
@@ -109,6 +111,7 @@ Past Case Found: "Landed at LHR, bag missing" ──▶ Agent Solution: "Did you
 ---
 
 ### Layer 3: The 7-Intent Classifier
+* **Detailed Specification**: [Intent_Classification.md](Intent_Classification.md)
 Instead of confusing the model with dozens of overlapping categories, we group all airline customer requests into **7 crystal-clear operational buckets**:
 
 ```mermaid
@@ -135,6 +138,7 @@ pie title 7 Operational British Airways Intents
 ---
 
 ### Layer 4: The Hybrid Triage Engine (Safety Guardrails)
+* **Detailed Specification**: [Hybrid_Triage_Guardrails.md](Hybrid_Triage_Guardrails.md)
 
 Why do we call it **"Hybrid"**?  
 Because in aviation, you **never rely 100% on AI guesses**. You combine:
@@ -167,6 +171,7 @@ graph LR
 ---
 
 ### Layer 5: The Quality Inspector (LLM-as-a-Judge)
+* **Detailed Specification**: [Quality_Inspector.md](Quality_Inspector.md)
 
 How do we prove to Hiver that the agent actually works?  
 We built an **automated quality auditor** (`src/judge.py`) that evaluates every drafted reply against an explicit **4-dimension rubric**:

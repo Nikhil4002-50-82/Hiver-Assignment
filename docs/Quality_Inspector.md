@@ -1,16 +1,15 @@
 # Layer 5: The Quality Inspector (LLM-as-a-Judge & Evaluation Harness)
 
-> **Analogy for a 10-Year-Old**:  
-> Imagine a school where a student claims: *"I'm the smartest kid in the world!"*  
-> The teacher doesn't just believe them—the teacher gives them a **tough 200-question exam**!  
+> **High-Level Conceptual Architecture & Mental Model**:  
+> In regulated, mission-critical industries like commercial aviation, claiming that an automated system "works well" is insufficient without empirical validation.  
 > 
-> Then, a strict school inspector grades every answer with a red pen using a **4-point scoring rubric**:  
-> 1. Did you tell the truth?  
-> 2. Were you polite and kind?  
-> 3. Did you give clear directions?  
-> 4. Did you keep secrets safe?  
+> To prove performance objectively, the system undergoes an extensive **210-case standardized benchmark**, covering routine FAQs, emotional flight disruptions, and adversarial edge cases. Each generated response is evaluated against an authoritative **4-dimension scoring rubric**:
+> 1. **Groundedness**: Did the response adhere strictly to verified airline facts without hallucination?  
+> 2. **Brand Tone**: Was the tone empathetic, composed, and compliant with British Airways brand guidelines?  
+> 3. **Actionability**: Were concrete, unambiguous next steps provided to the traveler?  
+> 4. **Safety & Privacy**: Were customer booking credentials and PII proactively shielded from public disclosure?  
 > 
-> *In AI engineering, we call this the **Evaluation Harness & LLM-as-a-Judge**. It proves with real numbers that the AI is trustworthy.*
+> *In modern production AI engineering, this infrastructure is known as an **Evaluation Harness & LLM-as-a-Judge**, validated via statistical inter-rater reliability.*
 
 ---
 

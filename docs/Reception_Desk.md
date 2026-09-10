@@ -1,11 +1,11 @@
 # Layer 1: The Reception Desk (Interface Layer)
 
-> **Analogy for a 10-Year-Old**:  
-> Imagine walking into a giant airport. Right at the entrance, there is a **helpdesk counter with two doors**:
-> 1. **Door A (The Web Door)**: For passengers who talk to the airport through an app or a website.
-> 2. **Door B (The Walk-in Terminal)**: For airport engineers who want to test the robot directly by typing on a keyboard.  
+> **High-Level Conceptual Architecture & Mental Model**:  
+> Imagine the entrance of an international airport terminal with two primary service access points:
+> 1. **Digital Gate (The Web REST API)**: For automated systems, mobile applications, and web frontends communicating over standard HTTP protocols.
+> 2. **Operational Console (The Interactive CLI)**: For airport engineers and support operators performing live tests, edge case validations, and diagnostics.  
 > 
-> *The Reception Desk takes your message safely, checks that your ticket isn't blank, and hands it to the smart robot inside.*
+> *The Reception Desk safely ingests every incoming customer message, validates that the payload is well-formed and non-empty, and delivers a clean, structured request to the core AI engine.*
 
 ---
 
@@ -49,11 +49,11 @@ FastAPI is like an ultra-fast, modern airport reception system. It automatically
 
 ### Key Endpoints:
 
-| Method | Endpoint | Purpose | Analogy |
+| Method | Endpoint | Purpose | Intuitive Role |
 |---|---|---|---|
-| `GET` | `/` | Service root and welcome message. | The airport welcome sign. |
-| `GET` | `/health` | Live health check (verifies Gemini connection & vector count). | The heartbeat monitor checking if the desk is open. |
-| `POST` | `/api/v1/triage` | Analyzes customer tweet, classifies intent, decides triage, and drafts reply. | Handing your ticket to the agent for help. |
+| `GET` | `/` | Service root and welcome message. | The airport terminal directory sign. |
+| `GET` | `/health` | Live health check (verifies Gemini connection & vector count). | Terminal status monitor confirming all systems are operational. |
+| `POST` | `/api/v1/triage` | Analyzes customer tweet, classifies intent, decides triage, and drafts reply. | Submitting a customer issue to the service agent for processing. |
 
 ### How It Works in Code:
 ```python

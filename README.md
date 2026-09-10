@@ -113,13 +113,13 @@ Open your browser at: **[http://localhost:8000/docs](http://localhost:8000/docs)
 ```
 
 ### 📚 Detailed Architectural Deep Dives
-For complete, kid-simple yet production-grade explanations with Mermaid diagrams and code walkthroughs, see our dedicated docs:
-* 🏛️ **[Master Architecture Guide](docs/Architecture.md)**: End-to-end design, the Heathrow helpdesk analogy, and 60-second elevator pitch.
-* 🚪 **[Layer 1: The Reception Desk](docs/01_reception_desk.md)**: FastAPI Swagger UI, Interactive CLI, and Pydantic validation contracts.
-* 🗄️ **[Layer 2: The Memory Vault (RAG)](docs/02_memory_vault_rag.md)**: ChromaDB semantic search, embeddings, and asymmetric indexing.
-* 🧭 **[Layer 3: 7-Intent Classification](docs/03_intent_classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
-* 🛡️ **[Layer 4: Hybrid Triage Guardrails](docs/04_hybrid_triage_guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
-* ⚖️ **[Layer 5: The Quality Inspector](docs/05_quality_inspector_eval.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
+For comprehensive, highly visual, production-grade architectural deep dives with Mermaid diagrams and code walkthroughs, see our dedicated docs suite:
+* 🏛️ **[Master Architecture Guide](docs/Architecture.md)**: End-to-end design, the Heathrow helpdesk model, and 60-second elevator pitch.
+* 🚪 **[Layer 1: The Reception Desk](docs/Reception_Desk.md)**: FastAPI Swagger UI, Interactive CLI, and Pydantic validation contracts.
+* 🗄️ **[Layer 2: The Memory Vault (RAG)](docs/Memory_Vault.md)**: ChromaDB semantic search, embeddings, and asymmetric indexing.
+* 🧭 **[Layer 3: 7-Intent Classification](docs/Intent_Classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
+* 🛡️ **[Layer 4: Hybrid Triage Guardrails](docs/Hybrid_Triage_Guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
+* ⚖️ **[Layer 5: The Quality Inspector](docs/Quality_Inspector.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
 
 ---
 

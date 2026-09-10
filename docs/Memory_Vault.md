@@ -1,11 +1,11 @@
 # Layer 2: The Memory Vault (ChromaDB RAG & Vector Store)
 
-> **Analogy for a 10-Year-Old**:  
-> Imagine an airport library with a **giant magical filing cabinet**. Inside are **thousands of folders** holding past customer problems and the exact solutions written by senior British Airways staff.  
+> **High-Level Conceptual Architecture & Mental Model**:  
+> Think of this layer as an enterprise institutional memory bank. Inside this repository are thousands of historical customer inquiries and the verified resolutions crafted by senior British Airways customer service agents.  
 > 
-> When a new customer asks: *"My suitcase never came out on the carousel!"*, the AI doesn't make up an answer from its imagination. Instead, it runs to the filing cabinet, pulls out 3 folders where past passengers lost their suitcases, reads how senior agents solved it, and uses those real solutions to write the answer!  
+> When a new customer inquiry arrives—such as *"My suitcase never arrived on the carousel at Edinburgh!"*—the AI does not attempt to invent an answer from generic model pretraining. Instead, it queries the vector memory bank, retrieves the top-3 historically verified resolutions to identical problems, and uses those real-world precedents as strict factual grounding for its response.  
 > 
-> *In AI engineering, this magical filing cabinet is called **RAG (Retrieval-Augmented Generation)**.*
+> *In modern enterprise AI, this pattern is known as **RAG (Retrieval-Augmented Generation)**.*
 
 ---
 
