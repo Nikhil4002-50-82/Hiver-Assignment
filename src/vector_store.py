@@ -1,9 +1,3 @@
-"""
-Vector Store Service for British Airways Historical Resolutions.
-
-Indexes past customer support interactions into ChromaDB and retrieves 
-the most relevant historical solutions for incoming customer queries.
-"""
 
 import csv
 from pathlib import Path
@@ -24,7 +18,6 @@ except ImportError:
 
 
 class ResolutionVectorStore:
-    """Manages indexing and semantic retrieval of past British Airways resolutions."""
 
     def __init__(
         self, 
@@ -48,11 +41,9 @@ class ResolutionVectorStore:
                 print(f"[WARNING] Could not initialize persistent ChromaDB: {error}")
 
     def is_ready(self) -> bool:
-        """Returns True if ChromaDB collection is initialized."""
         return self.collection is not None
 
     def count_indexed_records(self) -> int:
-        """Returns the number of historical records currently indexed."""
         if self.collection:
             return self.collection.count()
         return 0
@@ -62,10 +53,6 @@ class ResolutionVectorStore:
         pairs_csv_path: Path = CONVERSATION_PAIRS_FILE, 
         max_records: int = 2000
     ) -> int:
-        """
-        Reads historical BA conversation pairs and adds them to the vector store.
-        Skips indexing if records are already present.
-        """
         if not self.is_ready():
             print("[ERROR] Vector store is not initialized.")
             return 0
@@ -135,10 +122,6 @@ class ResolutionVectorStore:
         query_text: str, 
         top_k: int = 3
     ) -> List[HistoricalResolution]:
-        """
-        Retrieves the top-k most similar historical customer issues 
-        and their corresponding British Airways agent resolutions.
-        """
         if not self.is_ready() or self.count_indexed_records() == 0:
             return []
 

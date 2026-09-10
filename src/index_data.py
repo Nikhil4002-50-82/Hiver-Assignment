@@ -1,9 +1,3 @@
-"""
-Knowledge Base Indexer for British Airways Historical Resolutions.
-
-Embeds and indexes real historical British Airways resolutions from 
-data/processed/ba_conversation_pairs.csv into ChromaDB for semantic RAG retrieval.
-"""
 
 from src.vector_store import ResolutionVectorStore
 from src.config import CONVERSATION_PAIRS_FILE

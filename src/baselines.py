@@ -1,21 +1,9 @@
-"""
-Baseline Models for British Airways Support Evaluation.
-
-Required by assignment:
-1. Trivial Baseline: Simple keyword rule classifier + static canned response + naive escalation.
-2. Simple Baseline: Zero-shot LLM (without RAG grounding or deterministic guardrails).
-"""
 
 from typing import Optional
 from src.schemas import AirlineIntent, TriageDecision
 
 
 class TrivialBaselineAgent:
-    """
-    Baseline 1: Trivial Heuristic Model.
-    Uses simple keyword matching for intent and returns a canned static reply.
-    Always escalates to human if any complaint/issue keyword is detected.
-    """
 
     def __init__(self):
         self.name = "Trivial Baseline (Keyword + Canned Reply)"
@@ -61,10 +49,6 @@ class TrivialBaselineAgent:
 
 
 class SimpleBaselineAgent:
-    """
-    Baseline 2: Simple Zero-Shot Model (No RAG grounding, No safety guardrails).
-    Acts as a standard generic LLM assistant without historical airline resolution context.
-    """
 
     def __init__(self, api_key: str = "", model_name: str = "gemini-2.0-flash"):
         self.name = "Simple Baseline (Zero-Shot, No RAG)"

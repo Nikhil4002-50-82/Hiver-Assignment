@@ -1,8 +1,3 @@
-"""
-Interactive CLI Demo for British Airways AI Support Agent.
-
-Run this script to test live customer tweets or try out built-in test scenarios.
-"""
 
 from rich.console import Console
 from rich.panel import Panel

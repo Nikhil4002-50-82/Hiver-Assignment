@@ -1,13 +1,3 @@
-"""
-Evaluation Harness for British Airways Customer Support AI Agent.
-
-Calculates:
-1. Intent Classification: Accuracy, Macro-Precision, Macro-Recall, Macro-F1
-2. Escalation Decision: Precision, Recall, F1 Score
-3. LLM-as-a-Judge Reply Quality: Groundedness, Brand Tone, Actionability, Safety (1-5 scale)
-4. Human-Judge Agreement: Cohen's Kappa / Pearson Correlation on calibrated subset
-5. Benchmark Comparisons: Trivial Baseline vs Simple Baseline vs Proposed Agent
-"""
 
 import json
 import argparse
@@ -24,7 +14,6 @@ from src.schemas import GoldenEvaluationSample
 
 
 def load_golden_set(filepath=GOLDEN_SET_FILE, max_samples: int = None) -> List[GoldenEvaluationSample]:
-    """Loads the hand-curated golden evaluation dataset with stratified sampling."""
     if not filepath.exists():
         raise FileNotFoundError(f"Golden dataset not found at: {filepath}")
 
@@ -46,7 +35,6 @@ def load_golden_set(filepath=GOLDEN_SET_FILE, max_samples: int = None) -> List[G
 
 
 def evaluate_agent(agent, golden_samples: List[GoldenEvaluationSample], judge: SupportQualityJudge) -> Dict[str, Any]:
-    """Runs a single agent across the golden evaluation set and calculates metrics."""
     true_intents = []
     pred_intents = []
     true_escalates = []
@@ -120,7 +108,6 @@ def evaluate_agent(agent, golden_samples: List[GoldenEvaluationSample], judge: S
 
 
 def run_benchmark(quick_mode: bool = False):
-    """Executes the full evaluation comparison across baselines and proposed agent."""
     console = Console()
     console.print("\n[bold cyan]==========================================================[/bold cyan]")
     console.print("[bold cyan]   BRITISH AIRWAYS AI CUSTOMER SUPPORT EVALUATION HARNESS   [/bold cyan]")

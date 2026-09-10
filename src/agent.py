@@ -1,13 +1,3 @@
-"""
-British Airways Customer Support AI Agent.
-
-Performs:
-1. Intent classification across 7 airline operational categories.
-2. Knowledge retrieval of similar historical BA resolutions (RAG via ChromaDB).
-3. Grounded reply drafting matching British Airways' empathetic, professional brand tone.
-4. Autonomous triage: decides whether to auto-handle or escalate to human with a stated reason.
-"""
-
 import json
 import re
 from typing import Optional, List
@@ -29,8 +19,6 @@ except ImportError:
 
 
 class BritishAirwaysAgent:
-    """Production AI Support Agent for British Airways customer interactions."""
-
     def __init__(
         self, 
         api_key: str = GEMINI_API_KEY, 
@@ -50,15 +38,9 @@ class BritishAirwaysAgent:
 
     @property
     def is_api_active(self) -> bool:
-        """Returns True if the Gemini API client is initialized."""
         return self.client is not None
 
     def check_deterministic_guardrails(self, tweet_text: str) -> Optional[dict]:
-        """
-        Applies hard safety policies for British Airways:
-        Certain customer situations must always escalate to human agents
-        regardless of model confidence.
-        """
         text_lower = tweet_text.lower()
 
         if any(w in text_lower for w in ["allowance", "hand luggage", "cabin bag", "pet in cabin", "what terminal", "baggage size", "bag size"]):
@@ -100,7 +82,6 @@ class BritishAirwaysAgent:
         return None
 
     def classify_intent_offline(self, tweet_text: str) -> AirlineIntent:
-        """Classifies customer intent into one of 7 operational buckets when in offline mode."""
         text_lower = tweet_text.lower()
         if any(w in text_lower for w in ["bag", "luggage", "suitcase", "carousel", "pir"]):
             return AirlineIntent.BAGGAGE_SERVICES
@@ -118,7 +99,6 @@ class BritishAirwaysAgent:
             return AirlineIntent.GENERAL_INQUIRY
 
     def build_system_prompt(self, retrieved_resolutions: List[HistoricalResolution]) -> str:
-        """Constructs the prompt grounding the LLM in British Airways policies and brand voice."""
         context_blocks = []
         for idx, res in enumerate(retrieved_resolutions, 1):
             context_blocks.append(
@@ -163,13 +143,6 @@ Output must strictly conform to JSON matching the required schema.
         return prompt
 
     def process_tweet(self, tweet_text: str, tweet_id: Optional[str] = None) -> TriageDecision:
-        """
-        Full agent pipeline:
-        1. Retrieve similar past BA resolutions from ChromaDB.
-        2. Evaluate deterministic guardrails.
-        3. Call Gemini LLM with structured output schema (or heuristic fallback if offline).
-        4. Return type-safe TriageDecision.
-        """
         retrieved_resolutions = self.vector_store.search_similar_resolutions(tweet_text, top_k=3)
         retrieved_ids = [res.tweet_id for res in retrieved_resolutions]
 

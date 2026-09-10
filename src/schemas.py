@@ -4,7 +4,6 @@ from pydantic import BaseModel, Field
 
 
 class AirlineIntent(str, Enum):
-    """The 7 main operational categories of customer requests for British Airways."""
     FLIGHT_DISRUPTION = "FLIGHT_DISRUPTION"
     BAGGAGE_SERVICES = "BAGGAGE_SERVICES"
     BOOKING_TICKETING = "BOOKING_TICKETING"
@@ -15,7 +14,6 @@ class AirlineIntent(str, Enum):
 
 
 class CustomerTweetRequest(BaseModel):
-    """Incoming tweet from a customer."""
     tweet_text: str = Field(
         ..., 
         min_length=1,
@@ -42,7 +40,6 @@ class CustomerTweetRequest(BaseModel):
 
 
 class HistoricalResolution(BaseModel):
-    """A past resolved customer interaction by a British Airways agent."""
     tweet_id: str
     customer_issue: str
     agent_solution: str
@@ -50,7 +47,6 @@ class HistoricalResolution(BaseModel):
 
 
 class TriageDecision(BaseModel):
-    """The final structured decision and draft produced by the AI Agent."""
     intent: AirlineIntent = Field(
         ..., 
         description="The classified operational airline intent (one of 7 mutually exclusive categories)."
@@ -96,7 +92,6 @@ class TriageDecision(BaseModel):
 
 
 class JudgeEvaluation(BaseModel):
-    """Rubric evaluation of a draft reply scored by the LLM-as-a-Judge."""
     groundedness_score: int = Field(..., ge=1, le=5, description="Is the reply grounded in real BA policy? (1-5)")
     brand_tone_score: int = Field(..., ge=1, le=5, description="Is the tone empathetic, professional, and BA-like? (1-5)")
     actionability_score: int = Field(..., ge=1, le=5, description="Does it give clear, useful next steps to the customer? (1-5)")
@@ -106,7 +101,6 @@ class JudgeEvaluation(BaseModel):
 
 
 class GoldenEvaluationSample(BaseModel):
-    """A single hand-labelled example in our golden test set."""
     sample_id: str
     customer_tweet: str
     true_intent: AirlineIntent

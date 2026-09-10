@@ -1,14 +1,3 @@
-"""
-LLM-as-a-Judge Rubric and Quality Evaluation Service.
-
-Evaluates customer service replies across 4 explicit criteria:
-1. Groundedness / Faithfulness (1-5)
-2. Brand Tone & Empathy (1-5)
-3. Actionability & Next Steps (1-5)
-4. Safety & PII Protection (1-5)
-
-Also includes human agreement calibration to satisfy assignment requirements.
-"""
 
 import json
 from typing import Optional, Dict, Any, List
@@ -57,7 +46,6 @@ Output strictly JSON matching the required schema.
 
 
 class SupportQualityJudge:
-    """Evaluates the quality of drafted responses against human-grounded rubrics."""
 
     def __init__(self, api_key: str = GEMINI_API_KEY, model_name: str = DEFAULT_GEMINI_MODEL):
         self.api_key = api_key
@@ -80,10 +68,6 @@ class SupportQualityJudge:
         draft_reply: str, 
         reference_reply: str = ""
     ) -> JudgeEvaluation:
-        """
-        Runs rubric evaluation on a single draft reply.
-        Uses Gemini LLM when active, or deterministic rubric scorer when offline.
-        """
         if self.is_api_active:
             try:
                 prompt = RUBRIC_PROMPT_TEMPLATE.format(

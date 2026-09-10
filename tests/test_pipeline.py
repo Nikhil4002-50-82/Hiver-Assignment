@@ -1,13 +1,3 @@
-"""
-Smoke and Unit Tests for British Airways AI Support System.
-
-Verifies:
-1. Pydantic schema validation contracts.
-2. Text cleaning functions.
-3. Deterministic safety guardrails.
-4. Baseline execution.
-5. Golden set distribution integrity.
-"""
 
 import pytest
 from src.schemas import AirlineIntent, CustomerTweetRequest, TriageDecision

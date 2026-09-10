@@ -1,16 +1,3 @@
-"""
-Golden Evaluation Set Generator for British Airways Support Agent.
-
-This script curates and hand-labels a stratified golden evaluation set of 200 real
-customer support interactions from data/processed/ba_conversation_pairs.csv.
-
-It assigns:
-- Ground truth operational intent (one of 7 airline categories)
-- Ground truth escalation decision (True/False)
-- Ground truth operational escalation reason
-- Historical reference reply (from actual BA Twitter agents)
-- Human benchmark quality score (1 to 5) for validating LLM judge agreement
-"""
 
 import csv
 import json
@@ -21,10 +8,6 @@ from src.schemas import AirlineIntent
 
 
 def categorize_intent_and_triage(customer_text: str, agent_reply: str) -> Dict[str, Any]:
-    """
-    Carefully assigns ground truth intent and escalation decision based on 
-    domain-specific British Airways customer service rules.
-    """
     text_lower = customer_text.lower()
     reply_lower = agent_reply.lower()
 
@@ -117,9 +100,6 @@ def build_golden_evaluation_set(
     output_json_path=GOLDEN_SET_FILE,
     target_count_per_intent=30
 ) -> int:
-    """
-    Builds a balanced 200-sample golden evaluation dataset across all 7 intents.
-    """
     print(f"--> Reading conversation pairs from: {pairs_csv_path}")
     
     samples_by_intent: Dict[str, List[Dict[str, Any]]] = {

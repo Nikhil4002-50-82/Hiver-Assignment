@@ -1,9 +1,3 @@
-"""
-FastAPI Microservice for British Airways AI Support Agent.
-
-Provides HTTP REST endpoints for real-time customer tweet triage,
-intent classification, escalation decisions, and grounded reply drafting.
-"""
 
 from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
@@ -97,7 +91,6 @@ TRIAGE_EXAMPLES = {
 
 @app.get("/", summary="Root Health & Overview")
 def read_root():
-    """Welcome endpoint providing service overview and documentation link."""
     return {
         "service": "British Airways AI Support Agent API",
         "brand": "@British_Airways",
@@ -109,7 +102,6 @@ def read_root():
 
 @app.get("/health", summary="Live Service Health Check")
 def health_check():
-    """Health check endpoint for container, memory, and model connection monitoring."""
     return {
         "status": "healthy",
         "gemini_api_connected": agent.is_api_active,
@@ -149,9 +141,6 @@ def triage_customer_tweet(
         openapi_examples=TRIAGE_EXAMPLES
     )
 ):
-    """
-    Main triage endpoint accepting CustomerTweetRequest with multiple OpenAPI dropdown examples.
-    """
     if not request.tweet_text.strip():
         raise HTTPException(status_code=400, detail="tweet_text cannot be empty.")
 

@@ -1,11 +1,3 @@
-"""
-Data Extractor for British Airways Support Conversations.
-
-This script reads the large Kaggle customer support dataset (twcs.csv),
-filters all conversations involving @British_Airways, pairs each customer
-inbound tweet with the corresponding British Airways agent resolution,
-and saves the clean conversation pairs into a lightweight CSV file.
-"""
 
 import csv
 import re
@@ -20,10 +12,6 @@ from src.config import (
 
 
 def clean_tweet_text(text: str) -> str:
-    """
-    Cleans raw tweet text by removing anonymized handles (like @115712) 
-    and extra whitespace while preserving the core message.
-    """
     if not text:
         return ""
     cleaned = re.sub(r"@\d+", "", text)
@@ -37,10 +25,6 @@ def extract_british_airways_conversations(
     output_csv_path: Path = CONVERSATION_PAIRS_FILE,
     max_pairs: int = 25000
 ) -> int:
-    """
-    Scans twcs.csv, extracts British Airways agent replies,
-    matches them with incoming customer tweets, and writes out the pairs.
-    """
     if not raw_csv_path.exists():
         raise FileNotFoundError(f"Raw dataset not found at: {raw_csv_path}")
 
