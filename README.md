@@ -25,11 +25,7 @@ Evaluated across the **210-sample hand-labelled Golden Set**:
 Ensure you have Python 3.10+ installed. In your terminal (Git Bash or PowerShell), run:
 
 ```bash
-<<<<<<< HEAD
 # 1. Clone repository via Git Bash and navigate to project root
-=======
-# 1. Clone repository and navigate to directory
->>>>>>> 0b2681c5a0f8670ad996109a8fea0ad68cc240d2
 git clone https://github.com/Nikhil4002-50-82/Hiver-Assignment.git
 cd Hiver-Assignment
 
@@ -91,7 +87,11 @@ python -m src.evaluate
 ### Step 4: Run Automated Smoke Tests
 Validate schema contracts, deterministic guardrails, and data distribution integrity:
 ```bash
+# Run tests using pytest:
 pytest tests/ -v
+
+# Or execute via Python module runner:
+python -m pytest tests/ -v
 ```
 
 ---
@@ -192,28 +192,29 @@ Hiver-Assignment/
 
 ## Repository Structure & Deliverables Map
 
-| File / Directory | Assignment Deliverable | Purpose |
+| File / Directory | Assignment Deliverable | Purpose & Scope |
 |---|---|---|
-| **`data/processed/golden_set.json`** | **Deliverable 2** | 210 hand-curated and labeled airline evaluation cases across all 7 intents. |
-| **`report/sampling_methodology.md`** | **Deliverable 2** | Documentation of sampling strategy, distribution balance, and labeling criteria. |
-| **`src/evaluate.py`** | **Deliverable 3** | Evaluation harness calculating Accuracy, F1, Precision, Recall, and Cohen's Kappa. |
-| **`src/judge.py`** | **Deliverable 3** | LLM-as-a-Judge 4-dimension scoring rubric with human agreement validation. |
-| **`report/REPORT.md`** | **Deliverable 4** | Comprehensive report: problem framing, baselines, failure analysis, and metric critique. |
-| **`report/DECISION_LOG.md`** | **Deliverable 5** | 12 non-obvious engineering decisions and trade-offs. |
-| **`src/agent.py`** | **Core Engine** | British Airways AI agent with intent classification, RAG, and hybrid triage. |
-| **`src/vector_store.py`** | **RAG Knowledge Base** | ChromaDB semantic index over historical `@British_Airways` resolved tweets. |
-| **`src/api.py`** | **Microservice** | Production FastAPI backend exposing `POST /api/v1/triage` with Swagger UI. |
-| **`run_demo.py`** | **Interactive Demo** | Rich terminal CLI to test live customer tweets. |
-| **`tests/test_pipeline.py`** | **Test Suite** | Unit tests for schemas, guardrails, and data contracts. |
+| **`run_demo.py`** & **`src/api.py`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI and FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, reproducible in < 15 minutes. |
+| **`data/processed/golden_set.json`** | **Deliverable 2 (Golden Evaluation Set)** | 210 hand-curated and labelled airline evaluation cases across all 7 operational intents (3 difficulty tiers). |
+| **`report/sampling_methodology.md`** | **Deliverable 2 (Sampling Guide)** | Formal documentation of sampling criteria, stratified distribution, and adversarial edge-case inclusion. |
+| **`src/evaluate.py`** & **`src/judge.py`** | **Deliverable 3 (Evaluation Harness)** | Automated benchmarking harness (Accuracy, Macro-F1, Precision, Recall) + LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa. |
+| **`report/REPORT.md`** | **Deliverable 4 (Analytical Report)** | Comprehensive report: problem framing, baseline comparisons, top 5 failure modes, headline number critique, and roadmap. |
+| **`report/DECISION_LOG.md`** | **Deliverable 5 (Decision Log)** | 12 non-obvious engineering decisions, trade-offs, and design choices. |
+| **`docs/`** | **Architectural Deep Dives** | 6 standalone technical guides covering System Architecture, Interface, RAG, Intent, Guardrails, and Quality. |
+| **`src/agent.py`** | **Core AI Engine** | British Airways AI agent combining 7-intent classification, ChromaDB RAG, and hybrid deterministic guardrails. |
+| **`src/vector_store.py`** | **Vector Knowledge Base** | ChromaDB semantic index over historical `@British_Airways` resolutions with asymmetric indexing. |
+| **`tests/test_pipeline.py`** | **Automated Test Suite** | Pytest unit tests for schemas, deterministic guardrails, baseline execution, and data distributions. |
 
 ---
 
 ## The 7 British Airways Operational Intents
 
-1. `FLIGHT_DISRUPTION`: Delays, cancellations, missed connections, diversion, strikes.
-2. `BAGGAGE_SERVICES`: Lost, delayed, or damaged luggage, WorldTracer PIR file references.
-3. `BOOKING_TICKETING`: Seat selection, date changes, upgrades, name corrections, PNRs.
-4. `CHECKIN_BOARDING`: Online check-in errors, mobile boarding pass barcodes, terminal facilities.
-5. `REFUNDS_COMPENSATION`: EU261 statutory compensation claims, expense reimbursements.
-6. `LOYALTY_AVIOS`: Executive Club account access, missing tier points, Avios balance.
-7. `GENERAL_INQUIRY`: Baggage dimension rules, pet policies, compliments, lounge access.
+| Intent Category | Scope & Typical Scenarios | Airline Operational Department | Triage Strategy |
+|---|---|---|---|
+| `FLIGHT_DISRUPTION` | Cancellations, delays, missed connections, strikes, diversions | Station Operations & Duty Managers | Immediate priority escalation; requires human rebooking and hotel accommodation. |
+| `BAGGAGE_SERVICES` | Lost, delayed, or damaged luggage, carousel inquiries | Baggage Handling & Tracing Desk | Mandatory escalation; requires physical WorldTracer PIR record creation. |
+| `BOOKING_TICKETING` | Seat selection, date changes, upgrades, name corrections, PNRs | Reservations & Ticketing Office | Human escalation via private DM to securely access and handle 6-character PNRs. |
+| `CHECKIN_BOARDING` | Mobile app check-in glitches, boarding pass barcodes, terminal gates | Airport Ground Services & Gate Operations | Rapid technical troubleshooting or physical gate staff handover. |
+| `REFUNDS_COMPENSATION` | Statutory EU261 / UK261 compensation claims, hotel/meal reimbursements | Customer Relations & Claims Audit | Human escalation to verify flight delays and audit statutory financial liability. |
+| `LOYALTY_AVIOS` | Executive Club accounts, missing tier points, Avios balances | Executive Club Loyalty Team | Account-specific validation requiring 8-digit membership verification. |
+| `GENERAL_INQUIRY` | Hand luggage limits, pet policies, general FAQs, compliments | Customer Care FAQ Desk | Safe for automated AI resolution grounded in historical British Airways policies. |
