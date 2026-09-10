@@ -89,16 +89,6 @@ TRIAGE_EXAMPLES = {
 }
 
 
-@app.get("/", summary="Root Health & Overview")
-def read_root():
-    return {
-        "service": "British Airways AI Support Agent API",
-        "brand": "@British_Airways",
-        "status": "operational",
-        "interactive_docs_url": "/docs",
-        "redoc_url": "/redoc"
-    }
-
 
 @app.get("/health", summary="Live Service Health Check")
 def health_check():

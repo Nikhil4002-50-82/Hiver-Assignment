@@ -51,7 +51,6 @@ FastAPI is like an ultra-fast, modern airport reception system. It automatically
 
 | Method | Endpoint | Purpose | Intuitive Role |
 |---|---|---|---|
-| `GET` | `/` | Service root and welcome message. | The airport terminal directory sign. |
 | `GET` | `/health` | Live health check (verifies Gemini connection & vector count). | Terminal status monitor confirming all systems are operational. |
 | `POST` | `/api/v1/triage` | Analyzes customer tweet, classifies intent, decides triage, and drafts reply. | Submitting a customer issue to the service agent for processing. |
 
@@ -78,7 +77,6 @@ When you run `uvicorn src.api:app --reload`, FastAPI automatically hosts a beaut
 ├────────────────────────────────────────────────────────────────────────┤
 │  POST  /api/v1/triage      Triage Customer Tweet                       │
 │  GET   /health             Live Service Health Check                   │
-│  GET   /                   Root Health & Overview                      │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
