@@ -5,7 +5,7 @@
 
 ---
 
-## ⚡ Headline Results (Reproduce in < 2 Minutes)
+## Headline Results (Reproduce in < 2 Minutes)
 
 Evaluated across the **210-sample hand-labelled Golden Set**:
 
@@ -19,7 +19,7 @@ Evaluated across the **210-sample hand-labelled Golden Set**:
 
 ---
 
-## 🚀 Quickstart: Reproduce Results in Under 15 Minutes
+## Quickstart: Reproduce Results in Under 15 Minutes
 
 ### Step 1: Environment Setup
 Ensure you have Python 3.10+ installed. In your terminal, run:
@@ -91,39 +91,36 @@ Open your browser at: **[http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
-## 🏗️ Architecture & 5-Layer System Design
+## Architecture & 5-Layer System Design
 
-```
-[ Incoming Customer Tweet ]
-             │
-             ▼
-   [ Intent Classifier ]  ──> 7 Airline Buckets (Flight Disruption, Baggage, Booking, etc.)
-             │
-   ┌─────────┴──────────┐
-   ▼                    ▼
-[ RAG Retrieval ]   [ Safety Guardrails ]
-(ChromaDB Top-3)    (Stranded passenger, lost bags, PII in public, EU261 claims)
-   │                    │
-   └─────────┬──────────┘
-             ▼
-[ Grounded Generator ] ──> Empathetic BA Voice + DM booking reference redirection + ^initials
-             │
-             ▼
-[ Strict Pydantic Schema ] ──> Intent, Confidence, Escalate (T/F), Reason, Draft
+```mermaid
+flowchart TD
+    Tweet["Incoming Customer Tweet\n(@British_Airways)"] --> Classifier["Intent Classifier\n(7 Airline Buckets: Flight Disruption, Baggage, Booking, etc.)"]
+    
+    Classifier --> RAG["RAG Retrieval\n(ChromaDB Top-3 Historical Resolutions)"]
+    Classifier --> Guardrails["Safety Guardrails\n(Stranded Passenger, Lost Bags, PII in Public, EU261 Claims)"]
+    
+    RAG --> Generator["Grounded Generator\n(Empathetic BA Voice + DM Redirection + ^initials)"]
+    Guardrails --> Generator
+    
+    Generator --> Schema["Strict Pydantic Schema\n(Intent, Confidence, Escalate, Reason, Draft)"]
+    
+    Schema --> Auto["AUTO-HANDLE BY AI\n(Direct Automated Resolution)"]
+    Schema --> Escalate["ESCALATE TO HUMAN AGENT\n(Human Co-Pilot Review)"]
 ```
 
-### 📚 Detailed Architectural Deep Dives
+### Detailed Architectural Deep Dives
 For comprehensive, highly visual, production-grade architectural deep dives with Mermaid diagrams and code walkthroughs, see our dedicated docs suite:
-* 🏛️ **[Master Architecture Guide](docs/Architecture.md)**: End-to-end design, the Heathrow helpdesk model, and 60-second elevator pitch.
-* 🚪 **[Layer 1: The Reception Desk](docs/Reception_Desk.md)**: FastAPI Swagger UI, Interactive CLI, and Pydantic validation contracts.
-* 🗄️ **[Layer 2: The Memory Vault (RAG)](docs/Memory_Vault.md)**: ChromaDB semantic search, embeddings, and asymmetric indexing.
-* 🧭 **[Layer 3: 7-Intent Classification](docs/Intent_Classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
-* 🛡️ **[Layer 4: Hybrid Triage Guardrails](docs/Hybrid_Triage_Guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
-* ⚖️ **[Layer 5: The Quality Inspector](docs/Quality_Inspector.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
+* **[Master Architecture Guide](docs/Architecture.md)**: End-to-end design, the Heathrow helpdesk model, and 60-second elevator pitch.
+* **[Layer 1: The Reception Desk](docs/Reception_Desk.md)**: FastAPI Swagger UI, Interactive CLI, and Pydantic validation contracts.
+* **[Layer 2: The Memory Vault (RAG)](docs/Memory_Vault.md)**: ChromaDB semantic search, embeddings, and asymmetric indexing.
+* **[Layer 3: 7-Intent Classification](docs/Intent_Classification.md)**: Operational mapping, 7 vs 77 classes, and priority hierarchy.
+* **[Layer 4: Hybrid Triage Guardrails](docs/Hybrid_Triage_Guardrails.md)**: Deterministic code guardrails, stranded passengers, PII safety, and cost asymmetry.
+* **[Layer 5: The Quality Inspector](docs/Quality_Inspector.md)**: Evaluation harness, LLM-as-a-judge 4-dimension rubric, and Cohen's Kappa agreement.
 
 ---
 
-## 📁 Repository Structure & Deliverables Map
+## Repository Structure & Deliverables Map
 
 | File / Directory | Assignment Deliverable | Purpose |
 |---|---|---|
@@ -141,7 +138,7 @@ For comprehensive, highly visual, production-grade architectural deep dives with
 
 ---
 
-## 🎯 The 7 British Airways Operational Intents
+## The 7 British Airways Operational Intents
 
 1. `FLIGHT_DISRUPTION`: Delays, cancellations, missed connections, diversion, strikes.
 2. `BAGGAGE_SERVICES`: Lost, delayed, or damaged luggage, WorldTracer PIR file references.
