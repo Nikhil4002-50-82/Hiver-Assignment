@@ -2,23 +2,11 @@
 
 > An enterprise-grade, RAG-grounded AI support agent for **British Airways (`@British_Airways`)** that classifies customer intents, drafts empathetic grounded resolutions, and autonomously decides whether to auto-handle or escalate to human agents with explicit policy justifications.
 
----
-
-## Headline Results (Reproduce in < 2 Minutes)
-
-Evaluated across the **210-sample hand-labelled Golden Set**:
-
-| Model / System | Intent Accuracy | Intent Macro-F1 | Escalation Precision | Escalation Recall | Overall Quality (1–5) |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Baseline 1 (Trivial Keyword + Canned)** | 56.2% | 0.491 | 71.2% | 68.5% | 2.48 / 5.0 |
-| **Baseline 2 (Simple Zero-Shot)** | 81.4% | 0.789 | 84.1% | 87.7% | 3.86 / 5.0 |
-| **Proposed Agent (RAG + Guardrails)** | **92.4%** | **0.918** | **91.6%** | **96.2%** | **4.88 / 5.0** |
-
-* **Human-Judge Agreement (Inter-Rater Reliability)**: **Cohen's Kappa ($\kappa$) = 0.782** (*Substantial Agreement*)
+![British Airways AI Copilot Web Dashboard](docs/images/dashboard_preview.png)
 
 ---
 
-## Quickstart:
+## Quickstart
 
 ### Step 1: Environment Setup
 Ensure you have Python 3.10+ installed. In your terminal (Git Bash or PowerShell), run:
@@ -71,7 +59,7 @@ LOG_LEVEL="INFO"
 ---
 
 ### Step 3: Run the Evaluation Benchmark
-To reproduce the headline metrics table in **< 30 seconds**:
+To run the quick benchmark evaluation:
 ```bash
 python -m src.evaluate --quick
 ```
@@ -110,6 +98,20 @@ uvicorn src.api:app --reload
 ```
 * **Interactive Copilot Web Dashboard**: Open your browser at **[http://localhost:8000/](http://localhost:8000/)** (or `http://localhost:8000/dashboard`) to test the 7 pre-configured airline scenarios or custom customer tweets, view live RAG precedents, and inspect the 5-layer system architecture.
 * **Swagger OpenAPI Documentation**: Open **[http://localhost:8000/docs](http://localhost:8000/docs)** to test the `POST /api/v1/triage` endpoint interactively.
+
+---
+
+## Headline Results
+
+Evaluated across the **210-sample hand-labelled Golden Set**:
+
+| Model / System | Intent Accuracy | Intent Macro-F1 | Escalation Precision | Escalation Recall | Overall Quality (1–5) |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Baseline 1 (Trivial Keyword + Canned)** | 56.2% | 0.491 | 71.2% | 68.5% | 2.48 / 5.0 |
+| **Baseline 2 (Simple Zero-Shot)** | 81.4% | 0.789 | 84.1% | 87.7% | 3.86 / 5.0 |
+| **Proposed Agent (RAG + Guardrails)** | **92.4%** | **0.918** | **91.6%** | **96.2%** | **4.88 / 5.0** |
+
+* **Human-Judge Agreement (Inter-Rater Reliability)**: **Cohen's Kappa ($\kappa$) = 0.782** (*Substantial Agreement*)
 
 ---
 
@@ -199,7 +201,7 @@ Hiver-Assignment/
 
 | File / Directory | Assignment Deliverable | Purpose & Scope |
 |---|---|---|
-| **`run_demo.py`**, **`src/api.py`** & **`dashboard.html`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI, FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, and live Copilot Web Dashboard, reproducible in < 15 minutes. |
+| **`run_demo.py`**, **`src/api.py`** & **`dashboard.html`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI, FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, and live Copilot Web Dashboard, with complete reproduction instructions. |
 | **`data/processed/golden_set.json`** | **Deliverable 2 (Golden Evaluation Set)** | 210 hand-curated and labelled airline evaluation cases across all 7 operational intents (3 difficulty tiers). |
 | **`report/sampling_methodology.md`** | **Deliverable 2 (Sampling Guide)** | Formal documentation of sampling criteria, stratified distribution, and adversarial edge-case inclusion. |
 | **`src/evaluate.py`** & **`src/judge.py`** | **Deliverable 3 (Evaluation Harness)** | Automated benchmarking harness (Accuracy, Macro-F1, Precision, Recall) + LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa. |

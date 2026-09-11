@@ -821,7 +821,11 @@ sequenceDiagram
     async function triggerApiTriage(tweetText, tweetId, fallbackData) {
       const startTime = performance.now();
       const draftBox = document.getElementById("draft-reply-text");
-      draftBox.value = "Consulting ChromaDB RAG & Gemini...";
+      if (fallbackData && fallbackData.draft) {
+        draftBox.value = fallbackData.draft;
+      } else {
+        draftBox.value = "Consulting ChromaDB RAG & Gemini...";
+      }
       
       try {
         const response = await fetch(`${API_BASE}/api/v1/triage`, {
