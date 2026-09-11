@@ -9,34 +9,16 @@
 
 Imagine you are standing in a bustling terminal at **London Heathrow Airport (LHR)**. Thousands of passengers arrive every hour with questions, complaints, lost bags, and flight delays.
 
-```
-       Incoming Tweet
-   ("My suitcase is lost!")
-              │
-              ▼
-    ┌──────────────────┐
-    │  RECEPTION DESK  │  <-- Step 1: Receives the message (CLI / FastAPI)
-    └─────────┬────────┘
-              ▼
-    ┌──────────────────┐
-    │  THE SMART ROBOT │  <-- Step 2: Reads the problem, checks intent (7 Buckets)
-    └─────────┬────────┘
-              │
-      ┌───────┴────────┐
-      ▼                ▼
-┌───────────┐    ┌───────────┐
-│  LIBRARY  │    │  SECURITY │  <-- Step 3 & 4: Looks up past fixes (RAG) & 
-│ (ChromaDB)│    │ GUARDRAIL │      checks safety rules (PII, stranded passenger)
-└─────┬─────┘    └─────┬─────┘
-      └───────┬────────┘
-              ▼
-    ┌──────────────────┐
-    │     DECISION     │  <-- Step 5: Can AI answer safely, or call a Human?
-    └─────────┬────────┘
-        ┌─────┴─────┐
-        ▼           ▼
-   [AUTO-HANDLE] [ESCALATE]
-    (Quick FAQ)  (Human Co-Pilot)
+```mermaid
+flowchart TD
+    Tweet["Incoming Tweet\n('My suitcase is lost!')"] --> Reception["RECEPTION DESK\nStep 1: Receives message (CLI / FastAPI)"]
+    Reception --> Robot["THE SMART ROBOT\nStep 2: Reads problem & checks intent (7 Buckets)"]
+    Robot --> Library["LIBRARY (ChromaDB)\nStep 3: Looks up past fixes (RAG)"]
+    Robot --> Security["SECURITY GUARDRAIL\nStep 4: Checks safety rules (PII, stranded)"]
+    Library --> Decision["DECISION ENGINE\nStep 5: Can AI answer safely, or call a Human?"]
+    Security --> Decision
+    Decision --> Auto["AUTO-HANDLE\n(Quick FAQ Resolution)"]
+    Decision --> Escalate["ESCALATE\n(Human Co-Pilot Review)"]
 ```
 
 In an airline helpdesk, you have two types of requests:
@@ -106,11 +88,12 @@ flowchart TD
   3. We stored them in a local, embedded database called **ChromaDB**.
   4. When a new customer asks: *"Where is my suitcase?"*, ChromaDB searches for past tweets asking about missing luggage and retrieves the exact solutions British Airways agents used!
 
-```
-New Customer Tweet ──▶ [Convert to Math Vector] ──▶ [ChromaDB Search]
-                                                           │
-                                                           ▼
-Past Case Found: "Landed at LHR, bag missing" ──▶ Agent Solution: "Did you receive a WorldTracer PIR?"
+```mermaid
+flowchart LR
+    Tweet["New Customer Tweet"] --> Vector["Convert to Math Vector"]
+    Vector --> Search["ChromaDB Search"]
+    Search --> Found["Past Case Found:\n'Landed at LHR, bag missing'"]
+    Found --> Solution["Agent Solution:\n'Did you receive a WorldTracer PIR?'"]
 ```
 
 ---
@@ -181,27 +164,16 @@ graph LR
 How do we prove to Hiver that the agent actually works?  
 We built an **automated quality auditor** (`src/judge.py`) that evaluates every drafted reply against an explicit **4-dimension rubric**:
 
-```
-                  ┌─────────────────────────────────┐
-                  │      4-DIMENSION RUBRIC         │
-                  ├─────────────────────────────────┤
-                  │ 1. Groundedness (1-5)           │
-                  │    Did it stick to real facts?  │
-                  │                                 │
-                  │ 2. Brand Tone (1-5)             │
-                  │    Is it polite & BA-like?      │
-                  │                                 │
-                  │ 3. Actionability (1-5)          │
-                  │    Does it give clear next steps│
-                  │                                 │
-                  │ 4. Safety & PII (1-5)           │
-                  │    Did it keep secrets safe?    │
-                  └────────────────┬────────────────┘
-                                   │
-                                   ▼
-                       [Human Agreement Study]
-                     Cohen's Kappa (κ = 0.782)
-                    "Substantial Agreement"
+```mermaid
+flowchart TD
+    subgraph Rubric["4-DIMENSION RUBRIC"]
+        direction TB
+        R1["1. Groundedness (1–5)\nDid it stick to real facts?"]
+        R2["2. Brand Tone (1–5)\nIs it polite & BA-like?"]
+        R3["3. Actionability (1–5)\nDoes it give clear next steps?"]
+        R4["4. Safety & PII (1–5)\nDid it keep secrets safe?"]
+    end
+    Rubric --> Study["Human Agreement Study\nCohen's Kappa (κ = 0.782)\n'Substantial Agreement'"]
 ```
 
 To prove our judge is fair and not just "grading its own homework", we conducted a **Cohen's Kappa agreement study** against real human reviewer scores. A score of **$\kappa = 0.782$** confirms that our automated judge strongly agrees with human standards.

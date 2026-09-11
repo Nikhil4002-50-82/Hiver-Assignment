@@ -59,7 +59,7 @@ When a new query arrives, ChromaDB computes the **Cosine Similarity** (the angle
 
 ## 3. The Non-Obvious Decision: Asymmetric Indexing
 
-One of the most important engineering decisions we made (detailed in [`report/DECISION_LOG.md`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/DECISION_LOG.md)) is **Asymmetric Indexing**:
+One of the most important engineering decisions we made (detailed in [`report/DECISION_LOG.pdf`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/DECISION_LOG.pdf)) is **Asymmetric Indexing**:
 
 | Strategy | How it works | Why it fails or succeeds |
 |---|---|---|

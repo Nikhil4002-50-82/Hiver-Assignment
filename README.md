@@ -2,7 +2,11 @@
 
 > An enterprise-grade, RAG-grounded AI support agent for **British Airways (`@British_Airways`)** that classifies customer intents, drafts empathetic grounded resolutions, and autonomously decides whether to auto-handle or escalate to human agents with explicit policy justifications.
 
-![British Airways AI Copilot Web Dashboard](docs/images/dashboard_preview.png)
+<p align="center">
+  <video src="docs/images/readme_video.mp4" controls="controls" width="100%" style="max-width: 100%; border-radius: 8px;">
+    Your browser does not support the video tag.
+  </video>
+</p>
 
 ---
 
@@ -164,6 +168,7 @@ Hiver-Assignment/
 │   │   └── golden_set.json         # 210 curated, hand-labelled golden evaluation cases
 │   └── twcs.csv                    # Raw Kaggle Twitter Customer Support dataset (1.5 GB, gitignored)
 ├── docs/                           # Comprehensive architectural deep dives
+│   ├── images/                     # System demo video (readme_video.mp4)
 │   ├── Architecture.md             # Master system design, Heathrow model, and 60s pitch
 │   ├── Reception_Desk.md           # Layer 1: FastAPI Swagger UI, CLI, and Pydantic validation
 │   ├── Memory_Vault.md             # Layer 2: ChromaDB RAG, embeddings, and asymmetric indexing
@@ -172,10 +177,11 @@ Hiver-Assignment/
 │   ├── Quality_Inspector.md        # Layer 5: LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa
 │   ├── AI_Handle.md                # Autonomous AI resolution workflow, grounding, and SLAs
 │   └── Human_Agent.md              # Human-in-the-loop co-pilot, escalation reason logging, and queues
-├── report/                         # Evaluator deliverables & analytical reports
-│   ├── REPORT.md                   # 6-page comprehensive report (framing, baselines, failure analysis)
-│   ├── DECISION_LOG.md             # 12 non-obvious engineering decisions and trade-offs
-│   ├── sampling_methodology.md     # Golden set sampling methodology & tier distribution
+├── report/                         # Evaluator deliverables & analytical reports (Executive PDFs & metrics)
+│   ├── Architecture.pdf            # 3-page system design & Mermaid architecture specification
+│   ├── DECISION_LOG.pdf            # 5-page log of 12 architectural decisions & trade-offs
+│   ├── REPORT.pdf                  # 4-page analytical report (framing, baselines, failure analysis)
+│   ├── sampling_methodology.pdf    # 3-page sampling methodology & golden set tier distribution
 │   └── benchmark_results.json      # Quantitative benchmark output (Accuracy, F1, Recall, Kappa)
 ├── src/                            # Modular production Python package
 │   ├── __init__.py                 # Package marker
@@ -203,10 +209,11 @@ Hiver-Assignment/
 |---|---|---|
 | **`run_demo.py`**, **`src/api.py`** & **`dashboard.html`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI, FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, and live Copilot Web Dashboard, with complete reproduction instructions. |
 | **`data/processed/golden_set.json`** | **Deliverable 2 (Golden Evaluation Set)** | 210 hand-curated and labelled airline evaluation cases across all 7 operational intents (3 difficulty tiers). |
-| **`report/sampling_methodology.md`** | **Deliverable 2 (Sampling Guide)** | Formal documentation of sampling criteria, stratified distribution, and adversarial edge-case inclusion. |
+| **`report/sampling_methodology.pdf`** | **Deliverable 2 (Sampling Guide)** | Formal documentation of sampling criteria, stratified distribution, and adversarial edge-case inclusion. |
 | **`src/evaluate.py`** & **`src/judge.py`** | **Deliverable 3 (Evaluation Harness)** | Automated benchmarking harness (Accuracy, Macro-F1, Precision, Recall) + LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa. |
-| **`report/REPORT.md`** | **Deliverable 4 (Analytical Report)** | Comprehensive report: problem framing, baseline comparisons, top 5 failure modes, headline number critique, and roadmap. |
-| **`report/DECISION_LOG.md`** | **Deliverable 5 (Decision Log)** | 12 non-obvious engineering decisions, trade-offs, and design choices. |
+| **`report/REPORT.pdf`** | **Deliverable 4 (Analytical Report)** | Comprehensive report: problem framing, baseline comparisons, top 5 failure modes, headline number critique, and roadmap. |
+| **`report/DECISION_LOG.pdf`** | **Deliverable 5 (Decision Log)** | 12 non-obvious engineering decisions, trade-offs, and design choices. |
+| **`report/Architecture.pdf`** | **Architecture Specification** | Executive 3-page system design with vector Mermaid flowcharts and 5-layer specifications. |
 | **`docs/`** | **Architectural Deep Dives** | 8 standalone technical guides covering Master Architecture, Interfaces, RAG, Intents, Guardrails, Evaluation, AI Auto-Handling, and Human Escalation. |
 | **`src/agent.py`** | **Core AI Engine** | British Airways AI agent combining 7-intent classification, ChromaDB RAG, and hybrid deterministic guardrails. |
 | **`src/vector_store.py`** | **Vector Knowledge Base** | ChromaDB semantic index over historical `@British_Airways` resolutions with asymmetric indexing. |

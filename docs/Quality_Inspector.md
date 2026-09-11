@@ -45,7 +45,7 @@ flowchart TD
 
 ## 2. The Golden Evaluation Set (210 Samples)
 
-In [`report/sampling_methodology.md`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/sampling_methodology.md), we documented how the test set was hand-curated:
+In [`report/sampling_methodology.pdf`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/sampling_methodology.pdf), we documented how the test set was hand-curated:
 
 * **Balanced Stratification**: Exactly 30 verified examples across all 7 operational intents.
 * **Difficulty Tiers**:
@@ -124,7 +124,7 @@ We benchmarked three competing architectures across the golden evaluation set:
 
 ## 6. Critical Thinking: "What is Misleading About My Headline Number?"
 
-In the report ([`report/REPORT.md`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/REPORT.md)), the assignment requires candidates to honestly critique their own headline results. Here is why an **aggregate 97.1% accuracy** can be misleading:
+In the report ([`report/REPORT.pdf`](file:///C:/Users/Dell/Desktop/Hiver-Assignment/report/REPORT.pdf)), the assignment requires candidates to honestly critique their own headline results. Here is why an **aggregate 92.4% accuracy** can be misleading:
 
 1. **Twitter Selection Bias**: People only tweet at airlines when things go wrong. Happy travelers don't tweet. The dataset is skewed toward extreme disruptions, so 97% accuracy on Twitter might drop on email or chat.
 2. **Cost Asymmetry**: Missing a lost baggage claim is an operational inconvenience; missing a diabetic passenger stranded in Terminal 5 is a physical emergency. Aggregate accuracy treats both errors as equal.
