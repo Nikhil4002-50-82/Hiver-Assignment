@@ -2,12 +2,8 @@
 
 > An enterprise-grade, RAG-grounded AI support agent for **British Airways (`@British_Airways`)** that classifies customer intents, drafts empathetic grounded resolutions, and autonomously decides whether to auto-handle or escalate to human agents with explicit policy justifications.
 
-
-
 <p align="center">
-  <video src="docs/images/readme_video.mp4" controls="controls" width="100%" style="max-width: 100%; border-radius: 8px;">
-    Your browser does not support the video tag.
-  </video>
+  <img src="docs/images/dashboard_preview.png" alt="British Airways AI Copilot Web Dashboard" width="85%" />
 </p>
 
 ---
@@ -170,7 +166,7 @@ Hiver-Assignment/
 │   │   └── golden_set.json         # 210 curated, hand-labelled golden evaluation cases
 │   └── twcs.csv                    # Raw Kaggle Twitter Customer Support dataset (1.5 GB, gitignored)
 ├── docs/                           # Comprehensive architectural deep dives
-│   ├── images/                     # System demo video (readme_video.mp4)
+│   ├── images/                     # Web dashboard preview (dashboard_preview.png)
 │   ├── Architecture.md             # Master system design, Heathrow model, and 60s pitch
 │   ├── Reception_Desk.md           # Layer 1: FastAPI Swagger UI, CLI, and Pydantic validation
 │   ├── Memory_Vault.md             # Layer 2: ChromaDB RAG, embeddings, and asymmetric indexing
