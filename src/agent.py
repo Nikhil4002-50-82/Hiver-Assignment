@@ -154,7 +154,7 @@ Output must strictly conform to JSON matching the required schema.
                 user_message = f"Incoming Customer Tweet: \"{tweet_text}\"\n\nProduce your classification, escalation decision, and draft reply."
 
                 candidate_models = [self.model_name]
-                for fallback_m in ["gemini-3.6-flash", "gemini-3.7-flash", "gemini-3.5-flash"]:
+                for fallback_m in ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite"]:
                     if fallback_m not in candidate_models:
                         candidate_models.append(fallback_m)
 
@@ -171,12 +171,10 @@ Output must strictly conform to JSON matching the required schema.
                                 temperature=0.2,
                             ),
                         )
-                        if response:
+                        if response and response.text:
                             break
-                    except Exception as err:
-                        if "503" in str(err) or "unavailable" in str(err).lower():
-                            continue
-                        raise err
+                    except Exception:
+                        continue
 
                 if not response:
                     raise RuntimeError("All candidate flash models temporarily unavailable.")
@@ -194,7 +192,6 @@ Output must strictly conform to JSON matching the required schema.
 
             except Exception as error:
                 print(f"[WARNING] Gemini generation error: {error}. Using grounded fallback.")
-                self.client = None
 
         intent = self.classify_intent_offline(tweet_text)
         

@@ -19,7 +19,7 @@ PROCESSED_DATA_DIRECTORY.mkdir(parents=True, exist_ok=True)
 CHROMA_DATABASE_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 DEFAULT_EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "gemini-embedding-2")
 
 TARGET_BRAND_NAME = "British_Airways"
