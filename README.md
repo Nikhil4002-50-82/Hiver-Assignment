@@ -1,6 +1,5 @@
-# British Airways AI Customer Support Agent & Evaluation Harness
+# British Airways AI Customer Support Agent
 
-> **Hiver SDE Intern Submission**  
 > An enterprise-grade, RAG-grounded AI support agent for **British Airways (`@British_Airways`)** that classifies customer intents, drafts empathetic grounded resolutions, and autonomously decides whether to auto-handle or escalate to human agents with explicit policy justifications.
 
 ---
