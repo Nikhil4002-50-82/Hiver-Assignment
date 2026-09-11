@@ -41,7 +41,7 @@ A plain list of 12 non-obvious engineering and architectural decisions made duri
 ---
 
 ### 7. Dual-Mode Embeddings (Gemini API with Local Fallback)
-* **Decision**: Supported Google `text-embedding-004` when an API key is present, with an automatic fallback to ChromaDB's local sentence embeddings (`all-MiniLM-L6-v2`).
+* **Decision**: Supported Google `gemini-embedding-2` when an API key is present, with an automatic fallback to ChromaDB's local sentence embeddings (`all-MiniLM-L6-v2`).
 * **Why**: Guarantees that take-home evaluators can clone the repository, run `pytest` or `evaluate.py`, and inspect headline benchmarks even if they don't have an active Gemini API key configured in `.env`.
 
 ---

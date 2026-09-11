@@ -55,27 +55,27 @@ Here is how a message travels through our 5-layer pipeline from the second a cus
 
 ```mermaid
 flowchart TD
-    A["Incoming Customer Tweet\n(@British_Airways)"] --> B["1. Interface & Ingestion\n(FastAPI / CLI)"]
+    A["Incoming Customer Tweet\n(@British_Airways)"] --> B["1. Interface & Ingestion\n(FastAPI / Dashboard / CLI)"]
     
     B --> C["2. Intent Classifier\n(7 Operational Buckets)"]
     
     C --> D{"3. Safety Guardrail Check"}
     
-    D -- "Policy Rule Triggered\n(Lost Bag, PNR, Stranded, EU261)" --> E["Immediate Escalation Flag\n(should_escalate = True)"]
+    D -- "Policy Rule Triggered\n(Lost Bag, PNR, Stranded, EU261)" --> E["Immediate Escalation Flag\n(should_escalate_to_human = True)"]
     D -- "No Hard Trigger" --> F["Normal Evaluation"]
     
     C --> G["4. RAG Knowledge Retriever\n(ChromaDB Vector Store)"]
     G --> H["Retrieve Top-3 Similar\nHistorical BA Resolutions"]
     
-    E --> I["5. Grounded Generation Engine\n(Google Gemini 3.8 / 3.6 Flash)"]
+    E --> I["5. Grounded Generation Engine\n(Google Gemini Flash Cascade)"]
     F --> I
     H --> I
     
     I --> J["Strict Pydantic Validation\n(Type-safe JSON Schema)"]
     
     J --> K{"Triage Router"}
-    K -- "Safe Informational FAQ" --> L["AUTO-HANDLE BY AI\n(Direct Automated Resolution)"]
-    K -- "Operational / PII Required" --> M["ESCALATE TO HUMAN\n(Pre-Drafted Reply + Reason)"]
+    K -- "Safe Informational FAQ" --> L["AI RESPONSE\n(Direct Automated Resolution)"]
+    K -- "Operational / PII Required" --> M["HUMAN AGENT\n(Pre-Drafted Reply + Reason)"]
 ```
 
 > **Detailed Triage Pathway Specifications**:
@@ -90,9 +90,10 @@ flowchart TD
 * **Detailed Specification**: [Reception_Desk.md](Reception_Desk.md)
 * **What it does**: Welcomes and validates incoming customer queries.
 * **Components**:
+  * **Interactive Web Dashboard (`dashboard.html`)**: A production-grade visual Copilot inbox at `/dashboard` with scenario filtering, RAG precedent inspection, and architecture views.
   * **Interactive CLI (`run_demo.py`)**: A colorful terminal interface for instant manual testing of custom and preset tweets.
   * **FastAPI Microservice (`src/api.py`)**: A production-grade REST API with interactive Swagger documentation (`/docs`) exposing the `POST /api/v1/triage` endpoint.
-* **Why it matters**: Whether it's a batch script or a web service, both call the exact same underlying agent engine without code duplication.
+* **Why it matters**: Whether it's a web dashboard, batch script, or REST service, all call the exact same underlying agent engine without code duplication.
 
 ---
 

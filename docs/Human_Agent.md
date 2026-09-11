@@ -23,11 +23,11 @@ For these reasons, our system is built around a **Human-in-the-Loop Escalation A
 flowchart TD
     Tweet["Incoming Customer Tweet"] --> Scan{"Deterministic Guardrails Scan"}
     
-    Scan -- "Hard Rule Matched (Stranded, Lost Bag, PNR, EU261)" --> ForceEsc["Force Human Escalation (should_escalate = True)"]
+    Scan -- "Hard Rule Matched (Stranded, Lost Bag, PNR, EU261)" --> ForceEsc["Force Human Escalation (should_escalate_to_human = True)"]
     Scan -- "No Hard Trigger" --> LLMEval{"Gemini LLM Semantic Reasoning"}
     
-    LLMEval -- "High Sentiment Distress / Low Confidence" --> SoftEsc["Contextual Escalation (should_escalate = True)"]
-    LLMEval -- "Safe Informational FAQ" --> AutoHandle["Auto-Handle by AI (should_escalate = False)"]
+    LLMEval -- "High Sentiment Distress / Low Confidence" --> SoftEsc["Contextual Escalation (should_escalate_to_human = True)"]
+    LLMEval -- "Safe Informational FAQ" --> AutoHandle["Auto-Handle by AI (should_escalate_to_human = False)"]
     
     ForceEsc --> CoPilot["AI Drafts Grounded Resolution + Attaches Reason"]
     SoftEsc --> CoPilot
@@ -41,10 +41,10 @@ flowchart TD
 
 ## 2. How Escalation Is Triggered in Our Codebase
 
-In src/agent.py, escalation is evaluated through a **two-tier decision engine**:
+In `src/agent.py`, escalation is evaluated through a **two-tier decision engine**:
 
 ### Tier 1: Deterministic Guardrails (Hard Code Rules)
-Safety-critical policies bypass LLM probabilistic generation entirely. They execute in sub-millisecond Python regex and keyword checks inside check_deterministic_guardrails(tweet_text):
+Safety-critical policies bypass LLM probabilistic generation entirely. They execute in sub-millisecond Python regex and keyword checks inside `check_deterministic_guardrails(tweet_text)`:
 
 | Escalation Rule | Code Detection Pattern | Operational Reason Logged |
 |---|---|---|
@@ -56,14 +56,14 @@ Safety-critical policies bypass LLM probabilistic generation entirely. They exec
 ### Tier 2: Generative Semantic Reasoning (Soft Model Rules)
 If no hard deterministic triggers fire, the inquiry is processed by Google Gemini Flash. The model evaluates subtle nuances that keyword filters miss:
 * **Sarcastic Gratitude**: *"Thanks British Airways for letting me sleep on the cold floor of Terminal 5 for my honeymoon!"*
-* **Low Confidence Threshold**: If confidence_score < 0.75, the agent autonomously defaults to should_escalate = True rather than guessing.
+* **Low Confidence Threshold**: If `confidence_score < 0.75`, the agent autonomously defaults to `should_escalate_to_human = True` rather than guessing.
 * **Complex Multi-System Requests**: When an inquiry spans multiple departments (e.g., flight delay plus special assistance wheelchair requests).
 
 ---
 
 ## 3. The Co-Pilot Model: What Happens When an Issue Is Escalated
 
-When should_escalate == True, **the AI does not abandon the ticket or output an empty error**. Instead, it generates a complete TriageDecision payload defined in src/schemas.py:
+When `should_escalate_to_human == True`, **the AI does not abandon the ticket or output an empty error**. Instead, it generates a complete `TriageDecision` payload defined in [`src/schemas.py`](file:///c:/Users/Dell/Desktop/Hiver-Assignment/src/schemas.py):
 
 ```mermaid
 sequenceDiagram
@@ -74,19 +74,19 @@ sequenceDiagram
     actor Human as Airline Support Specialist
     
     Customer->>Agent: "Landed at Edinburgh 3 hours ago, suitcase never arrived. Where is my bag??"
-    Note over Agent: 1. Guardrail triggers: BAGGAGE_SERVICES<br/>2. Sets should_escalate = True<br/>3. Logs operational escalation reason<br/>4. RAG retrieves 3 historical PIR resolutions<br/>5. Drafts empathetic reply with ^initials
+    Note over Agent: 1. Guardrail triggers: BAGGAGE_SERVICES<br/>2. Sets should_escalate_to_human = True<br/>3. Logs operational escalation reason<br/>4. RAG retrieves 3 historical PIR resolutions<br/>5. Drafts empathetic reply with ^initials
     Agent->>Queue: Pydantic TriageDecision Payload
     Queue->>Human: Displays Ticket on Operational Dashboard
     Note over Human: Specialist reviews:<br/>- Customer complaint<br/>- Flagged reason: Missing baggage / WorldTracer needed<br/>- Pre-drafted reply: 'Hi there, sorry to hear this...'<br/>- Top-3 historical RAG references
     Human->>Customer: One-click approval & sends DM link for WorldTracer PIR tracking
 ```
 
-### The Human Agent Dashboard Experience:
-Rather than writing an apology from scratch, the human specialist receives:
+### The Human Agent Dashboard Experience (`dashboard.html`):
+In production or local testing at **`http://localhost:8000/dashboard`**, rather than writing an apology from scratch, the human specialist receives:
 1. **The Raw Complaint**: The customer's exact tweet.
-2. **The Classified Intent**: e.g., BAGGAGE_SERVICES.
+2. **The Classified Intent**: e.g., `BAGGAGE_SERVICES`.
 3. **The Stated Escalation Reason**: Explicit justification of why human attention is required.
-4. **The Pre-Drafted Reply**: Grounded in real British Airways resolutions, adhering to the brand's tone of voice and formatted with agent initials (^JM).
+4. **The Pre-Drafted Reply**: Grounded in real British Airways resolutions, adhering to the brand's tone of voice and formatted with agent initials (`^JM`).
 5. **Retrieved Knowledge Sources**: Historical precedent citations from ChromaDB.
 
 **Productivity Gain**: The specialist reviews and approves the resolution in **under 10 seconds**, compared to 3–5 minutes required to compose a manual response.

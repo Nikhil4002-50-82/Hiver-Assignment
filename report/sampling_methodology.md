@@ -1,7 +1,7 @@
 # Golden Evaluation Set: Sampling & Labelling Methodology
 
 **Target Brand**: British Airways (`@British_Airways`)  
-**Golden Set Size**: 200 Hand-Curated and Verified Examples  
+**Golden Set Size**: 210 Hand-Curated and Verified Examples  
 **Dataset Source**: Kaggle Customer Support on Twitter (`thoughtvector/customer-support-on-twitter`)
 
 ---
@@ -10,7 +10,7 @@
 
 In an airline customer support setting, evaluation sets scraped purely with automated heuristics contain noisy labels, ambiguous intent overlap, and poor human triage ground truth. 
 
-To prove our AI agent is trustworthy for production, we built a pristine **Golden Evaluation Set of 200 examples**, hand-labeled with:
+To prove our AI agent is trustworthy for production, we built a pristine **Golden Evaluation Set of 210 examples**, hand-labeled with:
 1. **True Operational Intent** (one of 7 mutually exclusive airline categories)
 2. **True Escalation Decision** (`True` for human agent required, `False` for safe auto-handle)
 3. **Explicit Escalation Rationale** (the operational business justification)
@@ -22,23 +22,23 @@ To prove our AI agent is trustworthy for production, we built a pristine **Golde
 ## 2. Sampling Strategy & Stratification
 
 ### A. Stratified Intent Distribution
-To avoid representation bias (where flight cancellations dominate all data), we sampled across 7 operational buckets:
+To avoid representation bias (where flight cancellations dominate all data), we sampled an exactly balanced 30 cases across all 7 operational buckets:
 
 | Intent Category | Target Count | % of Golden Set | Description |
 |---|---|---|---|
-| **FLIGHT_DISRUPTION** | 35 | 17.5% | Cancellations, delays, missed connections, diversion, weather |
-| **BAGGAGE_SERVICES** | 35 | 17.5% | Delayed bags, damaged luggage, WorldTracer PIR tracing |
-| **BOOKING_TICKETING** | 30 | 15.0% | Seat assignments, name spellings, date rebooking, upgrades |
-| **CHECKIN_BOARDING** | 25 | 12.5% | App check-in failure, boarding pass barcodes, terminal changes |
-| **REFUNDS_COMPENSATION** | 25 | 12.5% | EU261 statutory delay claims, hotel expense reimbursement |
-| **LOYALTY_AVIOS** | 25 | 12.5% | Executive Club password reset, missing Avios points |
-| **GENERAL_INQUIRY** | 25 | 12.5% | Hand baggage allowances, pet policy, lounge rules, compliments |
-| **Total** | **200** | **100%** | |
+| **FLIGHT_DISRUPTION** | 30 | 14.3% | Cancellations, delays, missed connections, diversion, weather |
+| **BAGGAGE_SERVICES** | 30 | 14.3% | Delayed bags, damaged luggage, WorldTracer PIR tracing |
+| **BOOKING_TICKETING** | 30 | 14.3% | Seat assignments, name spellings, date rebooking, upgrades |
+| **CHECKIN_BOARDING** | 30 | 14.3% | App check-in failure, boarding pass barcodes, terminal changes |
+| **REFUNDS_COMPENSATION** | 30 | 14.3% | EU261 statutory delay claims, hotel expense reimbursement |
+| **LOYALTY_AVIOS** | 30 | 14.3% | Executive Club password reset, missing Avios points |
+| **GENERAL_INQUIRY** | 30 | 14.3% | Hand baggage allowances, pet policy, lounge rules, compliments |
+| **Total** | **210** | **100%** | |
 
 ### B. Triage Distribution (Auto-Handle vs. Escalate)
-* **Escalate to Human (`True`)**: ~65% (130 samples)  
+* **Escalate to Human (`True`)**: 61.4% (129 samples)  
   *Justification*: Airline customer support on Twitter is heavily operational. Most passengers tweet because an automated system failed or they need urgent manual intervention requiring their 6-character Booking Reference (PNR).
-* **Safe to Auto-Handle (`False`)**: ~35% (70 samples)  
+* **Safe to Auto-Handle (`False`)**: 38.6% (81 samples)  
   *Justification*: Questions regarding baggage weight limits, pet travel guidelines, check-in opening windows, compliments, and standard policy FAQs.
 
 ---
@@ -47,15 +47,15 @@ To avoid representation bias (where flight cancellations dominate all data), we 
 
 To prevent inflated headline metrics from testing only simple "happy paths", the golden set is stratified into three difficulty tiers:
 
-1. **Tier 1: Direct / Single-Intent (45% - 90 samples)**
+1. **Tier 1: Direct / Single-Intent (~45% - 95 samples)**
    * Clear, unambiguous customer statements.
    * *Example*: *"What is the hand luggage allowance for a flight from LHR to JFK?"* $\rightarrow$ `GENERAL_INQUIRY`, Auto-handle.
 
-2. **Tier 2: High-Emotion & Urgent (35% - 70 samples)**
+2. **Tier 2: High-Emotion & Urgent (~35% - 73 samples)**
    * Passengers in active distress, stranded at airports, or expressing extreme anger.
    * *Example*: *"My connection to Delhi was cancelled, I've been waiting at Terminal 5 for 6 hours with no voucher or hotel. Disgraceful!"* $\rightarrow$ `FLIGHT_DISRUPTION`, Escalate.
 
-3. **Tier 3: Complex Edge Cases & Ambiguity (20% - 40 samples)**
+3. **Tier 3: Complex Edge Cases & Ambiguity (~20% - 42 samples)**
    * **Multi-Intent**: Tweets combining two problems (e.g., flight delayed AND luggage missing). Labelled by primary operational urgency.
    * **Sarcasm / Passive Aggression**: *"Thanks British Airways for letting me spend my anniversary sleeping on the floor of Heathrow."* (Requires detecting disruption rather than genuine gratitude).
    * **Incomplete Context**: *"Can you fix this now? It's broken."* (Requires detecting low confidence / asking for clarification).

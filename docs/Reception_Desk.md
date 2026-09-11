@@ -13,20 +13,23 @@
 
 The **Reception Desk** is the entry point for all customer messages. Its primary job is to **ingest, validate, and serve** incoming customer tweets to our AI engine without letting malformed or empty data crash the system.
 
-In our codebase, this layer is built with two complementary tools:
+In our codebase, this layer is built with three complementary tools:
 1. **The Web REST API (`src/api.py`)**: Built with **FastAPI** and auto-generated **Swagger UI** for production web services.
 2. **The Interactive CLI (`run_demo.py`)**: Built with **Python + Rich** for instant terminal testing and live demonstrations.
+3. **The Interactive Web Dashboard (`dashboard.html`)**: A production-grade White & Yellow Copilot inbox and system architecture viewer.
 
 ```mermaid
 flowchart LR
-    subgraph Users["Passengers & Engineers"]
-        A["Web Browser / Mobile App"]
+    subgraph Users["Passengers, Supervisors & Engineers"]
+        A["Web Browser / Dashboard"]
         B["Terminal Engineer"]
+        G["API Client"]
     end
 
     subgraph Layer1["Layer 1: Reception Desk"]
         C["FastAPI Service\n(src/api.py)"]
         D["Interactive CLI\n(run_demo.py)"]
+        H["Copilot Dashboard\n(dashboard.html)"]
         E["Pydantic Data Contract\n(CustomerTweetRequest)"]
     end
 
@@ -34,8 +37,10 @@ flowchart LR
         F["BritishAirwaysAgent\n(src/agent.py)"]
     end
 
-    A -->|"HTTP POST /api/v1/triage"| C
+    A -->|"HTTP GET /dashboard"| H
+    G -->|"HTTP POST /api/v1/triage"| C
     B -->|"python run_demo.py"| D
+    H -->|"AJAX POST /api/v1/triage"| C
     C --> E
     D --> E
     E -->|"Validated Request"| F
@@ -51,6 +56,9 @@ FastAPI is like an ultra-fast, modern airport reception system. It automatically
 
 | Method | Endpoint | Purpose | Intuitive Role |
 |---|---|---|---|
+| `GET` | `/` | Default root entrypoint serving the Copilot dashboard. | Primary web entrypoint. |
+| `GET` | `/dashboard` | Interactive Copilot Live Inbox & Triage dashboard. | Visual command center for inspecting tweets, RAG matches, and approvals. |
+| `GET` | `/architecture` | Visual 5-Layer Enterprise Blueprint and sequence flows. | System architecture visualization. |
 | `GET` | `/health` | Live health check (verifies Gemini connection & vector count). | Terminal status monitor confirming all systems are operational. |
 | `POST` | `/api/v1/triage` | Analyzes customer tweet, classifies intent, decides triage, and drafts reply. | Submitting a customer issue to the service agent for processing. |
 
@@ -118,7 +126,19 @@ sequenceDiagram
 
 ---
 
-## 4. The Data Contract: Strict Schema Validation
+## 4. Component C: The Interactive Web Dashboard (`dashboard.html`)
+
+For evaluators and support operations leads who prefer a visual workspace, the system includes a modern, high-performance web dashboard served directly by FastAPI at **`http://localhost:8000/dashboard`** (or `http://localhost:8000/`):
+
+* **White & Yellow Enterprise Theme**: Clean, accessible design system strictly adhering to British Airways & modern dashboard aesthetics (`#FFFFFF`, `#FAFAFA`, `#FDB913`).
+* **Live Inbound Tweet Queue**: Filter between `All (7)`, `Human Agent (5)`, and `AI Response (2)` scenarios, or test custom passenger inquiries in real-time.
+* **Suggested Response & Grounding Card**: Displays real-time ChromaDB RAG historical precedents, grounded confidence match percentages, and one-click `Approve & Send` dispatch.
+* **Triage Intelligence Panel**: Real-time breakdown of operational routing, target airline desk, and policy justifications.
+* **Integrated 5-Layer Architecture View**: Click the **Architecture** button to view vector flowcharts, sequence diagrams, and benchmark performance metrics without page reloads.
+
+---
+
+## 5. The Data Contract: Strict Schema Validation
 
 What happens if someone sends gibberish, a blank tweet, or missing fields?
 
@@ -135,7 +155,7 @@ If a user sends `{ "wrong_field": 123 }`, FastAPI stops the request immediately 
 
 ---
 
-## 5. Summary: Why Layer 1 is Built for Enterprise SDE Standards
+## 6. Summary: Why Layer 1 is Built for Enterprise SDE Standards
 
 1. **Decoupled Architecture**: The API and CLI share the exact same `agent.py` logic. If we change how the AI thinks tomorrow, both interfaces update instantly with zero duplicate code.
 2. **Zero-Crash Resilience**: Strict Pydantic validation guarantees that invalid or empty payloads are rejected at the door.

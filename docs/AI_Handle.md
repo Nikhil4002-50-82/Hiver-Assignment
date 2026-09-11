@@ -56,14 +56,14 @@ sequenceDiagram
     Classifier->>RAG: Classified: GENERAL_INQUIRY (98% confidence)
     RAG->>Generator: Injects Top-3 Historical BA Resolutions
     Generator->>Validator: Synthesizes Grounded BA Reply with ^initials
-    Validator->>Customer: Returns Validated TriageDecision (should_escalate = False)
+    Validator->>Customer: Returns Validated TriageDecision (should_escalate_to_human = False)
 ```
 
 ### Stage 1: Ingestion & Text Sanitization (`src/schemas.py`)
-Incoming requests arrive via the FastAPI REST endpoint (`POST /api/v1/triage`) or the interactive CLI (`run_demo.py`). The input is stripped of Twitter mention handles (e.g., `@British_Airways`), whitespace is normalized, and empty strings are rejected with an HTTP 400 error.
+Incoming requests arrive via the FastAPI REST endpoint (`POST /api/v1/triage`), the interactive web dashboard (`dashboard.html`), or the interactive CLI (`run_demo.py`). The input is stripped of Twitter mention handles (e.g., `@British_Airways`), whitespace is normalized, and empty strings are rejected with an HTTP 400 error.
 
 ### Stage 2: Intent Classification & Guardrail Verification (`src/agent.py`)
-The system scans deterministic rules in `check_deterministic_guardrails(tweet_text)`. When keywords like `allowance`, `hand luggage`, `cabin bag`, or `baggage size` are identified without distress signals, the agent tags the intent as `AirlineIntent.GENERAL_INQUIRY` and flags `should_escalate = False`.
+The system scans deterministic rules in `check_deterministic_guardrails(tweet_text)`. When keywords like `allowance`, `hand luggage`, `cabin bag`, or `baggage size` are identified without distress signals, the agent tags the intent as `AirlineIntent.GENERAL_INQUIRY` and flags `should_escalate_to_human = False`.
 
 ### Stage 3: Semantic Knowledge Retrieval (src/vector_store.py)
 Before generating any words, the agent queries our local **ChromaDB** vector database:
@@ -80,19 +80,19 @@ The retrieved resolutions are injected directly into the LLM system prompt. The 
 
 ### Stage 5: Schema Validation & Instant Delivery
 The synthesized response is validated against the Pydantic v2 TriageDecision contract:
-`json
+```json
 {
   "intent": "GENERAL_INQUIRY",
   "confidence_score": 0.98,
-  "should_escalate": false,
+  "should_escalate_to_human": false,
   "escalation_reason": null,
   "draft_reply": "Hi there. In Euro Traveller, you are allowed one cabin bag (up to 56 x 45 x 25cm) plus one small personal item (up to 40 x 30 x 15cm), each weighing up to 23kg. You can find full details here: ba.uk/baggage. Hope this helps! ^JM",
-  "retrieved_sources": [
-    "Historical Resolution doc_129481_0",
-    "Historical Resolution doc_109283_1"
+  "grounded_sources": [
+    "doc_129481_0",
+    "doc_109283_1"
   ]
 }
-`
+```
 The reply is returned to the caller in **under 2 seconds**.
 
 ---

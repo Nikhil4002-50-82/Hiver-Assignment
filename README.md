@@ -53,7 +53,7 @@ cp .env.example .env
 Populate the `.env` file with the following configuration:
 ```env
 GEMINI_API_KEY=""
-GEMINI_MODEL="gemini-3.8-flash"
+GEMINI_MODEL="gemini-3.6-flash"
 EMBEDDING_MODEL="gemini-embedding-2"
 ENVIRONMENT="development"
 LOG_LEVEL="INFO"
@@ -62,7 +62,7 @@ LOG_LEVEL="INFO"
 | Variable | Description |
 |---|---|
 | `GEMINI_API_KEY` | Your Google Gemini API key. Paste your key inside the quotes. |
-| `GEMINI_MODEL` | Primary LLM generation model (`gemini-3.8-flash` with automatic failover cascade). |
+| `GEMINI_MODEL` | Primary LLM generation model (`gemini-3.6-flash` default with automatic failover cascade). |
 | `EMBEDDING_MODEL` | Semantic embedding model (`gemini-embedding-2` for 3,072-dimensional vector indexing). |
 | `ENVIRONMENT` | Runtime environment mode (`development` or `production`). |
 | `LOG_LEVEL` | Logging verbosity level (`INFO` or `DEBUG`). |
@@ -104,12 +104,13 @@ python run_demo.py
 
 ---
 
-### Step 6: Launch the FastAPI REST Microservice
-Serve the agent as a production REST API with interactive Swagger documentation:
+### Step 6: Launch the FastAPI REST Microservice & Copilot Dashboard
+Serve the agent as a production REST API with interactive Swagger documentation and a live Copilot web dashboard:
 ```bash
 uvicorn src.api:app --reload
 ```
-Open your browser at: **[http://localhost:8000/docs](http://localhost:8000/docs)** to test the `POST /api/v1/triage` endpoint interactively.
+* **Interactive Copilot Web Dashboard**: Open your browser at **[http://localhost:8000/](http://localhost:8000/)** (or `http://localhost:8000/dashboard`) to test the 7 pre-configured airline scenarios or custom customer tweets, view live RAG precedents, and inspect the 5-layer system architecture.
+* **Swagger OpenAPI Documentation**: Open **[http://localhost:8000/docs](http://localhost:8000/docs)** to test the `POST /api/v1/triage` endpoint interactively.
 
 ---
 
@@ -151,6 +152,7 @@ Hiver-Assignment/
 ├── .env.example                    # Environment variable template
 ├── .gitignore                      # Git exclusion rules (.venv, .env, __pycache__, data/twcs.csv)
 ├── README.md                       # Master reproduction & architecture documentation
+├── dashboard.html                  # Interactive Copilot Inbox & 5-Layer Architecture Web Dashboard
 ├── requirements.txt                # Lightweight Python dependencies
 ├── run_demo.py                     # Rich terminal interactive customer support demo
 ├── Hiver SDE Intern Assignment.pdf # Official assignment specification
@@ -198,7 +200,7 @@ Hiver-Assignment/
 
 | File / Directory | Assignment Deliverable | Purpose & Scope |
 |---|---|---|
-| **`run_demo.py`** & **`src/api.py`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI and FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, reproducible in < 15 minutes. |
+| **`run_demo.py`**, **`src/api.py`** & **`dashboard.html`** | **Deliverable 1 (Runnable System)** | Interactive Rich terminal CLI, FastAPI REST API (`POST /api/v1/triage`) with Swagger UI, and live Copilot Web Dashboard, reproducible in < 15 minutes. |
 | **`data/processed/golden_set.json`** | **Deliverable 2 (Golden Evaluation Set)** | 210 hand-curated and labelled airline evaluation cases across all 7 operational intents (3 difficulty tiers). |
 | **`report/sampling_methodology.md`** | **Deliverable 2 (Sampling Guide)** | Formal documentation of sampling criteria, stratified distribution, and adversarial edge-case inclusion. |
 | **`src/evaluate.py`** & **`src/judge.py`** | **Deliverable 3 (Evaluation Harness)** | Automated benchmarking harness (Accuracy, Macro-F1, Precision, Recall) + LLM-as-a-Judge 4-dimension rubric & Cohen's Kappa. |
