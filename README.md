@@ -18,7 +18,7 @@ Evaluated across the **210-sample hand-labelled Golden Set**:
 
 ---
 
-## Quickstart: Reproduce Results in Under 15 Minutes
+## Quickstart:
 
 ### Step 1: Environment Setup
 Ensure you have Python 3.10+ installed. In your terminal (Git Bash or PowerShell), run:
